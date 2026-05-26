@@ -7,6 +7,7 @@ import { aiConfig, appConfig, corsConfig, databaseConfig, jwtConfig } from "./co
 import { AuthModule } from "./modules/auth";
 import { HealthModule } from "./modules/health";
 import { UsersModule } from "./modules/users";
+import { WeightRecordsModule } from "./modules/weight-records";
 
 @Module({
   imports: [
@@ -30,7 +31,8 @@ import { UsersModule } from "./modules/users";
     }),
     HealthModule,
     UsersModule,
-    AuthModule
+    AuthModule,
+    WeightRecordsModule
   ],
   controllers: [AppController],
   providers: [AppService]
