@@ -4,8 +4,11 @@ import { TypeOrmModule, TypeOrmModuleOptions } from "@nestjs/typeorm";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { aiConfig, appConfig, corsConfig, databaseConfig, jwtConfig } from "./config";
+import { AccountModule } from "./modules/account";
 import { AuthModule } from "./modules/auth";
 import { HealthModule } from "./modules/health";
+import { HomeModule } from "./modules/home";
+import { StatsModule } from "./modules/stats";
 import { UsersModule } from "./modules/users";
 import { WeightRecordsModule } from "./modules/weight-records";
 
@@ -32,7 +35,10 @@ import { WeightRecordsModule } from "./modules/weight-records";
     HealthModule,
     UsersModule,
     AuthModule,
-    WeightRecordsModule
+    WeightRecordsModule,
+    StatsModule,
+    HomeModule,
+    AccountModule
   ],
   controllers: [AppController],
   providers: [AppService]
