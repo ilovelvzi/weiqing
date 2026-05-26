@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>微轻 - 准备好了</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#584416",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary": "#3d6751",
+                        "on-tertiary-fixed": "#261900",
+                        "on-secondary-container": "#436d57",
+                        "secondary-container": "#bfedd1",
+                        "inverse-primary": "#a6c8ff",
+                        "surface-tint": "#205fa5",
+                        "surface-container-highest": "#dce3f2",
+                        "on-background": "#151c27",
+                        "outline": "#727782",
+                        "tertiary": "#725b2b",
+                        "secondary-fixed-dim": "#a4d1b6",
+                        "primary": "#205fa5",
+                        "on-secondary-fixed-variant": "#254f3a",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#004786",
+                        "on-primary-fixed": "#001c3a",
+                        "tertiary-fixed-dim": "#e1c389",
+                        "surface": "#f9f9ff",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-variant": "#dce3f2",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-surface-variant": "#424751",
+                        "inverse-surface": "#2a313c",
+                        "tertiary-fixed": "#fedfa3",
+                        "secondary-fixed": "#bfedd1",
+                        "primary-fixed": "#d4e3ff",
+                        "on-tertiary-container": "#554013",
+                        "on-primary-container": "#004481",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#151c27",
+                        "surface-dim": "#d3dae9",
+                        "background": "#f9f9ff",
+                        "tertiary-container": "#caad75",
+                        "outline-variant": "#c2c6d2",
+                        "primary-container": "#7eb3ff",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#e7eefe",
+                        "on-tertiary": "#ffffff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "lg": "40px",
+                        "margin-desktop": "64px",
+                        "sm": "12px",
+                        "margin-mobile": "20px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "gutter": "16px"
+                    },
+                    fontFamily: {
+                        "label-sm": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "display-num": ["Manrope"],
+                        "body-md": ["Manrope"]
+                    },
+                    fontSize: {
+                        "label-sm": ["13px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "500" }],
+                        "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "display-num": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }]
+                    },
+                    boxShadow: {
+                        'airy': '0 20px 40px -10px rgba(32, 95, 165, 0.06), 0 10px 20px -5px rgba(32, 95, 165, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Ambient Animation for the background */
+        @keyframes subtleFloat {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        .ambient-shape {
+            animation: subtleFloat 8s ease-in-out infinite;
+        }
+        
+        .ambient-shape-delayed {
+            animation: subtleFloat 10s ease-in-out infinite 2s;
+        }
+        
+        /* Progress Bar Animation */
+        @keyframes fillProgress {
+            from { width: 83%; }
+            to { width: 100%; }
+        }
+        
+        .progress-fill-animate {
+            animation: fillProgress 1s ease-out forwards 0.5s;
+        }
+
+        /* Checkmark Animation */
+        @keyframes scaleCheck {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .check-animate {
+            animation: scaleCheck 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+            transform: scale(0);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col relative overflow-hidden">
+<!-- Ambient Background Elements -->
+<div class="absolute top-[-10%] right-[-10%] w-[60vw] h-[60vw] md:w-[40vw] md:h-[40vw] bg-primary-container/20 rounded-full blur-[80px] ambient-shape pointer-events-none z-0"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[50vw] h-[50vw] md:w-[30vw] md:h-[30vw] bg-secondary-container/20 rounded-full blur-[60px] ambient-shape-delayed pointer-events-none z-0"></div>
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-mobile py-sm bg-surface/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-outline hover:opacity-80 transition-opacity cursor-pointer">arrow_back_ios</span>
+</div>
+<div class="text-headline-lg-mobile font-headline-lg-mobile font-bold text-on-surface">微轻</div>
+<div class="text-label-sm font-label-sm text-outline">6/6</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col px-margin-mobile pt-md pb-[100px] z-10 relative">
+<!-- Progress Bar -->
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden mb-lg">
+<div class="h-full bg-gradient-to-r from-primary-container to-primary rounded-full w-[83%] progress-fill-animate"></div>
+</div>
+<!-- Header Section -->
+<div class="text-center mb-lg">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-xs">准备好了</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">从今天开始，轻轻记录一下就好。</p>
+</div>
+<!-- Celebratory Graphic Area -->
+<div class="flex justify-center items-center mb-lg h-[120px]">
+<div class="w-20 h-20 bg-primary-container rounded-full flex items-center justify-center check-animate relative">
+<div class="absolute inset-0 bg-primary-container rounded-full animate-ping opacity-20"></div>
+<span class="material-symbols-outlined text-on-primary-container text-5xl" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<!-- Summary Card (Bento Style) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-airy border border-outline-variant/20 p-md mb-lg relative overflow-hidden">
+<!-- Subtle decorative background inside card -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/10 rounded-full blur-[30px] -mr-10 -mt-10"></div>
+<h2 class="text-label-sm font-label-sm text-on-surface-variant mb-md tracking-wider uppercase">你的体重目标</h2>
+<div class="flex justify-between items-center mb-md">
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-outline mb-xs">初始体重</span>
+<div class="flex items-baseline">
+<span class="text-headline-lg font-headline-lg text-on-surface">65.5</span>
+<span class="text-body-md font-body-md text-on-surface-variant ml-xs">kg</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-3xl">keyboard_double_arrow_right</span>
+<div class="flex flex-col items-end">
+<span class="text-label-sm font-label-sm text-outline mb-xs">目标体重</span>
+<div class="flex items-baseline">
+<span class="text-headline-lg font-headline-lg text-primary">58.0</span>
+<span class="text-body-md font-body-md text-on-surface-variant ml-xs">kg</span>
+</div>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30 w-full mb-md"></div>
+<!-- Configuration Status -->
+<div class="space-y-sm"><div class="flex items-center justify-between p-sm bg-surface rounded-lg"><div class="flex items-center gap-sm"><span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">notifications</span><span class="text-body-md font-body-md text-on-surface">每日提醒</span></div><span class="text-label-sm font-label-sm text-outline">未开启</span></div><div class="flex items-center justify-between p-sm bg-surface rounded-lg"><div class="flex items-center gap-sm"><span class="material-symbols-outlined text-error-container" style="font-variation-settings: 'FILL' 1;">favorite</span><span class="text-body-md font-body-md text-on-surface">Apple Health</span></div><span class="text-label-sm font-label-sm text-outline">未连接</span></div><div class="flex items-center justify-between p-sm bg-surface rounded-lg"><div class="flex items-center gap-sm"><span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">auto_awesome</span><span class="text-body-md font-body-md text-on-surface">AI 鼓励</span></div><div class="flex items-center gap-xs"><span class="text-label-sm font-label-sm text-secondary">已开启</span><span class="material-symbols-outlined text-secondary text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span></div></div></div>
+</div>
+</main>
+<!-- Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full p-margin-mobile bg-gradient-to-t from-background via-background/90 to-transparent z-40 flex justify-center pb-lg">
+<button class="w-full max-w-md bg-primary text-on-primary py-[16px] rounded-full text-body-md font-body-md font-semibold hover:opacity-90 active:scale-[0.98] transition-all shadow-airy flex items-center justify-center gap-xs">
+            进入首页
+            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</body></html>

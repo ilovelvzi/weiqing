@@ -1,0 +1,532 @@
+[
+  {
+    "category": "00-foundation",
+    "semantic_name": "logo",
+    "raw_folder": "logo",
+    "mvp_status": "foundation",
+    "route_or_usage": "App icon / logo reference",
+    "title": "",
+    "screen_size": "1024×1024",
+    "summary_text": ""
+  },
+  {
+    "category": "01-onboarding",
+    "semantic_name": "welcome",
+    "raw_folder": "_10",
+    "mvp_status": "mvp",
+    "route_or_usage": "pages/launch or onboarding welcome",
+    "title": "WeiQing - Welcome",
+    "screen_size": "585×930",
+    "summary_text": "WeiQing - Welcome 微轻 轻轻记录，看见变化 用温和的方式记录体重变化。数字只是参考，持续看见自己才更重要。 开始设置 arrow_forward 已有账号，登录 微轻不是医疗服务，不提供诊断或治疗建议。"
+  },
+  {
+    "category": "01-onboarding",
+    "semantic_name": "basic-info",
+    "raw_folder": "onboarding_2",
+    "mvp_status": "mvp",
+    "route_or_usage": "onboarding step: base info",
+    "title": "基础信息",
+    "screen_size": "585×1428",
+    "summary_text": "基础信息 arrow_back_ios 2 / 6 先了解一点你的基础信息 这些信息会用于计算健康指标。 出生年份 1997 1998 1999 年 2000 2001 身高 173 174 175 厘米 176 177 继续"
+  },
+  {
+    "category": "01-onboarding",
+    "semantic_name": "current-weight",
+    "raw_folder": "onboarding_4",
+    "mvp_status": "mvp",
+    "route_or_usage": "onboarding step: current weight",
+    "title": "当前体重",
+    "screen_size": "585×1387",
+    "summary_text": "当前体重 arrow_back_ios 3 / 6 现在的体重是？ 记录一下你的体重就好。 公斤 (kg) 斤 磅 (lb) 65.5 kg 继续 1 2 3 4 5 6 7 8 9 . 0 backspace"
+  },
+  {
+    "category": "01-onboarding",
+    "semantic_name": "target-weight-scale",
+    "raw_folder": "onboarding_1",
+    "mvp_status": "mvp",
+    "route_or_usage": "onboarding step: target weight ruler",
+    "title": "目标体重 - 微轻",
+    "screen_size": "585×1326",
+    "summary_text": "目标体重 - 微轻 第 4 步，共 6 步 4/6 设置一个方向 目标只是方向，不是压力。 你可以之后随时修改。 58.0 kg 距离目标 7.5 kg 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 继续"
+  },
+  {
+    "category": "01-onboarding",
+    "semantic_name": "preferences",
+    "raw_folder": "onboarding_5",
+    "mvp_status": "mvp",
+    "route_or_usage": "onboarding step: permissions/preferences",
+    "title": "Preference Settings - Onboarding",
+    "screen_size": "585×1326",
+    "summary_text": "Preference Settings - Onboarding arrow_back_ios_new 5/6 让记录更轻松一点 开启以下权限，我们将在后台默默为您工作，减少手动操作的繁琐。 favorite 连接 Apple Health 允许微轻读取和写入 Apple Health 中的体重数据。你以后可以随时在系统设置中关闭权限。 sync 去授权 notifications_active 每日记录提醒 08:00 AM > sm"
+  },
+  {
+    "category": "01-onboarding",
+    "semantic_name": "ready",
+    "raw_folder": "onboarding_3",
+    "mvp_status": "mvp",
+    "route_or_usage": "onboarding completion",
+    "title": "微轻 - 准备好了",
+    "screen_size": "585×1501",
+    "summary_text": "微轻 - 准备好了 arrow_back_ios 微轻 6/6 准备好了 从今天开始，轻轻记录一下就好。 check 你的体重目标 初始体重 65.5 kg keyboard_double_arrow_right 目标体重 58.0 kg notifications 每日提醒 未开启 favorite Apple Health 未连接 auto_awesome AI 鼓励 已开启 check_circle 进入首页 arrow_forw"
+  },
+  {
+    "category": "02-home",
+    "semantic_name": "home-logged-in",
+    "raw_folder": "_17",
+    "mvp_status": "mvp",
+    "route_or_usage": "pages/index/index",
+    "title": "WeiQing - Home",
+    "screen_size": "585×2271",
+    "summary_text": "WeiQing - Home 微轻 早上好，林雨辉 local_fire_department 已连续记录 12 天 今日体重 今天 · 晚上 65.5 kg trending_down 较上次 -0.3 kg edit 再记一次 目标进度 目标 58.0 kg 还差 3.2 kg 42 % 最近 7 天 查看分析 chevron_right spa 今天已经完成记录啦。 数字只是参考，持续看见自己才是最重要的。 今日饮食备注 add_"
+  },
+  {
+    "category": "03-check-in",
+    "semantic_name": "check-in-input",
+    "raw_folder": "_16",
+    "mvp_status": "mvp",
+    "route_or_usage": "pages/check-in/index",
+    "title": "微轻 - 打卡输入页",
+    "screen_size": "585×1408",
+    "summary_text": "微轻 - 打卡输入页 微轻 65.5 kg expand_more calendar_today 今天 · 晚上 expand_more 裸重 饭后 运动后 生理期 聚餐 外卖 add 自定义 1 2 3 4 5 6 7 8 9 . 0 backspace 完成记录 日期与时段 close 今天 昨天 前天 5月18日 5月17日 凌晨 早上 上午 中午 下午 晚上 完成"
+  },
+  {
+    "category": "03-check-in",
+    "semantic_name": "check-in-unit-sheet",
+    "raw_folder": "_8",
+    "mvp_status": "mvp",
+    "route_or_usage": "unit/precision bottom sheet",
+    "title": "微轻 - 打卡输入页",
+    "screen_size": "465×1600",
+    "summary_text": "微轻 - 打卡输入页 微轻 65.5 kg expand_more calendar_today 今天 · 晚上 expand_more 裸重 饭后 运动后 生理期 聚餐 外卖 add 自定义 1 2 3 4 5 6 7 8 9 . 0 backspace 完成记录 close 单位与精度 体重单位 公斤 (kg) check 斤 磅 (lb) 小数位 1位小数 (如 65.5) check 2位小数 (如 65.50)"
+  },
+  {
+    "category": "03-check-in",
+    "semantic_name": "check-in-unit-sheet-narrow",
+    "raw_folder": "sheet_7",
+    "mvp_status": "optional",
+    "route_or_usage": "alternate unit sheet",
+    "title": "微轻 - 打卡输入页",
+    "screen_size": "382×1600",
+    "summary_text": "微轻 - 打卡输入页 微轻 65.5 kg expand_more calendar_today 今天 · 晚上 expand_more 裸重 饭后 运动后 生理期 聚餐 外卖 add 自定义 1 2 3 4 5 6 7 8 9 . 0 backspace 完成记录 chevron_left 返回 单位与精度 体重单位 公斤 (kg) check 斤 磅 (lb) 小数位 1位小数 (如 65.5) check 2位小数 (如 65.5"
+  },
+  {
+    "category": "03-check-in",
+    "semantic_name": "check-in-success",
+    "raw_folder": "sheet_6",
+    "mvp_status": "mvp",
+    "route_or_usage": "success sheet / AI encouragement card",
+    "title": "记录完成 - WeiQing",
+    "screen_size": "585×988",
+    "summary_text": "记录完成 - WeiQing check_circle 记录完成啦 65.5 kg 今天 · 晚上 较上次 -0.3 kg 本周总变化 -0.6 kg spa 每一次记录都是对自己的温柔注视。保持这个节奏，我们一起慢慢变好。 完成"
+  },
+  {
+    "category": "04-records",
+    "semantic_name": "records-list",
+    "raw_folder": "_4",
+    "mvp_status": "mvp",
+    "route_or_usage": "pages/records/index list mode",
+    "title": "微轻 - 记录",
+    "screen_size": "585×1416",
+    "summary_text": "微轻 - 记录 记录 more_vert tune 列表 曲线 chevron_left 2026年5月 chevron_right 今天 · 5月20日 晚上 较上次 +0.5 kg 65.8 kg chevron_right 运动后 早上 较上次 -0.3 kg 65.5 kg chevron_right 裸重 运动后 add 添加饮食线索 5月19日 晚上 较上次 +0.5 kg 65.8 kg chevron_right 早上 "
+  },
+  {
+    "category": "04-records",
+    "semantic_name": "records-chart-tab",
+    "raw_folder": "_11",
+    "mvp_status": "optional",
+    "route_or_usage": "records chart tab; trend UI reference",
+    "title": "记录 - 微轻 App",
+    "screen_size": "585×1326",
+    "summary_text": "记录 - 微轻 App 记录 more_vert 列表 曲线 7天 30天 90天 全部 体重趋势 单位：公斤 2026/05/19 - 05/25 目标 64.0 68.0 66.0 64.0 19 20 21 22 23 24 25 5月25日，晚上 67.1 kg trending_up +0.1 kg 裸重 restaurant 外卖 · 奶茶 记录天数 7 体重变化 -0.4 最新体重 67.1 最高体重 67.5 最低体重 "
+  },
+  {
+    "category": "04-records",
+    "semantic_name": "record-edit",
+    "raw_folder": "_24",
+    "mvp_status": "mvp",
+    "route_or_usage": "record edit screen/modal",
+    "title": "微轻 App - 编辑记录",
+    "screen_size": "585×1326",
+    "summary_text": "微轻 App - 编辑记录 记录 完成 info 正在编辑，修改会自动保存 10月24日 星期二 晚上 expand_more 65.5 kg expand_more -0.3 kg 饭后 close 运动后 close add 添加标签 remove_circle 早上 expand_more 66.2 kg expand_more +0.5 kg 裸重 close add 添加标签 remove_circle restaurant "
+  },
+  {
+    "category": "04-records",
+    "semantic_name": "records-filter-sheet",
+    "raw_folder": "_28",
+    "mvp_status": "optional",
+    "route_or_usage": "filter sheet mobile",
+    "title": "微轻 - 筛选",
+    "screen_size": "706×1600",
+    "summary_text": "微轻 - 筛选 arrow_back 记录 more_vert 5月12日 上午 08:30 56.2 kg 裸重 5月11日 晚上 21:15 56.8 kg 饭后 聚餐 取消 筛选 时间范围 本月 近30天 近90天 自定义 chevron_right 时段 全部 check 凌晨 早上 上午 中午 下午 晚上 标签 裸重 饭后 运动后 生理期 聚餐 外卖 高盐 熬夜 饮食备注 全部 check 有饮食备注 无饮食备注 重置 完成"
+  },
+  {
+    "category": "04-records",
+    "semantic_name": "records-filter-wide",
+    "raw_folder": "_31",
+    "mvp_status": "optional",
+    "route_or_usage": "filter sheet wide",
+    "title": "微轻 - 筛选",
+    "screen_size": "1210×1962",
+    "summary_text": "微轻 - 筛选 arrow_back 记录 more_vert 5月12日 上午 08:30 56.2 kg 裸重 5月11日 晚上 21:15 56.8 kg 饭后 聚餐 取消 筛选 时间范围 本月 近30天 近90天 自定义 chevron_right 时段 全部 check 凌晨 早上 上午 中午 下午 晚上 标签 裸重 饭后 运动后 生理期 聚餐 外卖 高盐 熬夜 饮食备注 全部 check 有饮食备注 无饮食备注 重置 完成"
+  },
+  {
+    "category": "05-analysis",
+    "semantic_name": "analysis-overview",
+    "raw_folder": "_1",
+    "mvp_status": "mvp",
+    "route_or_usage": "pages/trend/index / analysis",
+    "title": "微轻 - 分析",
+    "screen_size": "349×1600",
+    "summary_text": "微轻 - 分析 分析 notifications 当前体重 65.5 kg 最近7天 -0.6 kg 距离目标 7.5 kg 连续记录 12 天 favorite 最近状态很稳定，继续保持这个节奏。 7天 30天 90天 全部 体重趋势 目标 58.0 kg 5/1 5/3 5/5 5/7 周期变化 -0.6 kg 记录天数 7天 整体波动 平稳 最近 7 天整体变化平稳，记录节奏不错。 目标进度 42% 当前 65.5 kg 还差 7"
+  },
+  {
+    "category": "05-analysis",
+    "semantic_name": "weekly-report",
+    "raw_folder": "_30",
+    "mvp_status": "phase2",
+    "route_or_usage": "weekly report",
+    "title": "体重周报",
+    "screen_size": "350×1600",
+    "summary_text": "体重周报 arrow_back_ios_new 体重周报 2026.05.18 - 2026.05.24 本周变化 -0.6 kg 记录天数 7 天 最新体重 65.5 kg 距离目标 7.5 kg show_chart 体重趋势 目标 58.0 一 二 三 四 五 六 日 最高 66.2 kg 最低 65.3 kg 最新 65.5 kg flag 向目标靠近 当前完成度 50% 本周向目标靠近 0.6 kg 起始 73.0 目标 58"
+  },
+  {
+    "category": "05-analysis",
+    "semantic_name": "monthly-report",
+    "raw_folder": "_29",
+    "mvp_status": "phase2",
+    "route_or_usage": "monthly report",
+    "title": "微轻 - 体重月报",
+    "screen_size": "585×4558",
+    "summary_text": "微轻 - 体重月报 arrow_back_ios_new 体重月报 2026年5月 本月变化 -1.8 kg 最新体重 65.5 kg 记录天数 24 天 打卡次数 32 次 \"这个月你保持了很好的记录节奏，变化正在慢慢累积。\" 体重趋势 目标 58.0 kg 05/01 05/08 05/15 05/22 05/31 最高 67.3 kg 最低 65.5 kg 波动范围 1.8 kg 目标进度 目标 58.0 kg 当前体重 65.5"
+  },
+  {
+    "category": "06-profile",
+    "semantic_name": "profile-home",
+    "raw_folder": "_9",
+    "mvp_status": "mvp",
+    "route_or_usage": "pages/profile/index",
+    "title": "微轻 - 我的",
+    "screen_size": "326×1600",
+    "summary_text": "微轻 - 我的 notifications 我的 林雨辉 当前 65.5 kg · 已连续记录 12 天 目标进度 42% chevron_right monitor_heart 健康数据 BMI、体脂率、围度 flag 目标体重 距离目标 7.5 kg favorite Apple Health 导入已开 · 写入已开 notifications_active 提醒设置 每天 08:00 数据与隐私 ios_share 数据导出 导出"
+  },
+  {
+    "category": "06-profile",
+    "semantic_name": "profile-edit",
+    "raw_folder": "_15",
+    "mvp_status": "mvp",
+    "route_or_usage": "profile detail/edit",
+    "title": "个人资料 - 微轻",
+    "screen_size": "493×1600",
+    "summary_text": "个人资料 - 微轻 chevron_left 个人资料 保存 photo_camera 林雨辉 已连续记录 12 天 · 目标进度 42% 昵称 林雨辉 chevron_right 身高 170 cm chevron_right 用于计算 BMI、基础代谢率等健康指标 当前体重 65.5 kg 来自最近一次体重记录，不在此处修改。 目标体重 58.0 kg chevron_right 进入目标体重设置页 分享时默认隐藏昵称 分享时默认隐"
+  },
+  {
+    "category": "06-profile",
+    "semantic_name": "target-weight",
+    "raw_folder": "_14",
+    "mvp_status": "mvp",
+    "route_or_usage": "target weight settings",
+    "title": "目标体重",
+    "screen_size": "585×1326",
+    "summary_text": "目标体重 chevron_left 目标体重 当前体重 65.5 kg 目标体重 58.0 kg 距离目标 7.5 kg 完成度 0% 目标体重 58.0 kg chevron_right 目标起点体重 65.5 kg chevron_right 目标方向 减重目标 进度预览 起点 65.5kg 0% 目标 58.0kg favorite 目标只是方向，不是压力。微轻会陪你慢慢看见变化。 保存目标"
+  },
+  {
+    "category": "06-profile",
+    "semantic_name": "health-data",
+    "raw_folder": "_19",
+    "mvp_status": "phase2",
+    "route_or_usage": "health data indicators",
+    "title": "微轻 - 健康数据",
+    "screen_size": "444×1600",
+    "summary_text": "微轻 - 健康数据 arrow_back_ios_new 健康数据 基础资料 身高 170 cm chevron_right 当前体重 65.5 kg 目标体重 58.0 kg chevron_right 核心指标 BMI monitor_weight 22.5 理想 中国标准 基础代谢率 local_fire_department 1487 kcal 体脂率 add_circle 去补充 chevron_right 靶心率 favor"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "reminder-settings",
+    "raw_folder": "_2",
+    "mvp_status": "mvp",
+    "route_or_usage": "reminder settings",
+    "title": "提醒设置 - 微轻 App",
+    "screen_size": "526×1600",
+    "summary_text": "提醒设置 - 微轻 App arrow_back 提醒设置 notifications_off 系统通知未开启 开启后才能收到打卡提醒和周报/月报通知 前往系统设置 每日规律 最多可添加 3 个提醒时间 每日打卡提醒 提醒时间 1 08:00 chevron_right 提醒时间 2 20:30 chevron_right add 添加提醒时间 未打卡唤醒 未打卡唤醒提醒 auto_awesome 温和唤醒策略 第 2 天 轻提醒 第 "
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "reminder-settings-alt",
+    "raw_folder": "ios_2",
+    "mvp_status": "optional",
+    "route_or_usage": "alternate reminder settings",
+    "title": "提醒设置 - 微轻 App",
+    "screen_size": "511×1600",
+    "summary_text": "提醒设置 - 微轻 App arrow_back 提醒设置 notifications_off 系统通知未开启 开启后才能收到打卡提醒和周报/月报通知 前往系统设置 notifications_active 通知权限已开启 微轻会按你的设置发送提醒，你可以随时调整或关闭。 history 最近提醒：今天 08:00 每日规律 最多可添加 3 个提醒时间 每日打卡提醒 08:00 chevron_right 20:30 chevron_r"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "appearance-light",
+    "raw_folder": "_20",
+    "mvp_status": "optional",
+    "route_or_usage": "appearance settings light",
+    "title": "外观设置 - 微轻",
+    "screen_size": "585×1521",
+    "summary_text": "外观设置 - 微轻 arrow_back_ios_new 外观设置 今日体重 65.5 kg 轻轻记录一下 外观预览 当前状态：跟随系统 外观设置会影响首页、记录、分析、我的和所有设置页面。 跟随系统 根据系统浅色 / 深色模式自动切换 check 浅色模式 始终使用浅色外观 深色模式 始终使用深色外观 品牌色 微轻蓝色 微轻会保持统一的蓝色点缀，用于按钮、进度、选中状态和重要操作。 info 深色模式会降低夜间使用时的屏幕亮度感。体重"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "appearance-dark",
+    "raw_folder": "_25",
+    "mvp_status": "optional",
+    "route_or_usage": "appearance settings dark",
+    "title": "外观设置 - 微轻",
+    "screen_size": "585×1521",
+    "summary_text": "外观设置 - 微轻 arrow_back_ios_new 外观设置 今日体重 65.5 kg 轻轻记录一下 外观预览 当前状态：深色模式 外观设置会影响首页、记录、分析、我的和所有设置页面。 跟随系统 根据系统浅色 / 深色模式自动切换 浅色模式 始终使用浅色外观 深色模式 始终使用深色外观 check 品牌色 微轻蓝色 微轻会保持统一的蓝色点缀，用于按钮、进度、选中状态和重要操作。 info 深色模式会降低夜间使用时的屏幕亮度感。体重"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "privacy-settings",
+    "raw_folder": "switch_1",
+    "mvp_status": "mvp",
+    "route_or_usage": "privacy / AI toggle settings",
+    "title": "微轻 - 隐私设置",
+    "screen_size": "311×1600",
+    "summary_text": "微轻 - 隐私设置 chevron_left 隐私设置 shield_person 你的数据由你控制 微轻会尽量少收集数据。你可以随时关闭 AI 鼓励、调整分享默认隐私，或管理健康数据权限。 可关闭 AI 分享默认保护隐私 健康数据需授权 AI 与个性化 AI 鼓励 打卡后生成温和鼓励文案 允许 AI 使用记录上下文 体重变化、目标进度、标签、围度 AI 请求日志 用于安全审计和问题排查 最多保留 14 天 chevron_right "
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "apple-health",
+    "raw_folder": "apple_health",
+    "mvp_status": "phase2",
+    "route_or_usage": "Apple Health integration",
+    "title": "Apple Health 设置",
+    "screen_size": "433×1600",
+    "summary_text": "Apple Health 设置 arrow_back_ios_new Apple Health favorite 已连接 导入已开启 · 写入已开启 最近导入：今天 08:30 从 Apple Health 导入体重 手动导入时读取 Apple Health 体重记录 将微轻记录写入 Apple Health 仅写入在微轻 App 内产生的原始记录 手动导入 Apple Health 体重数据 开启导入后可手动读取 Apple Heal"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "data-sync-ok",
+    "raw_folder": "_5",
+    "mvp_status": "phase2",
+    "route_or_usage": "sync status normal",
+    "title": "数据同步 - 微轻",
+    "screen_size": "557×1600",
+    "summary_text": "数据同步 - 微轻 chevron_left 数据同步 cloud_done 数据已同步 你的记录已安全保存。离线期间产生的数据，会在联网后自动同步。 最近同步 今天 08:30 本地记录 已保存 云端备份 已完成 自动同步设置 自动同步 联网后自动同步体重、健康数据和饮食线索。 同步状态 待同步记录 0 条 同步失败 0 条 手动操作 立即同步 chevron_right 手动同步当前设备上的未同步数据 查看同步说明 chevron_"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "data-sync-offline",
+    "raw_folder": "_26",
+    "mvp_status": "phase2",
+    "route_or_usage": "sync offline state",
+    "title": "数据同步 - 微轻",
+    "screen_size": "585×1326",
+    "summary_text": "数据同步 - 微轻 chevron_left 返回 数据同步 cloud_off 当前处于离线状态 本地记录已安全保存，联网后会自动同步 sync_saved_locally 待同步记录 等待网络恢复 3 条 chevron_right error_outline 同步失败 需手动检查 0 条 chevron_right autorenew 自动同步 在 Wi-Fi 和蜂窝网络下 知道了 立即重试"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "data-sync-failed",
+    "raw_folder": "_18",
+    "mvp_status": "phase2",
+    "route_or_usage": "sync failed state",
+    "title": "微轻 - 数据同步失败",
+    "screen_size": "585×1326",
+    "summary_text": "微轻 - 数据同步失败 arrow_back_ios 返回 数据同步 cloud_off 部分数据同步失败 原因：网络不稳定 你的本地记录仍保存在设备上，可以稍后重试 pending_actions 待同步记录 0 条 error_outline 同步失败 1 条 sync 自动同步 refresh 重试同步"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "data-sync-deletion-cooling",
+    "raw_folder": "_32",
+    "mvp_status": "phase2",
+    "route_or_usage": "sync stopped during deletion",
+    "title": "微轻 - 数据同步",
+    "screen_size": "585×976",
+    "summary_text": "微轻 - 数据同步 arrow_back 数据同步 cloud_off 账号处于注销冷静期，数据同步已停止 你的历史数据仍被安全保存，注销完成前可以导出数据或恢复账号。 数据状态 lock 已锁定 同步状态 sync_disabled 已停止 cloud_sync 自动同步 已停止 download 导出数据 settings_backup_restore 恢复账号"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "about",
+    "raw_folder": "_3",
+    "mvp_status": "phase2",
+    "route_or_usage": "about page",
+    "title": "关于微轻",
+    "screen_size": "524×1600",
+    "summary_text": "关于微轻 arrow_back_ios 关于微轻 water_drop 微轻 WeiQing 轻轻记录，看见变化 V1.0.0 当前版本 V1.0.0 检查更新 当前版本 chevron_right 通过 App Store 获取最新版本 隐私政策 chevron_right 用户协议 chevron_right 第三方数据说明 chevron_right 开源许可 chevron_right 帮助与反馈 chevron_right 邮"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "help-feedback",
+    "raw_folder": "_21",
+    "mvp_status": "phase2",
+    "route_or_usage": "help center",
+    "title": "微轻 App - 帮助与反馈",
+    "screen_size": "585×2389",
+    "summary_text": "微轻 App - 帮助与反馈 arrow_back 帮助与反馈 有什么可以帮你？ 如果你在记录、同步、报告或账号使用中遇到问题，可以在这里找到帮助或告诉我们。 使用帮助 问题反馈 数据与隐私 常见问题 如何记录体重 基础记录与数据修改 chevron_right 体重波动 理解正常的身体变化 chevron_right Apple Health 同步 开启或关闭数据共享 chevron_right 离线记录 无网络环境下的使用 chev"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "feedback-sheet",
+    "raw_folder": "sheet_1",
+    "mvp_status": "phase2",
+    "route_or_usage": "feedback sheet",
+    "title": "微轻 App - 意见反馈",
+    "screen_size": "585×1404",
+    "summary_text": "微轻 App - 意见反馈 意见反馈 反馈类型 功能建议 问题反馈 数据与隐私 账号问题 联系方式 (选填) 附带设备信息 开启后，仅附带用于问题排查的基础信息。 提交反馈 check_circle 提交成功"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "edit-nickname-sheet",
+    "raw_folder": "sheet_5",
+    "mvp_status": "mvp",
+    "route_or_usage": "nickname bottom sheet",
+    "title": "编辑昵称 - 底部面板",
+    "screen_size": "585×1837",
+    "summary_text": "编辑昵称 - 底部面板 取消 编辑昵称 cancel 2 - 20 个字符 完成"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "edit-height-sheet",
+    "raw_folder": "sheet_2",
+    "mvp_status": "mvp",
+    "route_or_usage": "height bottom sheet",
+    "title": "修改身高 - Bottom Sheet",
+    "screen_size": "585×1354",
+    "summary_text": "修改身高 - Bottom Sheet 编辑身高 close cm 完成"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "edit-height-sheet-alt",
+    "raw_folder": "sheet_8",
+    "mvp_status": "optional",
+    "route_or_usage": "height bottom sheet alternate",
+    "title": "修改身高",
+    "screen_size": "585×1872",
+    "summary_text": "修改身高 修改身高 close cm 合法范围：30 - 250 cm 完成"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "record-waist-sheet",
+    "raw_folder": "sheet_3",
+    "mvp_status": "phase2",
+    "route_or_usage": "waist input sheet",
+    "title": "记录腰围 Bottom Sheet",
+    "screen_size": "585×1803",
+    "summary_text": "记录腰围 Bottom Sheet 记录腰围 cm 合法范围：10 - 300 cm 完成"
+  },
+  {
+    "category": "07-settings",
+    "semantic_name": "reminder-time-sheet",
+    "raw_folder": "sheet_4",
+    "mvp_status": "mvp",
+    "route_or_usage": "time picker bottom sheet",
+    "title": "选择提醒时间 - 底部抽屉",
+    "screen_size": "706×1600",
+    "summary_text": "选择提醒时间 - 底部抽屉 arrow_back 提醒设置 water_drop 喝水提醒 08:00 chevron_right directions_walk 散步提醒 18:30 chevron_right 选择提醒时间 06 07 08 09 10 : 28 29 30 31 32 完成"
+  },
+  {
+    "category": "08-account-security",
+    "semantic_name": "account-binding",
+    "raw_folder": "_27",
+    "mvp_status": "phase2",
+    "route_or_usage": "account & binding",
+    "title": "账号与绑定 - 微轻 App",
+    "screen_size": "585×2002",
+    "summary_text": "账号与绑定 - 微轻 App chevron_left 账号与绑定 person 当前账号：林雨辉 账号状态：正常 手机号 185****1759 安全状态 shield_locked 已开启基础保护 请确保手机号可用，它将用于登录、找回账号和安全验证。 登录方式 smartphone 手机号 用于登录和找回账号 185****1759 chevron_right ios Apple 登录 可用于快速登录 已绑定 chevron_rig"
+  },
+  {
+    "category": "08-account-security",
+    "semantic_name": "logged-devices",
+    "raw_folder": "_22",
+    "mvp_status": "phase2",
+    "route_or_usage": "logged-in devices",
+    "title": "已登录设备",
+    "screen_size": "706×1600",
+    "summary_text": "已登录设备 arrow_back 已登录设备 shield 管理你的登录设备 当前已达到 5 台设备上限。新设备登录时，将自动移除最久未活跃的设备。 当前设备数 2 / 5 设备列表 smartphone iPhone 15 Pro 本机 schedule 今天 08:30 location_on 上海 check_circle tablet_mac iPad Pro schedule 昨天 22:10 location_on 杭州 移"
+  },
+  {
+    "category": "08-account-security",
+    "semantic_name": "device-alert-updated",
+    "raw_folder": "alert_1",
+    "mvp_status": "optional",
+    "route_or_usage": "device management alert",
+    "title": "已登录设备管理",
+    "screen_size": "706×1600",
+    "summary_text": "已登录设备管理 arrow_back 已登录设备管理 smartphone iPhone 14 Pro 当前设备 • iOS 17.1 laptop_mac MacBook Air 上海市 • macOS 14.0 退出登录 账号信息已更新 其他设备需要重新登录。当前设备会保持登录状态。 知道了"
+  },
+  {
+    "category": "08-account-security",
+    "semantic_name": "device-alert-remove",
+    "raw_folder": "alert_2",
+    "mvp_status": "optional",
+    "route_or_usage": "remove device confirmation",
+    "title": "已登录设备管理 - 微轻 App",
+    "screen_size": "706×1600",
+    "summary_text": "已登录设备管理 - 微轻 App arrow_back 已登录设备管理 管理您当前登录的设备。 smartphone iPhone 14 Pro 当前设备 · iOS 16.5 最近活跃：刚刚 本设备 laptop_mac MacBook Pro macOS 13.4 最近活跃：昨天 14:30 移除 tablet_mac iPad Air iPadOS 16.4 最近活跃：3天前 移除 移除这台设备？ 该设备将退出登录。未同步的数据会"
+  },
+  {
+    "category": "08-account-security",
+    "semantic_name": "logout-confirm-alert",
+    "raw_folder": "alert_3",
+    "mvp_status": "mvp",
+    "route_or_usage": "logout confirmation",
+    "title": "已登录设备管理 - 退出确认",
+    "screen_size": "585×1326",
+    "summary_text": "已登录设备管理 - 退出确认 arrow_back 已登录设备管理 smartphone iPhone 14 Pro 当前设备 • 刚刚活跃 laptop_mac MacBook Pro 昨天 14:30 活跃 退出 退出登录？ 退出后，离线状态下不能查看本地数据。重新登录后，可以继续同步未完成的数据。 取消 退出登录"
+  },
+  {
+    "category": "08-account-security",
+    "semantic_name": "delete-account-intro",
+    "raw_folder": "_23",
+    "mvp_status": "mvp",
+    "route_or_usage": "account delete intro",
+    "title": "账号注销",
+    "screen_size": "465×1600",
+    "summary_text": "账号注销 arrow_back_ios 账号注销 注销账号前，请先了解这些 注销账号会进入 30 天冷静期。冷静期内你可以恢复账号，也可以导出自己的历史数据。 冷静期结束后，账号数据将进入删除流程，届时无法再恢复或导出。 将被删除的数据 monitor_weight 体重记录 favorite 健康数据 flag 目标数据 restaurant 饮食线索 analytics 周报/月报 smart_toy AI 鼓励缓存 image 上"
+  },
+  {
+    "category": "08-account-security",
+    "semantic_name": "delete-verify-identity",
+    "raw_folder": "_13",
+    "mvp_status": "phase2",
+    "route_or_usage": "delete verify identity",
+    "title": "验证身份 - 微轻",
+    "screen_size": "585×876",
+    "summary_text": "验证身份 - 微轻 arrow_back_ios 验证身份 face 验证身份 为了保护你的账号和健康数据，注销前需要完成身份验证。 验证并继续 使用验证码或密码验证"
+  },
+  {
+    "category": "08-account-security",
+    "semantic_name": "delete-confirm",
+    "raw_folder": "_12",
+    "mvp_status": "mvp",
+    "route_or_usage": "delete account confirmation",
+    "title": "确认注销",
+    "screen_size": "585×1326",
+    "summary_text": "确认注销 arrow_back_ios 账号注销 warning 确认注销账号？ 确认后，账号将进入注销冷静期。冷静期内你可以恢复账号；冷静期结束后，数据将进入删除流程，无法恢复。 我已了解冷静期结束后数据无法恢复 我已了解冷静期内仍可导出数据 我已了解所有提醒和报告通知将停止 请输入“注销账号”以确认 确认注销账号"
+  },
+  {
+    "category": "08-account-security",
+    "semantic_name": "delete-cooling-period",
+    "raw_folder": "_6",
+    "mvp_status": "phase2",
+    "route_or_usage": "deletion cooling period",
+    "title": "微轻 App - 账号注销冷静期",
+    "screen_size": "639×1600",
+    "summary_text": "微轻 App - 账号注销冷静期 arrow_back_ios 账号注销 hourglass_top 账号正在注销冷静期 剩余时间 29 天 当前状态 冷静期 数据状态 lock 已锁定 提醒状态 notifications_off 已停止 info 冷静期内，微轻只允许你恢复账号或导出数据，其他功能将暂时不可用。在此期间，你无法继续打卡、查看历史记录或修改体重数据。但你仍可以导出自己的历史数据，或恢复账号。 settings_back"
+  },
+  {
+    "category": "08-account-security",
+    "semantic_name": "data-export-request",
+    "raw_folder": "ios_1",
+    "mvp_status": "phase2",
+    "route_or_usage": "data export request",
+    "title": "微轻 - 数据导出",
+    "screen_size": "592×1600",
+    "summary_text": "微轻 - 数据导出 arrow_back_ios_new 数据导出 download 导出你的微轻数据 你可以导出自己在微轻中产生的数据。导出前需要完成身份验证，下载链接将在 24 小时后失效。 description CSV 格式 timer 24小时有效 verified_user 需身份验证 时间范围 全部 近30天 近1年 自定义 导出内容 取消全选 scale 体重记录 体重、日期、时段、标签、来源 check favorit"
+  },
+  {
+    "category": "08-account-security",
+    "semantic_name": "data-export-ready",
+    "raw_folder": "_7",
+    "mvp_status": "phase2",
+    "route_or_usage": "data export ready",
+    "title": "微轻 - 数据导出",
+    "screen_size": "551×1600",
+    "summary_text": "微轻 - 数据导出 arrow_back_ios_new 数据导出 check 导出文件已生成 数据格式 CSV 图片数据 已包含 生成时间 今天 08:30 文件大小 12.4 MB 下载链接有效至 明天 08:30 导出范围 时间范围 全部 导出内容 scale 体重记录 体重、日期、时段、标签、来源 check favorite 健康数据 BMI、体脂率、围度等 check flag 目标数据 目标体重、进度 check rest"
+  }
+]

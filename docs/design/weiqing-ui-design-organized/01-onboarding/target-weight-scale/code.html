@@ -1,0 +1,1675 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>目标体重 - 微轻</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#584416",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary": "#3d6751",
+                        "on-tertiary-fixed": "#261900",
+                        "on-secondary-container": "#436d57",
+                        "secondary-container": "#bfedd1",
+                        "inverse-primary": "#a6c8ff",
+                        "surface-tint": "#205fa5",
+                        "surface-container-highest": "#dce3f2",
+                        "on-background": "#151c27",
+                        "outline": "#727782",
+                        "tertiary": "#725b2b",
+                        "secondary-fixed-dim": "#a4d1b6",
+                        "primary": "#205fa5",
+                        "on-secondary-fixed-variant": "#254f3a",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#004786",
+                        "on-primary-fixed": "#001c3a",
+                        "tertiary-fixed-dim": "#e1c389",
+                        "surface": "#f9f9ff",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-variant": "#dce3f2",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-surface-variant": "#424751",
+                        "inverse-surface": "#2a313c",
+                        "tertiary-fixed": "#fedfa3",
+                        "secondary-fixed": "#bfedd1",
+                        "primary-fixed": "#d4e3ff",
+                        "on-tertiary-container": "#554013",
+                        "on-primary-container": "#004481",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#151c27",
+                        "surface-dim": "#d3dae9",
+                        "background": "#f9f9ff",
+                        "tertiary-container": "#caad75",
+                        "outline-variant": "#c2c6d2",
+                        "primary-container": "#7eb3ff",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#e7eefe",
+                        "on-tertiary": "#ffffff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "lg": "40px",
+                        "margin-desktop": "64px",
+                        "sm": "12px",
+                        "margin-mobile": "20px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "gutter": "16px"
+                    },
+                    fontFamily: {
+                        "label-sm": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "display-num": ["Manrope"],
+                        "body-md": ["Manrope"]
+                    },
+                    fontSize: {
+                        "label-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-num": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; color: theme('colors.on-background'); }
+        
+        /* Custom scrollbar for ruler */
+        .ruler-container::-webkit-scrollbar {
+            display: none;
+        }
+        .ruler-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        /* Ruler markings */
+        .ruler-tick {
+            width: 2px;
+            border-radius: 1px;
+            margin: 0 auto;
+        }
+        .ruler-tick.major {
+            height: 40px;
+            background-color: theme('colors.primary');
+        }
+        .ruler-tick.minor {
+            height: 20px;
+            background-color: #D1D1D6;
+        }
+        .ruler-tick.medium {
+            height: 30px;
+            background-color: #8E8E93;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col relative overflow-hidden bg-[#F2F2F7]">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-mobile py-sm bg-[#F2F2F7]/80 dark:bg-surface-dim/80 backdrop-blur-md fixed top-0 left-0 z-50 pt-[calc(max(env(safe-area-inset-top),12px))]">
+<button class="w-[44px] h-[44px] flex items-center justify-center text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<svg fill="currentColor" height="24" viewBox="0 -960 960 960" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"></path></svg>
+</button>
+<div class="text-headline-lg-mobile font-headline-lg-mobile font-bold text-on-surface dark:text-on-surface-variant flex-1 text-center pr-[44px]"></div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col px-margin-mobile pt-[100px] pb-[120px] max-w-md mx-auto w-full">
+<!-- Progress Bar -->
+<div class="mb-8 pt-4">
+<div class="flex justify-between items-center mb-2">
+<span class="text-label-sm font-label-sm text-outline">第 4 步，共 6 步</span>
+<span class="text-label-sm font-label-sm text-primary font-bold">4/6</span>
+</div>
+<div class="w-full h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500 ease-out" style="width: 66.6%;"></div>
+</div>
+</div>
+<!-- Header Titles -->
+<div class="text-center mb-8">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-3 tracking-tight">设置一个方向</h1>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-[280px] mx-auto">
+                目标只是方向，不是压力。<br>你可以之后随时修改。
+            </p>
+</div>
+<!-- Weight Display -->
+<div class="flex flex-col items-center justify-center mb-8 mt-4">
+<div class="flex items-baseline gap-2">
+<span class="text-display-num font-display-num text-primary font-bold tracking-tighter" id="current-weight-val">58.0</span>
+<span class="text-body-md font-body-md text-on-surface-variant font-medium">kg</span>
+</div>
+<div class="mt-4 px-4 py-2 bg-primary-container/20 rounded-full flex items-center gap-2">
+<svg class="text-primary" fill="currentColor" height="18" viewBox="0 -960 960 960" width="18"><path d="M200-120v-680h360l16 80h224v400H520l-16-80H280v280h-80Z"></path></svg>
+<span class="text-label-sm font-label-sm text-primary">距离目标 7.5 kg</span>
+</div>
+</div>
+<!-- Horizontal Ruler Interface -->
+<div class="relative w-full h-[200px] bg-white rounded-[32px] shadow-sm overflow-hidden mt-auto mb-10 flex flex-col">
+<!-- Fade masks -->
+<div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+<div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+<!-- Center Indicator -->
+<div class="absolute left-1/2 -translate-x-1/2 top-[50px] z-20 flex flex-col items-center">
+<svg class="text-primary mb-1" fill="currentColor" height="10" viewBox="0 0 14 10" width="14" xmlns="http://www.w3.org/2000/svg">
+<path d="M7 10L0 0H14L7 10Z"></path>
+</svg>
+<div class="w-[2px] h-[60px] bg-primary"></div>
+</div>
+<!-- Scrollable Ruler Area -->
+<div class="ruler-container w-full overflow-x-auto flex relative h-full snap-x snap-mandatory pt-[64px]">
+<!-- Padding to allow scrolling past center -->
+<div class="min-w-[50vw] shrink-0"></div>
+<!-- Ruler Markings -->
+<script>
+                    document.write('<div class="flex items-start h-[100px]">');
+                    for (let i = 45; i <= 80; i++) {
+                        // Major tick (whole numbers)
+                        document.write(`
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">${i}</div>
+                            </div>
+                        `);
+                        // Minor ticks (.1 to .9)
+                        if (i < 80) {
+                            for (let j = 1; j < 10; j++) {
+                                let tickClass = j === 5 ? 'medium' : 'minor';
+                                document.write(`
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick ${tickClass}"></div>
+                                    </div>
+                                `);
+                            }
+                        }
+                    }
+                    document.write('</div>');
+                </script><div class="flex items-start h-[100px]">
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">45</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">46</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">47</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">48</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">49</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">50</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">51</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">52</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">53</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">54</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">55</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">56</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">57</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">58</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">59</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">60</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">61</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">62</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">63</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">64</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">65</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">66</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">67</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">68</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">69</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">70</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">71</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">72</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">73</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">74</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">75</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">76</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">77</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">78</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">79</div>
+                            </div>
+                        
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick medium"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                                    <div class="flex flex-col items-center justify-start h-full shrink-0" style="width: 12px;">
+                                        <div class="ruler-tick minor"></div>
+                                    </div>
+                                
+                            <div class="flex flex-col items-center justify-start h-full snap-center shrink-0 relative" style="width: 12px;">
+                                <div class="ruler-tick major"></div>
+                                <div class="text-[16px] text-on-surface-variant font-medium mt-4 absolute top-[44px]">80</div>
+                            </div>
+                        </div>
+<!-- Padding to allow scrolling past center -->
+<div class="min-w-[50vw] shrink-0"></div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full px-margin-mobile pt-6 pb-[calc(max(env(safe-area-inset-bottom),32px))] bg-gradient-to-t from-[#F2F2F7] via-[#F2F2F7] to-transparent z-40">
+<button class="w-full bg-primary hover:bg-primary/90 text-on-primary rounded-full min-h-[56px] py-4 flex items-center justify-center transition-all duration-200 active:scale-[0.98] shadow-[0_8px_24px_rgba(32,95,165,0.2)]">
+<span class="text-body-md font-body-md font-semibold">继续</span>
+</button>
+</div>
+<script>
+        // Simple script to center the ruler initially
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.ruler-container');
+            // Calculation to scroll to 58.0
+            // 10 ticks per whole number, each 12px wide = 120px per number
+            const scrollTarget = (58 - 45) * 120;
+            container.scrollLeft = scrollTarget;
+        });
+    </script>
+
+
+</body></html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>微轻 App - 帮助与反馈</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "surface-bright": "#f9f9ff",
+                    "secondary-fixed": "#bfedd1",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "surface-container-low": "#f0f3ff",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#151c27",
+                    "surface-container-highest": "#dce3f2",
+                    "surface": "#f9f9ff",
+                    "on-background": "#151c27",
+                    "surface-container": "#e7eefe",
+                    "on-tertiary-container": "#554013",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#d4e3ff",
+                    "secondary-container": "#bfedd1",
+                    "surface-tint": "#205fa5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#584416",
+                    "outline": "#727782",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-secondary-fixed": "#002113",
+                    "secondary-fixed-dim": "#a4d1b6",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#e2e8f8",
+                    "on-tertiary-fixed": "#261900",
+                    "background": "#f9f9ff",
+                    "surface-dim": "#d3dae9",
+                    "on-primary-container": "#004481",
+                    "surface-variant": "#dce3f2",
+                    "tertiary-fixed-dim": "#e1c389",
+                    "on-secondary-fixed-variant": "#254f3a",
+                    "tertiary-fixed": "#fedfa3",
+                    "tertiary-container": "#caad75",
+                    "on-primary-fixed-variant": "#004786",
+                    "error": "#ba1a1a",
+                    "primary-container": "#7eb3ff",
+                    "inverse-primary": "#a6c8ff",
+                    "on-primary-fixed": "#001c3a",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#725b2b",
+                    "outline-variant": "#c2c6d2",
+                    "secondary": "#3d6751",
+                    "primary": "#205fa5",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#2a313c",
+                    "on-surface-variant": "#424751",
+                    "on-secondary-container": "#436d57"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "sm": "12px",
+                    "md": "24px",
+                    "margin-mobile": "20px",
+                    "lg": "40px",
+                    "base": "8px",
+                    "gutter": "16px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "label-sm": [
+                            "Manrope"
+                    ],
+                    "body-md": [
+                            "Manrope"
+                    ],
+                    "headline-lg": [
+                            "Manrope"
+                    ],
+                    "headline-lg-mobile": [
+                            "Manrope"
+                    ],
+                    "display-num": [
+                            "Manrope"
+                    ]
+            },
+            "fontSize": {
+                    "label-sm": [
+                            "13px",
+                            {
+                                    "lineHeight": "18px",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "28px",
+                            {
+                                    "lineHeight": "36px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-num": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #f9f9ff;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .airy-shadow {
+            box-shadow: 0 8px 24px -4px rgba(32, 95, 165, 0.04), 0 4px 12px -2px rgba(32, 95, 165, 0.02);
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-margin-desktop md:pb-0 md:bg-surface-container-lowest flex justify-center">
+<!-- Mobile Container (Max width for web viewing) -->
+<div class="w-full max-w-md md:shadow-[0_8px_40px_-12px_rgba(32,95,165,0.08)] md:min-h-screen md:bg-background relative">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full max-w-md z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm dark:shadow-none flex items-center justify-between px-margin-mobile h-14">
+<button aria-label="返回" class="flex items-center justify-center w-10 h-10 -ml-2 text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-semibold text-on-surface dark:text-inverse-on-surface flex-1 text-center pr-8 truncate">
+                帮助与反馈
+            </h1>
+</header>
+<!-- Main Content -->
+<main class="pt-[72px] px-margin-mobile pb-lg space-y-md">
+<!-- Intro Card -->
+<section class="bg-surface-container-lowest rounded-xl airy-shadow p-md border border-outline-variant/10">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-xs">有什么可以帮你？</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-sm">如果你在记录、同步、报告或账号使用中遇到问题，可以在这里找到帮助或告诉我们。</p>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center px-3 py-1.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm">使用帮助</span>
+<span class="inline-flex items-center px-3 py-1.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm">问题反馈</span>
+<span class="inline-flex items-center px-3 py-1.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm">数据与隐私</span>
+</div>
+</section>
+<!-- 常见问题 -->
+<section>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2 ml-2">常见问题</h3>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10 airy-shadow divide-y divide-outline-variant/10">
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-left active:bg-surface-container-highest min-h-[44px]">
+<div>
+<div class="font-body-md text-body-md text-on-surface font-medium">如何记录体重</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">基础记录与数据修改</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-left active:bg-surface-container-highest min-h-[44px]">
+<div>
+<div class="font-body-md text-body-md text-on-surface font-medium">体重波动</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">理解正常的身体变化</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-left active:bg-surface-container-highest min-h-[44px]">
+<div>
+<div class="font-body-md text-body-md text-on-surface font-medium">Apple Health 同步</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">开启或关闭数据共享</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-left active:bg-surface-container-highest min-h-[44px]">
+<div>
+<div class="font-body-md text-body-md text-on-surface font-medium">离线记录</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">无网络环境下的使用</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-left active:bg-surface-container-highest min-h-[44px]">
+<div>
+<div class="font-body-md text-body-md text-on-surface font-medium">数据导出</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">获取你的历史记录表格</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-left active:bg-surface-container-highest min-h-[44px]">
+<div>
+<div class="font-body-md text-body-md text-on-surface font-medium">注销账号</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">冷静期、恢复账号和数据删除</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- 反馈类型 -->
+<section>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2 ml-2">反馈类型</h3>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10 airy-shadow divide-y divide-outline-variant/10">
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-left active:bg-surface-container-highest min-h-[44px]">
+<div>
+<div class="font-body-md text-body-md text-on-surface font-medium">功能建议</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">告诉我们你希望增加什么</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-left active:bg-surface-container-highest min-h-[44px]">
+<div>
+<div class="font-body-md text-body-md text-on-surface font-medium">问题反馈</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">报告遇到的 Bug 或错误</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-left active:bg-surface-container-highest min-h-[44px]">
+<div>
+<div class="font-body-md text-body-md text-on-surface font-medium">数据与隐私问题</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">关于数据安全的疑问</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-left active:bg-surface-container-highest min-h-[44px]">
+<div>
+<div class="font-body-md text-body-md text-on-surface font-medium">账号问题</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">登录、注册或验证码问题</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- 联系支持 -->
+<section>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-2 ml-2">联系支持</h3>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10 airy-shadow divide-y divide-outline-variant/10">
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-left active:bg-surface-container-highest min-h-[44px]"><div><div class="font-body-md text-body-md text-on-surface font-medium">邮件支持</div><div class="font-label-sm text-label-sm text-primary mt-0.5">support@weiqing.app</div></div><span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span></button>
+<a class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-left active:bg-surface-container-highest min-h-[44px]" href="#">
+<div class="font-body-md text-body-md text-on-surface font-medium">查看隐私政策</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</a>
+<a class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors text-left active:bg-surface-container-highest min-h-[44px]" href="#">
+<div class="font-body-md text-body-md text-on-surface font-medium">查看用户协议</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- Disclaimer Card -->
+<section class="bg-surface-container-low rounded-xl p-md mt-lg border border-outline-variant/5">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">微轻不是医疗服务</h3>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+                    微轻用于帮助你记录和回看身体变化，不提供医疗诊断或治疗建议。如有健康问题，请咨询专业医生。
+                </p>
+</section>
+</main>
+<!-- Bottom Nav suppressed as this is a transactional/focused sub-page -->
+</div>
+</body></html>

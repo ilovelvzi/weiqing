@@ -1,0 +1,270 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>个人资料 - 微轻</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#a6c8ff",
+                        "primary-container": "#7eb3ff",
+                        "outline-variant": "#c2c6d2",
+                        "surface-bright": "#f9f9ff",
+                        "surface-container-low": "#f0f3ff",
+                        "on-tertiary-fixed-variant": "#584416",
+                        "primary": "#205fa5",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#004786",
+                        "on-primary": "#ffffff",
+                        "on-background": "#151c27",
+                        "surface-container-highest": "#dce3f2",
+                        "primary-fixed": "#d4e3ff",
+                        "outline": "#727782",
+                        "on-secondary-fixed": "#002113",
+                        "secondary": "#3d6751",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#205fa5",
+                        "secondary-fixed": "#bfedd1",
+                        "tertiary": "#725b2b",
+                        "surface-variant": "#dce3f2",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2a313c",
+                        "on-tertiary-container": "#554013",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#001c3a",
+                        "tertiary-container": "#caad75",
+                        "surface-container-high": "#e2e8f8",
+                        "tertiary-fixed": "#fedfa3",
+                        "surface-dim": "#d3dae9",
+                        "surface-container": "#e7eefe",
+                        "on-tertiary-fixed": "#261900",
+                        "secondary-container": "#bfedd1",
+                        "on-surface": "#151c27",
+                        "surface": "#f9f9ff",
+                        "secondary-fixed-dim": "#a4d1b6",
+                        "on-secondary-container": "#436d57",
+                        "tertiary-fixed-dim": "#e1c389",
+                        "on-primary-container": "#004481",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-secondary-fixed-variant": "#254f3a",
+                        "background": "#f9f9ff",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#424751",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "40px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "gutter": "16px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "display-num": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "display-num": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ios-switch {
+            appearance: none;
+            width: 51px;
+            height: 31px;
+            background: #e9e9ea;
+            border-radius: 31px;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+            transition: background 0.3s;
+        }
+        .ios-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 27px;
+            height: 27px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .ios-switch:checked {
+            background: #205fa5; /* primary */
+        }
+        .ios-switch:checked::after {
+            transform: translateX(20px);
+        }
+        
+        .list-card {
+            background: theme('colors.surface-container-lowest');
+            border-radius: theme('borderRadius.xl');
+            box-shadow: 0 4px 24px rgba(32, 95, 165, 0.04);
+            overflow: hidden;
+        }
+        .list-item {
+            padding: 16px 20px;
+            min-height: 44px;
+            position: relative;
+        }
+        .list-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            right: 0;
+            height: 1px;
+            background: theme('colors.outline-variant');
+            opacity: 0.2;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased pb-safe min-h-screen flex flex-col items-center">
+<!-- Top Navigation Container -->
+<div class="w-full max-w-[1200px] relative">
+<!-- Replaced predicted TopAppBar with custom one fitting the "linear/transactional" intent per instructions, hiding shell elements -->
+<header class="fixed top-0 w-full max-w-[1200px] z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/10 flex justify-between items-center h-16 px-margin-mobile pt-safe shadow-sm shadow-primary/5 transition-all">
+<button aria-label="返回" class="h-11 min-w-[44px] flex items-center justify-start text-primary active:opacity-70 transition-opacity">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 0;">chevron_left</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface">个人资料</h1>
+<button class="h-11 min-w-[44px] flex items-center justify-end font-body-md font-semibold active:opacity-70 transition-opacity opacity-40 text-outline" disabled="true">保存</button>
+</header>
+</div>
+<!-- Main Canvas -->
+<main class="w-full max-w-[1200px] px-margin-mobile pt-[88px] pb-lg flex-1 flex flex-col gap-md">
+<!-- Module 1: Avatar Showcase -->
+<section class="flex flex-col items-center pt-md pb-base">
+<button aria-label="更换头像" class="relative group active:scale-95 transition-transform duration-200">
+<div class="w-24 h-24 rounded-full overflow-hidden shadow-[0_8px_32px_rgba(32,95,165,0.12)] border-4 border-surface-container-lowest flex items-center justify-center">
+<img alt="用户头像" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvbbtQ_KRr6X1WUuPKRIahotBqorvq5ReE3URuDshOZ6YTQggE4PxM0qgtbRtIxnsLgyTJzkXb1t3_GTJBHC_CMyy6xtIx8hqx5sAp-o88lRl8mW51GJ33nxtRfIWR_9Y528VSDW4E00oT52FBjmumZc0hunaBWn18HVZIoViyy5ZLvJIaobDthbTxKUTVkF5V2sry0bKAe-D3wAPnHaMWWR1byGlfGASe7QxMfxkbSNMV5wg6_FggmKBj3cqA-1q5NlXniJDTRtY">
+</div>
+<div class="w-24 h-24 rounded-full overflow-hidden shadow-[0_8px_32px_rgba(32,95,165,0.12)] border-4 border-surface-container-lowest flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</div>
+</button>
+<h2 class="mt-4 font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface">林雨辉</h2>
+<p class="mt-1 font-label-sm text-label-sm text-outline">已连续记录 12 天 · 目标进度 42%</p>
+</section>
+<!-- Module 2: Basic Info (Grouped List) -->
+<section class="list-card space-y-0">
+<div class="list-item flex items-center justify-between active:bg-surface-container-high/30 transition-colors cursor-pointer">
+<span class="font-body-md text-on-surface">昵称</span>
+<div class="flex items-center text-outline">
+<span class="font-body-md mr-1">林雨辉</span>
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</div>
+</div>
+<div class="list-item flex flex-col justify-center active:bg-surface-container-high/30 transition-colors cursor-pointer py-sm">
+<div class="flex items-center justify-between w-full">
+<span class="font-body-md text-on-surface">身高</span>
+<div class="flex items-center text-outline">
+<span class="font-body-md mr-1 whitespace-nowrap">170 cm</span>
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-outline-variant mt-1">用于计算 BMI、基础代谢率等健康指标</p>
+</div>
+<div class="list-item flex flex-col justify-center bg-surface-container-low/50 py-sm">
+<div class="flex items-center justify-between w-full">
+<span class="font-body-md text-outline">当前体重</span>
+<div class="flex items-center text-outline-variant">
+<span class="font-body-md">65.5 kg</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-outline-variant mt-1">来自最近一次体重记录，不在此处修改。</p>
+</div>
+<div class="list-item flex flex-col justify-center active:bg-surface-container-high/30 transition-colors cursor-pointer py-sm">
+<div class="flex items-center justify-between w-full">
+<span class="font-body-md text-on-surface">目标体重</span>
+<div class="flex items-center text-outline">
+<span class="font-body-md mr-1">58.0 kg</span>
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-outline-variant mt-1">进入目标体重设置页</p>
+</div>
+</section>
+<!-- Module 3: Display Preferences (Grouped List) -->
+<section class="flex flex-col gap-2">
+<div class="list-card">
+<div class="list-item flex items-center justify-between py-sm">
+<span class="font-body-md text-on-surface">分享时默认隐藏昵称</span>
+<label class="relative flex items-center cursor-pointer shrink-0"><input aria-label="分享时默认隐藏昵称开关" checked="" class="sr-only peer" type="checkbox"><div class="w-[51px] h-[31px] bg-[#e9e9ea] rounded-[15.5px] relative peer-checked:bg-[#205FA5] transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-[13.5px] after:h-[27px] after:w-[27px] after:shadow-[0_2px_4px_rgba(0,0,0,0.2),0_1px_1px_rgba(0,0,0,0.1)] after:transition-transform peer-checked:after:translate-x-[20px]"></div></label>
+</div>
+<div class="list-item flex items-center justify-between py-sm">
+<span class="font-body-md text-on-surface">分享时默认隐藏头像</span>
+<label class="relative flex items-center cursor-pointer shrink-0"><input aria-label="分享时默认隐藏头像开关" class="sr-only peer" type="checkbox"><div class="w-[51px] h-[31px] bg-[#e9e9ea] rounded-[15.5px] relative peer-checked:bg-[#205FA5] transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-[13.5px] after:h-[27px] after:w-[27px] after:shadow-[0_2px_4px_rgba(0,0,0,0.2),0_1px_1px_rgba(0,0,0,0.1)] after:transition-transform peer-checked:after:translate-x-[20px]"></div></label>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-outline-variant px-5 mt-1">
+这些设置会同步到分享默认隐私，生成分享图前仍可临时调整。
+</p>
+</section>
+<!-- Module 4: Settings Links (Grouped List) -->
+<section class="list-card">
+<div class="list-item flex flex-col justify-center active:bg-surface-container-high/30 transition-colors cursor-pointer py-sm">
+<div class="flex items-center justify-between w-full">
+<span class="font-body-md text-on-surface">账号与绑定</span>
+<div class="flex items-center text-outline">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-outline-variant mt-1">手机号、Apple 登录、微信登录</p>
+</div>
+<div class="list-item flex flex-col justify-center active:bg-surface-container-high/30 transition-colors cursor-pointer py-sm">
+<div class="flex items-center justify-between w-full">
+<span class="font-body-md text-on-surface">隐私设置</span>
+<div class="flex items-center text-outline">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-outline-variant mt-1">AI、分享和健康数据权限</p>
+</div>
+</section>
+<!-- Footer Text -->
+<p class="font-label-sm text-label-sm text-outline-variant text-center px-4 mt-sm pb-lg">
+            这些资料只用于帮助微轻更好地展示和计算你的健康指标。
+        </p>
+</main>
+<!-- BottomNavBar and other non-transactional shell elements are explicitly excluded based on instructions (Linear/Transactional intent mapping for a Profile Details page) -->
+
+
+</body></html>

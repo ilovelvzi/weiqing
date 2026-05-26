@@ -1,0 +1,294 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>记录 - 微轻 App</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#dce3f2",
+                        "secondary-fixed": "#bfedd1",
+                        "primary-fixed": "#d4e3ff",
+                        "on-tertiary-fixed-variant": "#584416",
+                        "on-secondary-container": "#436d57",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-surface-variant": "#424751",
+                        "on-primary-container": "#004481",
+                        "surface-container-low": "#f0f3ff",
+                        "on-secondary-fixed-variant": "#254f3a",
+                        "on-tertiary-fixed": "#261900",
+                        "tertiary": "#725b2b",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001c3a",
+                        "on-tertiary-container": "#554013",
+                        "background": "#f9f9ff",
+                        "surface-container-high": "#e2e8f8",
+                        "surface": "#f9f9ff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#e1c389",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#151c27",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c2c6d2",
+                        "secondary-container": "#bfedd1",
+                        "on-secondary-fixed": "#002113",
+                        "secondary": "#3d6751",
+                        "on-surface": "#151c27",
+                        "tertiary-container": "#caad75",
+                        "surface-bright": "#f9f9ff",
+                        "on-primary-fixed-variant": "#004786",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "primary-container": "#7eb3ff",
+                        "secondary-fixed-dim": "#a4d1b6",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#205fa5",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d3dae9",
+                        "surface-tint": "#205fa5",
+                        "inverse-primary": "#a6c8ff",
+                        "tertiary-fixed": "#fedfa3",
+                        "error": "#ba1a1a",
+                        "outline": "#727782",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e7eefe",
+                        "surface-variant": "#dce3f2",
+                        "inverse-surface": "#2a313c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "sm": "12px",
+                        "margin-desktop": "64px",
+                        "gutter": "16px",
+                        "md": "24px",
+                        "lg": "40px",
+                        "base": "8px",
+                        "margin-mobile": "20px",
+                        "safe": "env(safe-area-inset-bottom)"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Manrope"],
+                        "display-num": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "display-num": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { -webkit-tap-highlight-color: transparent; }
+        /* Ambient airy shadow */
+        .shadow-airy {
+            box-shadow: 0 8px 30px rgba(32, 95, 165, 0.04);
+        }
+        /* Hide scrollbar for clean horizontal scrolls */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container pb-28 md:pb-0">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 bg-background/80 backdrop-blur-md z-40 transition-opacity duration-200">
+<div class="flex justify-between items-center px-margin-mobile h-16 w-full md:px-margin-desktop md:max-w-[1200px] mx-auto">
+<div class="w-8"></div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-semibold text-on-background">记录</h1>
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity w-8 flex justify-end">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full px-margin-mobile md:px-margin-desktop md:max-w-[1200px] mx-auto flex flex-col gap-sm mt-xs">
+<!-- Segmented Control -->
+<div class="flex justify-center w-full">
+<div class="bg-surface-container-high rounded-lg p-xs flex gap-1 w-full max-w-[240px]">
+<button class="flex-1 py-1.5 rounded text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-container-highest transition-colors">列表</button>
+<button class="flex-1 py-1.5 rounded text-label-sm font-label-sm bg-surface-container-lowest text-primary shadow-sm ring-1 ring-black/5">曲线</button>
+</div>
+</div>
+<!-- Period Toggle -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar py-1">
+<button class="px-4 py-2 rounded-full font-label-sm text-label-sm bg-primary-container/20 text-primary whitespace-nowrap">7天</button>
+<button class="px-4 py-2 rounded-full font-label-sm text-label-sm bg-surface text-on-surface-variant border border-outline-variant hover:bg-surface-container-low transition-colors whitespace-nowrap">30天</button>
+<button class="px-4 py-2 rounded-full font-label-sm text-label-sm bg-surface text-on-surface-variant border border-outline-variant hover:bg-surface-container-low transition-colors whitespace-nowrap">90天</button>
+<button class="px-4 py-2 rounded-full font-label-sm text-label-sm bg-surface text-on-surface-variant border border-outline-variant hover:bg-surface-container-low transition-colors whitespace-nowrap">全部</button>
+</div>
+<!-- Chart Card (Bento Style) -->
+<div class="bg-surface-container-lowest rounded-xl p-3 shadow-airy ring-1 ring-outline-variant/10 flex flex-col gap-2 relative overflow-hidden">
+<!-- Header -->
+<div class="flex justify-between items-end">
+<div class="flex flex-col">
+<h2 class="font-headline-lg-mobile text-[24px] leading-8 font-semibold text-on-background">体重趋势</h2>
+<span class="font-label-sm text-label-sm text-outline">单位：公斤</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">2026/05/19 - 05/25</span>
+</div>
+<!-- Faux Line Chart Area -->
+<div class="h-36 w-full mt-2 relative flex items-end pt-4 pb-6">
+<!-- Target Line -->
+<div class="absolute top-[60%] left-0 w-full border-t border-dashed border-secondary/40 z-0">
+<span class="absolute -top-5 right-0 font-label-sm text-[10px] text-secondary bg-surface-container-lowest px-1">目标 64.0</span>
+</div>
+<!-- Y Axis Labels (Approximate) -->
+<div class="absolute left-0 top-0 h-full flex flex-col justify-between text-[10px] text-outline font-medium pb-6 pt-2">
+<span>68.0</span>
+<span>66.0</span>
+<span>64.0</span>
+</div>
+<!-- SVG Chart -->
+<svg class="absolute inset-0 w-full h-full z-10" preserveAspectRatio="none" viewBox="0 0 100 100">
+<!-- Gradient Fill under line -->
+<defs>
+<linearGradient id="blueGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#7eb3ff" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#7eb3ff" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+<path d="M 10 30 L 25 25 L 40 40 L 55 35 L 70 20 L 85 45 L 95 35 L 95 100 L 10 100 Z" fill="url(#blueGradient)"></path>
+<!-- Line -->
+<path d="M 10 30 L 25 25 L 40 40 L 55 35 L 70 20 L 85 45 L 95 35" fill="none" stroke="#205fa5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Data Points -->
+<circle cx="10" cy="30" fill="#ffffff" r="2.5" stroke="#205fa5" stroke-width="1.5"></circle>
+<circle cx="25" cy="25" fill="#ffffff" r="2.5" stroke="#205fa5" stroke-width="1.5"></circle>
+<circle cx="40" cy="40" fill="#ffffff" r="2.5" stroke="#205fa5" stroke-width="1.5"></circle>
+<circle cx="55" cy="35" fill="#ffffff" r="2.5" stroke="#205fa5" stroke-width="1.5"></circle>
+<circle cx="70" cy="20" fill="#ffffff" r="2.5" stroke="#205fa5" stroke-width="1.5"></circle>
+<circle cx="85" cy="45" fill="#ffffff" r="2.5" stroke="#205fa5" stroke-width="1.5"></circle>
+<!-- Highlighted Point -->
+<circle class="animate-pulse" cx="95" cy="35" fill="#205fa5" r="3.5"></circle>
+<!-- X Axis Labels -->
+<text fill="#727782" font-size="6" text-anchor="middle" x="10" y="95">19</text>
+<text fill="#727782" font-size="6" text-anchor="middle" x="25" y="95">20</text>
+<text fill="#727782" font-size="6" text-anchor="middle" x="40" y="95">21</text>
+<text fill="#727782" font-size="6" text-anchor="middle" x="55" y="95">22</text>
+<text fill="#727782" font-size="6" text-anchor="middle" x="70" y="95">23</text>
+<text fill="#727782" font-size="6" text-anchor="middle" x="85" y="95">24</text>
+<text fill="#205fa5" font-size="6" font-weight="bold" text-anchor="middle" x="95" y="95">25</text>
+</svg>
+</div>
+<!-- Point Summary (Dynamic Panel) -->
+<div class="p-2 bg-surface-container-low rounded-lg border border-primary/10 flex flex-col gap-1 relative">
+<!-- Little arrow pointing up -->
+<div class="absolute -top-1.5 right-[5%] w-3 h-3 bg-surface-container-low border-t border-l border-primary/10 rotate-45"></div>
+<div class="flex justify-between items-center z-10">
+<span class="font-label-sm text-[12px] text-on-surface-variant">5月25日，晚上</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg-mobile text-[20px] leading-tight text-primary">67.1</span>
+<span class="font-label-sm text-[10px] text-primary">kg</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-x-3 gap-y-1 z-10">
+<div class="flex items-center gap-1 text-tertiary-container">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>
+<span class="font-label-sm text-[11px]">+0.1 kg</span>
+</div>
+<div class="flex gap-1">
+<span class="px-1.5 py-0.5 rounded text-[10px] font-medium bg-primary/10 text-primary">裸重</span>
+</div>
+</div>
+<div class="mt-1 pt-1 border-t border-outline-variant/30 z-10 flex items-start gap-1">
+<span class="material-symbols-outlined text-[12px] text-outline mt-0.5">restaurant</span>
+<p class="font-label-sm text-[11px] text-on-surface-variant">外卖 · 奶茶</p>
+</div>
+</div>
+</div>
+<!-- Stats Grid (Bento Style) -->
+<div class="grid grid-cols-3 gap-2 mt-1">
+<div class="bg-surface-container-lowest p-2 rounded-xl shadow-airy flex flex-col items-center justify-center gap-0.5">
+<span class="font-label-sm text-[11px] text-outline">记录天数</span>
+<span class="font-headline-lg-mobile text-[18px] leading-tight font-semibold text-on-background">7</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded-xl shadow-airy flex flex-col items-center justify-center gap-0.5">
+<span class="font-label-sm text-[11px] text-outline">体重变化</span>
+<span class="font-headline-lg-mobile text-[18px] leading-tight font-semibold text-secondary">-0.4</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded-xl shadow-airy flex flex-col items-center justify-center gap-0.5">
+<span class="font-label-sm text-[11px] text-outline">最新体重</span>
+<span class="font-headline-lg-mobile text-[18px] leading-tight font-semibold text-primary">67.1</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded-xl shadow-airy flex flex-col items-center justify-center gap-0.5 col-span-2">
+<span class="font-label-sm text-[11px] text-outline">最高体重</span>
+<span class="font-headline-lg-mobile text-[18px] leading-tight font-semibold text-on-background">67.5</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded-xl shadow-airy flex flex-col items-center justify-center gap-0.5">
+<span class="font-label-sm text-[11px] text-outline">最低体重</span>
+<span class="font-headline-lg-mobile text-[18px] leading-tight font-semibold text-on-background">67.0</span>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container-lowest/90 backdrop-blur-lg shadow-[0_-4px_20px_0_rgba(0,0,0,0.04)] md:hidden">
+<div class="flex justify-around items-center h-20 px-4 pb-safe">
+<!-- 首页 -->
+<button class="flex flex-col items-center justify-center text-outline hover:bg-surface-container-low active:scale-95 transition-all duration-300 rounded-lg p-2 min-w-[64px]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="font-label-sm text-label-sm mt-1">首页</span>
+</button>
+<!-- 记录 (Active) -->
+<button class="flex flex-col items-center justify-center text-primary bg-primary-container/20 rounded-full px-4 py-1 active:scale-95 transition-all duration-300 min-w-[64px]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+<span class="font-label-sm text-label-sm mt-1">记录</span>
+</button>
+<!-- 分析 -->
+<button class="flex flex-col items-center justify-center text-outline hover:bg-surface-container-low active:scale-95 transition-all duration-300 rounded-lg p-2 min-w-[64px]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">insights</span>
+<span class="font-label-sm text-label-sm mt-1">分析</span>
+</button>
+<!-- 我的 -->
+<button class="flex flex-col items-center justify-center text-outline hover:bg-surface-container-low active:scale-95 transition-all duration-300 rounded-lg p-2 min-w-[64px]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-sm text-label-sm mt-1">我的</span>
+</button>
+</div>
+</nav>
+<!-- Web Navigation Cluster (Hidden on mobile, visible on desktop) -->
+<nav class="hidden md:flex fixed top-0 right-margin-desktop h-16 items-center gap-8 z-50 pointer-events-none">
+<div class="pointer-events-auto flex gap-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">home</span>
+                首页
+            </button>
+<button class="text-primary font-label-sm text-label-sm flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+                记录
+            </button>
+<button class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">insights</span>
+                分析
+            </button>
+<button class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">person</span>
+                我的
+            </button>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>微轻 App - 编辑记录</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#a4d1b6",
+                        "secondary": "#3d6751",
+                        "surface-dim": "#d3dae9",
+                        "on-secondary-fixed": "#002113",
+                        "tertiary-container": "#caad75",
+                        "background": "#f9f9ff",
+                        "on-secondary-fixed-variant": "#254f3a",
+                        "error": "#ba1a1a",
+                        "on-surface": "#151c27",
+                        "outline": "#727782",
+                        "on-primary-fixed-variant": "#004786",
+                        "surface-container-highest": "#dce3f2",
+                        "tertiary-fixed": "#fedfa3",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-surface-variant": "#424751",
+                        "on-primary-fixed": "#001c3a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "secondary-fixed": "#bfedd1",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "primary": "#205fa5",
+                        "on-primary": "#ffffff",
+                        "surface": "#f9f9ff",
+                        "surface-container-high": "#e2e8f8",
+                        "inverse-primary": "#a6c8ff",
+                        "tertiary-fixed-dim": "#e1c389",
+                        "surface-variant": "#dce3f2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#004481",
+                        "secondary-container": "#bfedd1",
+                        "on-tertiary-container": "#554013",
+                        "on-secondary-container": "#436d57",
+                        "on-tertiary-fixed-variant": "#584416",
+                        "surface-tint": "#205fa5",
+                        "primary-fixed": "#d4e3ff",
+                        "primary-container": "#7eb3ff",
+                        "on-error": "#ffffff",
+                        "tertiary": "#725b2b",
+                        "surface-container-low": "#f0f3ff",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#e7eefe",
+                        "on-background": "#151c27",
+                        "on-tertiary-fixed": "#261900",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c2c6d2",
+                        "inverse-surface": "#2a313c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "gutter": "16px",
+                        "sm": "12px",
+                        "lg": "40px",
+                        "md": "24px",
+                        "base": "8px",
+                        "pb-safe": "env(safe-area-inset-bottom)"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "display-num": ["Manrope"],
+                        "label-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "display-num": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface-container-low text-on-surface antialiased min-h-screen pb-24 md:pb-0 font-body-md">
+<!-- TopAppBar -->
+<header class="bg-background/80 backdrop-blur-md text-primary font-headline-lg-mobile w-full sticky top-0 transition-opacity duration-200 flex justify-between items-center px-margin-mobile h-16 z-40">
+<div class="flex-1"></div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-semibold text-on-background flex-1 text-center">记录</h1>
+<div class="flex-1 flex justify-end">
+<button class="font-body-md text-body-md text-primary font-medium hover:opacity-80 transition-opacity">完成</button>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop py-md">
+<!-- Record Group 1 -->
+<div class="bg-secondary-container/30 rounded-lg p-3 mb-4 flex items-center justify-center gap-2"><span class="material-symbols-outlined text-secondary/60 text-xs">info</span><p class="text-[12px] text-secondary/70">正在编辑，修改会自动保存</p></div><section class="mb-lg">
+<h2 class="font-body-md text-body-md text-outline font-medium mb-sm pl-sm">10月24日 星期二</h2>
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_4px_20px_0_rgba(0,0,0,0.02)] overflow-hidden divide-y divide-surface-container-highest"><!-- Edit Mode Record Item 1 -->
+<div class="p-3 flex items-center justify-between min-h-[44px]"><div class="flex flex-col gap-1"><div class="flex items-center gap-2"><button class="flex items-center gap-0.5 text-primary font-semibold text-body-md py-1 rounded-md">晚上 <span class="material-symbols-outlined text-base">expand_more</span></button><button class="flex items-center gap-0.5 text-primary font-bold text-xl py-1 rounded-md">65.5 <span class="text-sm font-semibold opacity-80">kg</span> <span class="material-symbols-outlined text-base">expand_more</span></button><span class="text-[12px] text-outline font-medium ml-1">-0.3 kg</span></div><div class="flex flex-wrap gap-2"><div class="flex items-center gap-1 bg-primary/5 text-primary/80 px-2.5 py-0.5 rounded-full text-[12px]">饭后<button class="material-symbols-outlined text-[14px]">close</button></div><div class="flex items-center gap-1 bg-primary/5 text-primary/80 px-2.5 py-0.5 rounded-full text-[12px]">运动后<button class="material-symbols-outlined text-[14px]">close</button></div><button class="flex items-center gap-1 bg-surface-container text-primary/70 px-2.5 py-0.5 rounded-full text-[12px] font-medium"><span class="material-symbols-outlined text-[14px]">add</span>添加标签</button></div></div><button class="w-11 h-11 flex items-center justify-end text-error/90"><span class="material-symbols-outlined fill text-xl">remove_circle</span></button></div>
+<!-- Edit Mode Record Item 2 -->
+<div class="p-3 flex items-center justify-between min-h-[44px]"><div class="flex flex-col gap-1"><div class="flex items-center gap-2"><button class="flex items-center gap-0.5 text-primary font-semibold text-body-md py-1 rounded-md">早上 <span class="material-symbols-outlined text-base">expand_more</span></button><button class="flex items-center gap-0.5 text-primary font-bold text-xl py-1 rounded-md">66.2 <span class="text-sm font-semibold opacity-80">kg</span> <span class="material-symbols-outlined text-base">expand_more</span></button><span class="text-[12px] text-tertiary font-medium ml-1">+0.5 kg</span></div><div class="flex flex-wrap gap-2"><div class="flex items-center gap-1 bg-primary/5 text-primary/80 px-2.5 py-0.5 rounded-full text-[12px]">裸重<button class="material-symbols-outlined text-[14px]">close</button></div><button class="flex items-center gap-1 bg-surface-container text-primary/70 px-2.5 py-0.5 rounded-full text-[12px] font-medium"><span class="material-symbols-outlined text-[14px]">add</span>添加标签</button></div></div><button class="w-11 h-11 flex items-center justify-end text-error/90"><span class="material-symbols-outlined fill text-xl">remove_circle</span></button></div>
+<!-- Diet Note -->
+<div class="p-4 bg-surface-bright/50 flex items-center justify-between"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary text-lg">restaurant</span><span class="font-medium text-body-md text-on-surface-variant">今日饮食备注</span></div><div class="flex items-center gap-1 overflow-hidden"><span class="text-body-md text-outline truncate">外卖 · 奶茶 · 烧烤</span><span class="material-symbols-outlined text-outline/50 text-lg">chevron_right</span></div></div></div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container-lowest/90 backdrop-blur-lg shadow-[0_-4px_20px_0_rgba(0,0,0,0.04)] font-label-sm text-label-sm fixed bottom-0 w-full z-50 rounded-t-xl active:scale-95 transition-all duration-300 flex justify-around items-center h-20 px-4 pb-safe md:hidden">
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-container-low py-2 px-4 rounded-xl transition-colors">
+<span class="material-symbols-outlined mb-1">home</span>
+<span>首页</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim bg-primary-container/20 dark:bg-primary-container/10 rounded-full px-4 py-1">
+<span class="material-symbols-outlined fill mb-1">edit_note</span>
+<span>记录</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-container-low py-2 px-4 rounded-xl transition-colors">
+<span class="material-symbols-outlined mb-1">insights</span>
+<span>分析</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:bg-surface-container-low py-2 px-4 rounded-xl transition-colors">
+<span class="material-symbols-outlined mb-1">person</span>
+<span>我的</span>
+</button>
+</nav>
+<!-- iOS Alert Mockup (Hidden by default) -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-8 bg-black/40 backdrop-blur-[2px] hidden" id="delete-alert">
+<div class="bg-surface-container-lowest w-full max-w-[270px] rounded-2xl overflow-hidden flex flex-col">
+<div class="p-5 flex flex-col items-center text-center">
+<h3 class="font-semibold text-lg text-on-surface">删除这条记录？</h3>
+<p class="mt-1 text-sm text-on-surface-variant">删除后将不会进入首页、图表和统计。</p>
+</div>
+<div class="grid grid-cols-2 border-t border-outline-variant/30">
+<button class="py-3 text-primary font-medium border-r border-outline-variant/30 active:bg-surface-container-high transition-colors">取消</button>
+<button class="py-3 text-error font-semibold active:bg-surface-container-high transition-colors">删除</button>
+</div>
+</div>
+</div></body></html>

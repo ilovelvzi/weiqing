@@ -1,0 +1,206 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Apple Health 设置</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config from Brand Anchors -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#436d57",
+                      "tertiary-container": "#caad75",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-dim": "#d3dae9",
+                      "primary-fixed-dim": "#a6c8ff",
+                      "surface-container": "#e7eefe",
+                      "primary-fixed": "#d4e3ff",
+                      "secondary": "#3d6751",
+                      "on-tertiary-fixed-variant": "#584416",
+                      "tertiary": "#725b2b",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed": "#002113",
+                      "tertiary-fixed": "#fedfa3",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#2a313c",
+                      "on-primary-fixed-variant": "#004786",
+                      "on-primary-fixed": "#001c3a",
+                      "on-tertiary-fixed": "#261900",
+                      "on-primary-container": "#004481",
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#ebf1ff",
+                      "background": "#f9f9ff",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#424751",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed-dim": "#e1c389",
+                      "secondary-fixed-dim": "#a4d1b6",
+                      "on-background": "#151c27",
+                      "on-surface": "#151c27",
+                      "primary-container": "#7eb3ff",
+                      "secondary-fixed": "#bfedd1",
+                      "inverse-primary": "#a6c8ff",
+                      "surface-container-low": "#f0f3ff",
+                      "on-tertiary-container": "#554013",
+                      "primary": "#205fa5",
+                      "outline-variant": "#c2c6d2",
+                      "secondary-container": "#bfedd1",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#205fa5",
+                      "surface-container-high": "#e2e8f8",
+                      "surface-bright": "#f9f9ff",
+                      "on-primary": "#ffffff",
+                      "surface-variant": "#dce3f2",
+                      "surface": "#f9f9ff",
+                      "outline": "#727782",
+                      "on-secondary-fixed-variant": "#254f3a",
+                      "surface-container-highest": "#dce3f2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "2xl": "1.5rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "gutter": "16px",
+                      "md": "24px",
+                      "lg": "40px",
+                      "xs": "4px",
+                      "margin-mobile": "20px",
+                      "sm": "12px",
+                      "base": "8px",
+                      "safe-top": "env(safe-area-inset-top)",
+                      "safe-bottom": "env(safe-area-inset-bottom)"
+              },
+              "fontFamily": {
+                      "label-sm": ["-apple-system", "BlinkMacSystemFont", "SF Pro Text", "Helvetica Neue", "Arial", "sans-serif"],
+                      "headline-lg": ["-apple-system", "BlinkMacSystemFont", "SF Pro Display", "Helvetica Neue", "Arial", "sans-serif"],
+                      "body-md": ["-apple-system", "BlinkMacSystemFont", "SF Pro Text", "Helvetica Neue", "Arial", "sans-serif"],
+                      "headline-lg-mobile": ["-apple-system", "BlinkMacSystemFont", "SF Pro Display", "Helvetica Neue", "Arial", "sans-serif"],
+                      "display-num": ["-apple-system", "BlinkMacSystemFont", "SF Pro Display", "Helvetica Neue", "Arial", "sans-serif"]
+              },
+              "fontSize": {
+                      "label-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "display-num": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              },
+              "boxShadow": {
+                  "ambient": "0 20px 40px -15px rgba(32, 95, 165, 0.05), 0 4px 10px -2px rgba(32, 95, 165, 0.02)"
+              }
+            }
+          }
+        }
+    </script>
+<style>body { background-color: theme('colors.background'); -webkit-tap-highlight-color: transparent; } .switch-knob { transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); } input:checked + .switch-bg { background-color: #205fa5; } input:checked + .switch-bg .switch-knob { transform: translateX(1.25rem); } .disabled-module { opacity: 0.5; pointer-events: none; filter: grayscale(1); }</style>
+<style>body { background-color: theme('colors.background'); -webkit-tap-highlight-color: transparent; } .switch-knob { transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); } input:checked + .switch-bg { background-color: #205fa5; } input:checked + .switch-bg .switch-knob { transform: translateX(1.25rem); } .disabled-module { opacity: 0.5; pointer-events: none; filter: grayscale(1); }</style>
+</head>
+<body class="antialiased text-on-surface flex flex-col min-h-screen pt-safe-top pb-safe-bottom">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/90 dark:bg-surface/90 backdrop-blur-md shadow-sm border-b border-outline-variant/10">
+<div class="flex items-center justify-between px-margin-mobile h-[44px] w-full mt-2 mb-2">
+<button aria-label="返回" class="w-11 h-11 flex items-center justify-center text-primary dark:text-primary-fixed hover:opacity-70 transition-opacity active:scale-95 transition-transform -ml-2">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 0, 'wght' 500;">arrow_back_ios_new</span>
+</button>
+<h1 class="font-headline-lg-mobile text-[17px] leading-[22px] font-semibold text-on-surface dark:text-on-surface">Apple Health</h1>
+<div class="w-11 h-11"></div> <!-- Placeholder for balancing flex -->
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-[1200px] mx-auto pt-[88px] px-margin-mobile pb-24 md:grid md:grid-cols-12 md:gap-gutter">
+<!-- Mobile/Desktop Layout Wrapper -->
+<div class="md:col-span-8 md:col-start-3 space-y-md">
+<!-- Module 1: Connection Status -->
+<section class="bg-surface-container-lowest rounded-3xl p-md shadow-ambient border border-outline-variant/20 flex flex-col items-center justify-center space-y-sm text-center">
+<div class="w-16 h-16 rounded-full bg-primary-container/20 flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile font-semibold text-on-surface">已连接</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">导入已开启 · 写入已开启</p>
+<p class="font-label-sm text-label-sm text-outline mt-4 pt-4 border-t border-outline-variant/20 w-full">最近导入：今天 08:30</p>
+</section>
+<!-- Module 2: Sync Switches (iOS Grouped Style) -->
+<section class="bg-surface-container-lowest rounded-3xl shadow-ambient border border-outline-variant/20 overflow-hidden">
+<!-- Import Switch -->
+<div class="p-md flex items-center justify-between border-b border-outline-variant/20 min-h-[72px]">
+<div class="pr-4 py-1">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">从 Apple Health 导入体重</h3>
+<p class="font-label-sm text-[14px] leading-5 text-on-surface-variant mt-0.5">手动导入时读取 Apple Health 体重记录</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+<input checked="" class="sr-only peer" type="checkbox" value="">
+<div class="switch-bg w-[51px] h-[31px] bg-surface-variant rounded-full peer transition-colors duration-300">
+<div class="switch-knob absolute top-[2px] left-[2px] bg-white border border-black/5 rounded-full h-[27px] w-[27px] shadow-[0_3px_8px_rgba(0,0,0,0.15),0_3px_1px_rgba(0,0,0,0.06)]"></div>
+</div>
+</label>
+</div>
+<!-- Export Switch -->
+<div class="p-md flex items-center justify-between min-h-[72px]">
+<div class="pr-4 py-1">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">将微轻记录写入 Apple Health</h3>
+<p class="font-label-sm text-[14px] leading-5 text-on-surface-variant mt-0.5">仅写入在微轻 App 内产生的原始记录</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+<input checked="" class="sr-only peer" type="checkbox" value="">
+<div class="switch-bg w-[51px] h-[31px] bg-surface-variant rounded-full peer transition-colors duration-300">
+<div class="switch-knob absolute top-[2px] left-[2px] bg-white border border-black/5 rounded-full h-[27px] w-[27px] shadow-[0_3px_8px_rgba(0,0,0,0.15),0_3px_1px_rgba(0,0,0,0.06)]"></div>
+</div>
+</label>
+</div>
+</section>
+<!-- Module 3: Manual Import -->
+<section class="bg-surface-container-lowest rounded-3xl p-md shadow-ambient border border-outline-variant/20">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface mb-sm">手动导入 Apple Health 体重数据</h3><p class="font-label-sm text-[13px] text-primary mb-2 hidden" id="import-hint">开启导入后可手动读取 Apple Health 体重数据</p>
+<!-- Segmented Control / Chips -->
+<div class="flex flex-wrap gap-sm mb-2">
+<button class="min-h-[44px] px-4 py-2 rounded-full border border-outline-variant/50 font-label-sm text-[15px] text-on-surface-variant bg-surface hover:bg-surface-variant transition-colors">最近7天</button>
+<button class="min-h-[44px] px-4 py-2 rounded-full border border-primary-container font-label-sm text-[15px] text-on-primary-container bg-primary-container/20 font-medium shadow-sm transition-colors">最近30天</button>
+<button class="min-h-[44px] px-4 py-2 rounded-full border border-outline-variant/50 font-label-sm text-[15px] text-on-surface-variant bg-surface hover:bg-surface-variant transition-colors">最近1年</button>
+<button class="min-h-[44px] px-4 py-2 rounded-full border border-outline-variant/50 font-label-sm text-[15px] text-on-surface-variant bg-surface hover:bg-surface-variant transition-colors">自定义</button>
+</div>
+<p class="font-label-sm text-[13px] text-outline mb-lg ml-1">自定义范围最长 3 年，不能选择未来日期。</p>
+<!-- Import Feedback -->
+<div class="mb-sm text-center hidden">
+<p class="font-label-sm text-[14px] text-secondary font-medium bg-secondary-container/30 py-2 px-4 rounded-lg inline-block">成功导入 12 条，跳过重复 3 条</p>
+</div>
+<!-- Primary Action -->
+<div class="flex flex-col items-center">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-body-md text-[17px] font-semibold h-[50px] rounded-full shadow-sm active:scale-95 transition-all duration-200 flex items-center justify-center"><span>立即导入</span></button>
+<p class="font-label-sm text-[13px] text-outline mt-sm text-center">会自动跳过已导入的重复数据</p>
+</div>
+</section>
+<!-- Module 4: Privacy Notice -->
+<section class="bg-surface-container-low rounded-3xl p-md shadow-sm border border-primary-container/10">
+<div class="flex items-center space-x-2 mb-sm text-primary">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">security</span>
+<h3 class="font-body-md text-body-md font-semibold">微轻如何处理健康数据</h3>
+</div>
+<p class="font-body-md text-[15px] text-on-surface-variant leading-relaxed">
+                    微轻只会在你授权后读取 Apple Health 中的体重数据。重复导入会自动跳过。你删除的 Apple Health 导入记录，将不会在下次导入时再次出现。
+                </p>
+</section>
+<!-- Module 5: Advanced Settings -->
+<section class="bg-surface-container-lowest rounded-3xl shadow-ambient border border-outline-variant/20 overflow-hidden mb-6">
+<h3 class="px-md pt-md pb-2 font-body-md text-body-md font-semibold text-on-surface">高级设置</h3>
+<div class="px-md pb-md pt-2 flex items-center justify-between min-h-[72px]">
+<div class="pr-4 py-1">
+<h3 class="font-body-md text-[16px] text-on-surface">重新允许导入已删除记录</h3>
+<p class="font-label-sm text-[14px] leading-5 text-outline mt-0.5">仅影响你曾删除的 Apple Health 导入记录。</p>
+</div>
+<button class="w-[72px] h-[32px] rounded-full bg-surface-variant text-on-surface-variant font-label-sm text-[13px] font-medium flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform" onclick="alert('重新允许导入已删除记录？\n\n之后你曾经删除过的 Apple Health 导入记录，可能会在下次导入时重新出现。')">
+    重置
+</button>
+</div>
+</section>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>当前体重</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#584416",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary": "#3d6751",
+                        "on-tertiary-fixed": "#261900",
+                        "on-secondary-container": "#436d57",
+                        "secondary-container": "#bfedd1",
+                        "inverse-primary": "#a6c8ff",
+                        "surface-tint": "#205fa5",
+                        "surface-container-highest": "#dce3f2",
+                        "on-background": "#151c27",
+                        "outline": "#727782",
+                        "tertiary": "#725b2b",
+                        "secondary-fixed-dim": "#a4d1b6",
+                        "primary": "#205fa5",
+                        "on-secondary-fixed-variant": "#254f3a",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#004786",
+                        "on-primary-fixed": "#001c3a",
+                        "tertiary-fixed-dim": "#e1c389",
+                        "surface": "#f9f9ff",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-variant": "#dce3f2",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-surface-variant": "#424751",
+                        "inverse-surface": "#2a313c",
+                        "tertiary-fixed": "#fedfa3",
+                        "secondary-fixed": "#bfedd1",
+                        "primary-fixed": "#d4e3ff",
+                        "on-tertiary-container": "#554013",
+                        "on-primary-container": "#004481",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#151c27",
+                        "surface-dim": "#d3dae9",
+                        "background": "#f9f9ff",
+                        "tertiary-container": "#caad75",
+                        "outline-variant": "#c2c6d2",
+                        "primary-container": "#7eb3ff",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#e7eefe",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "margin-desktop": "64px",
+                        "sm": "12px",
+                        "margin-mobile": "20px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "display-num": ["Manrope"],
+                        "body-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-num": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f9f9ff;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 24px -1px rgba(32, 95, 165, 0.06);
+        }
+
+        .keypad-button {
+            transition: all 0.15s ease;
+        }
+        
+        .keypad-button:active {
+            transform: scale(0.92);
+            background-color: #dce3f2;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-start overflow-hidden">
+<!-- Main Container -->
+<main class="w-full max-w-[480px] h-screen flex flex-col relative bg-surface">
+<!-- Top App Bar (Transactional - Back Only) -->
+<header class="w-full px-margin-mobile py-sm flex justify-between items-center z-10 bg-transparent shrink-0">
+<button aria-label="返回" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors group">
+<span class="material-symbols-outlined text-on-surface group-hover:text-primary transition-colors text-2xl">arrow_back_ios</span>
+</button>
+<div class="text-label-sm font-label-sm text-outline tracking-widest font-bold">3 / 6</div>
+<div class="w-10 h-10"></div> <!-- Spacer for centering -->
+</header>
+<!-- Progress Indicator -->
+<div class="w-full px-margin-mobile mb-8 shrink-0">
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[33%] transition-all duration-500 ease-out" style="width: 50%;"></div>
+</div>
+</div>
+<!-- Content Area -->
+<div class="flex-1 flex flex-col px-margin-mobile pt-4 pb-0 relative z-10">
+<!-- Headers -->
+<div class="text-center mb-8 shrink-0 flex flex-col items-center">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-2">现在的体重是？</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">记录一下你的体重就好。</p>
+</div>
+<!-- Segmented Control (Unit Switcher) -->
+<div class="flex justify-center mb-12 shrink-0">
+<div class="glass-panel p-1 rounded-full flex gap-1 relative shadow-sm">
+<button class="px-6 py-2 rounded-full text-label-sm font-label-sm transition-all duration-300 relative z-10 bg-primary text-on-primary shadow-sm">公斤 (kg)</button>
+<button class="px-6 py-2 rounded-full text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface transition-all duration-300 relative z-10">斤</button>
+<button class="px-6 py-2 rounded-full text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface transition-all duration-300 relative z-10">磅 (lb)</button>
+</div>
+</div>
+<!-- Display Area -->
+<div class="flex-1 flex flex-col items-center justify-center mb-8 min-h-[120px]">
+<div class="flex items-baseline justify-center relative">
+<span class="text-[72px] leading-none font-display-num text-on-surface tracking-tighter" id="weight-display">65.5</span>
+<span class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface-variant ml-2 absolute -right-12 bottom-2">kg</span>
+<!-- Blinking Cursor Effect -->
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-[3px] h-[60px] bg-primary animate-pulse rounded-full hidden"></div>
+</div>
+<!-- Ambient Glow behind numbers -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-primary-container rounded-full blur-[80px] opacity-20 -z-10 pointer-events-none"></div>
+</div>
+<!-- Keypad Area (Pinned to bottom) -->
+<div class="w-full bg-surface-container-lowest pb-lg pt-6 rounded-t-[32px] shadow-[0_-8px_32px_rgba(32,95,165,0.04)] mt-auto shrink-0 relative">
+<!-- Action Button -->
+<div class="px-margin-mobile mb-8">
+<button class="w-full bg-primary text-on-primary py-4 rounded-full text-body-md font-body-md font-semibold shadow-[0_8px_20px_rgba(32,95,165,0.2)] hover:shadow-[0_12px_24px_rgba(32,95,165,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center group relative overflow-hidden">
+<span class="relative z-10">继续</span>
+<div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+</button>
+</div>
+<!-- Number Grid -->
+<div class="grid grid-cols-3 gap-y-6 gap-x-4 px-8 pb-4">
+<!-- Row 1 -->
+<button class="keypad-button h-14 flex items-center justify-center text-headline-lg-mobile font-headline-lg-mobile text-on-surface rounded-2xl bg-transparent">1</button>
+<button class="keypad-button h-14 flex items-center justify-center text-headline-lg-mobile font-headline-lg-mobile text-on-surface rounded-2xl bg-transparent">2</button>
+<button class="keypad-button h-14 flex items-center justify-center text-headline-lg-mobile font-headline-lg-mobile text-on-surface rounded-2xl bg-transparent">3</button>
+<!-- Row 2 -->
+<button class="keypad-button h-14 flex items-center justify-center text-headline-lg-mobile font-headline-lg-mobile text-on-surface rounded-2xl bg-transparent">4</button>
+<button class="keypad-button h-14 flex items-center justify-center text-headline-lg-mobile font-headline-lg-mobile text-on-surface rounded-2xl bg-transparent">5</button>
+<button class="keypad-button h-14 flex items-center justify-center text-headline-lg-mobile font-headline-lg-mobile text-on-surface rounded-2xl bg-transparent">6</button>
+<!-- Row 3 -->
+<button class="keypad-button h-14 flex items-center justify-center text-headline-lg-mobile font-headline-lg-mobile text-on-surface rounded-2xl bg-transparent">7</button>
+<button class="keypad-button h-14 flex items-center justify-center text-headline-lg-mobile font-headline-lg-mobile text-on-surface rounded-2xl bg-transparent">8</button>
+<button class="keypad-button h-14 flex items-center justify-center text-headline-lg-mobile font-headline-lg-mobile text-on-surface rounded-2xl bg-transparent">9</button>
+<!-- Row 4 -->
+<button class="keypad-button h-14 flex items-center justify-center text-headline-lg-mobile font-headline-lg-mobile text-on-surface rounded-2xl bg-transparent pb-3">.</button>
+<button class="keypad-button h-14 flex items-center justify-center text-headline-lg-mobile font-headline-lg-mobile text-on-surface rounded-2xl bg-transparent">0</button>
+<button class="keypad-button h-14 flex items-center justify-center rounded-2xl bg-surface-container-low text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-[28px]">backspace</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple script to handle keypad visual feedback (non-functional logic, just UI)
+        document.addEventListener('DOMContentLoaded', () => {
+            const display = document.getElementById('weight-display');
+            const buttons = document.querySelectorAll('.keypad-button');
+            
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Just a subtle bump effect on the main number to show interaction
+                    display.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        display.style.transform = 'scale(1)';
+                    }, 100);
+                });
+            });
+            
+            display.style.transition = 'transform 0.15s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+    </script>
+</body></html>

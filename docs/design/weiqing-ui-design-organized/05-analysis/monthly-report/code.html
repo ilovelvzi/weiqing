@@ -1,0 +1,512 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>微轻 - 体重月报</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Design System Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#261900",
+                    "inverse-surface": "#2a313c",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-secondary-fixed-variant": "#254f3a",
+                    "on-tertiary": "#ffffff",
+                    "background": "#f9f9ff",
+                    "primary-container": "#7eb3ff",
+                    "on-secondary-fixed": "#002113",
+                    "surface-container": "#e7eefe",
+                    "secondary-fixed": "#bfedd1",
+                    "outline": "#727782",
+                    "on-surface-variant": "#424751",
+                    "tertiary-fixed": "#fedfa3",
+                    "on-secondary-container": "#436d57",
+                    "secondary-fixed-dim": "#a4d1b6",
+                    "on-primary-container": "#004481",
+                    "on-error": "#ffffff",
+                    "on-background": "#151c27",
+                    "inverse-primary": "#a6c8ff",
+                    "secondary": "#3d6751",
+                    "surface-dim": "#d3dae9",
+                    "error": "#ba1a1a",
+                    "tertiary": "#725b2b",
+                    "surface-bright": "#f9f9ff",
+                    "outline-variant": "#c2c6d2",
+                    "on-surface": "#151c27",
+                    "surface-container-high": "#e2e8f8",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "primary": "#205fa5",
+                    "surface-tint": "#205fa5",
+                    "secondary-container": "#bfedd1",
+                    "surface-variant": "#dce3f2",
+                    "on-error-container": "#93000a",
+                    "surface": "#f9f9ff",
+                    "on-tertiary-fixed-variant": "#584416",
+                    "on-tertiary-container": "#554013",
+                    "tertiary-fixed-dim": "#e1c389",
+                    "tertiary-container": "#caad75",
+                    "surface-container-highest": "#dce3f2",
+                    "on-primary-fixed": "#001c3a",
+                    "primary-fixed": "#d4e3ff",
+                    "on-primary-fixed-variant": "#004786",
+                    "surface-container-low": "#f0f3ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.25rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "margin-mobile": "20px",
+                    "gutter": "16px",
+                    "lg": "40px",
+                    "xs": "4px",
+                    "margin-desktop": "64px",
+                    "base": "8px",
+                    "md": "24px",
+                    "safe-bottom": "env(safe-area-inset-bottom)",
+                    "safe-top": "env(safe-area-inset-top)"
+            },
+            "fontFamily": {
+                    "body-md": ["Manrope", "system-ui", "-apple-system", "sans-serif"],
+                    "label-sm": ["Manrope", "system-ui", "-apple-system", "sans-serif"],
+                    "headline-lg": ["Manrope", "system-ui", "-apple-system", "sans-serif"],
+                    "display-num": ["Manrope", "system-ui", "-apple-system", "sans-serif"],
+                    "headline-lg-mobile": ["Manrope", "system-ui", "-apple-system", "sans-serif"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-num": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "display-num-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Base Apple HIG typography smoothing */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Custom scrollbar hide */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Fluid gradient for chart placeholder */
+        .chart-gradient {
+            background: linear-gradient(180deg, rgba(126, 179, 255, 0.2) 0%, rgba(126, 179, 255, 0) 100%);
+        }
+        .toggle-checkbox:checked {
+            background-color: #205fa5; /* primary */
+        }
+        .toggle-checkbox:checked::after {
+            transform: translateX(100%);
+            border-color: #fff;
+        }
+        
+        /* Bottom Sheet Transitions */
+        .bottom-sheet-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .bottom-sheet.active {
+            transform: translateY(0);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-[120px]">
+<!-- Top Navigation (Sub-page layout, overrides JSON TopAppBar to fit transactional intent) -->
+<header class="fixed top-0 w-full z-40 bg-surface/90 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm shadow-primary/5 pt-safe-top">
+<div class="flex justify-between items-center h-14 px-margin-mobile">
+<!-- Back Action -->
+<button class="flex items-center text-primary active:opacity-70 transition-opacity">
+<span class="material-symbols-outlined" style="font-size: 24px;">arrow_back_ios_new</span>
+</button>
+<!-- Title Cluster -->
+<div class="flex flex-col items-center justify-center">
+<h1 class="font-body-md text-body-md font-semibold text-on-surface">体重月报</h1>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2026年5月</span>
+</div>
+<!-- Trailing (Empty placeholder to balance flex) -->
+<div class="w-[24px]"></div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[88px] px-margin-mobile flex flex-col gap-md max-w-[600px] mx-auto">
+<!-- Module 1: Monthly Summary Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-md shadow-[0_4px_24px_rgba(32,95,165,0.04)] border border-outline-variant/10">
+<div class="grid grid-cols-2 gap-y-md gap-x-sm mb-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-xs">本月变化</span>
+<div class="flex items-baseline">
+<span class="font-display-num text-display-num-mobile text-primary">-1.8</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-xs">kg</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-xs">最新体重</span>
+<div class="flex items-baseline">
+<span class="font-display-num text-display-num-mobile text-on-surface">65.5</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-xs">kg</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-xs">记录天数</span>
+<div class="flex items-baseline">
+<span class="font-display-num text-display-num-mobile text-on-surface">24</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-xs">天</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-xs">打卡次数</span>
+<div class="flex items-baseline">
+<span class="font-display-num text-display-num-mobile text-on-surface">32</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-xs">次</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-sm rounded-xl">
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+                    "这个月你保持了很好的记录节奏，变化正在慢慢累积。"
+                </p>
+</div>
+</section>
+<!-- Module 2: Weight Trend Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-md shadow-[0_4px_24px_rgba(32,95,165,0.04)] border border-outline-variant/10">
+<h2 class="font-body-md text-body-md font-semibold text-on-surface mb-sm">体重趋势</h2>
+<!-- Chart Area (CSS implementation for clean markup) -->
+<div class="relative w-full h-[140px] mt-sm mb-sm flex items-end">
+<!-- Background Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between z-0 border-b border-outline-variant/20">
+<div class="w-full h-[1px] bg-outline-variant/20"></div>
+<div class="w-full h-[1px] bg-outline-variant/20"></div>
+<div class="w-full h-[1px] bg-outline-variant/20"></div>
+</div>
+<!-- Target Line -->
+<div class="absolute bottom-[20%] w-full flex items-center z-10 pointer-events-none">
+<div class="w-full border-t border-dashed border-primary/40"></div>
+<span class="absolute right-0 -top-4 font-label-sm text-[10px] text-primary bg-surface px-1">目标 58.0 kg</span>
+</div>
+<!-- Simulated Line Chart & Area -->
+<div class="relative w-full h-[80%] z-10 chart-gradient flex items-end justify-between pt-[2px]" style="clip-path: polygon(0 40%, 25% 60%, 50% 30%, 75% 70%, 100% 20%, 100% 100%, 0 100%);">
+<!-- Simulated Data Points / Sparkline curve top border -->
+<svg class="absolute top-0 left-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+<polyline fill="none" points="0,40 25,60 50,30 75,70 100,20" stroke="#205fa5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polyline>
+<!-- Data dots -->
+<circle cx="0" cy="40" fill="#ffffff" r="3" stroke="#205fa5" stroke-width="2"></circle>
+<circle cx="25" cy="60" fill="#ffffff" r="3" stroke="#205fa5" stroke-width="2"></circle>
+<circle cx="50" cy="30" fill="#ffffff" r="3" stroke="#205fa5" stroke-width="2"></circle>
+<circle cx="75" cy="70" fill="#ffffff" r="3" stroke="#205fa5" stroke-width="2"></circle>
+<circle cx="100" cy="20" fill="#ffffff" r="3" stroke="#205fa5" stroke-width="2"></circle>
+</svg>
+</div>
+</div>
+<!-- X-Axis Labels -->
+<div class="flex justify-between font-label-sm text-[11px] text-outline mb-md px-1">
+<span>05/01</span>
+<span>05/08</span>
+<span>05/15</span>
+<span>05/22</span>
+<span>05/31</span>
+</div>
+<!-- Trend Stats -->
+<div class="flex justify-between items-center bg-surface p-sm rounded-xl">
+<div class="flex flex-col items-center">
+<span class="font-label-sm text-[11px] text-outline mb-xs">最高</span>
+<span class="font-body-md text-body-md font-medium text-on-surface">67.3<span class="text-[12px] text-outline ml-1">kg</span></span>
+</div>
+<div class="w-[1px] h-6 bg-outline-variant/30"></div>
+<div class="flex flex-col items-center">
+<span class="font-label-sm text-[11px] text-outline mb-xs">最低</span>
+<span class="font-body-md text-body-md font-medium text-on-surface">65.5<span class="text-[12px] text-outline ml-1">kg</span></span>
+</div>
+<div class="w-[1px] h-6 bg-outline-variant/30"></div>
+<div class="flex flex-col items-center">
+<span class="font-label-sm text-[11px] text-outline mb-xs">波动范围</span>
+<span class="font-body-md text-body-md font-medium text-primary">1.8<span class="text-[12px] text-outline ml-1">kg</span></span>
+</div>
+</div>
+</section>
+<!-- Module 3: Goal Progress Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-md shadow-[0_4px_24px_rgba(32,95,165,0.04)] border border-outline-variant/10">
+<div class="flex justify-between items-center mb-sm">
+<h2 class="font-body-md text-body-md font-semibold text-on-surface">目标进度</h2>
+<span class="font-label-sm text-label-sm text-primary bg-primary-container/20 px-2 py-1 rounded-md">目标 58.0 kg</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant mb-md">
+<span>当前体重 <span class="font-semibold text-on-surface">65.5 kg</span></span>
+<span>距离目标 <span class="font-semibold text-on-surface">7.5 kg</span></span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-md">
+                本月向目标靠近了 <span class="font-semibold text-primary">1.8 kg</span>
+</p>
+<div class="relative w-full h-3 bg-surface-variant rounded-full overflow-hidden mb-2">
+<div class="absolute top-0 left-0 h-full bg-primary rounded-full transition-all duration-1000 ease-out w-[42%]"></div>
+</div>
+<div class="flex justify-between items-center mt-xs">
+<span class="font-label-sm text-label-sm text-outline">目标只是方向，不是压力。</span>
+<span class="font-body-md text-body-md font-semibold text-primary">42%</span>
+</div>
+</section>
+<!-- Module 4: Rhythm Card (Bento Style) -->
+<div class="grid grid-cols-2 gap-sm">
+<section class="bg-surface-container-lowest rounded-2xl p-sm shadow-[0_4px_24px_rgba(32,95,165,0.04)] border border-outline-variant/10 flex flex-col justify-between">
+<div class="flex items-center gap-xs text-outline mb-sm">
+<span class="material-symbols-outlined" style="font-size: 16px;">local_fire_department</span>
+<span class="font-label-sm text-label-sm">连续最长</span>
+</div>
+<div class="flex items-baseline">
+<span class="font-display-num text-display-num-mobile text-on-surface">12</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-xs">天</span>
+</div>
+</section>
+<section class="bg-surface-container-lowest rounded-2xl p-sm shadow-[0_4px_24px_rgba(32,95,165,0.04)] border border-outline-variant/10 flex flex-col justify-between">
+<div class="flex items-center gap-xs text-outline mb-sm">
+<span class="material-symbols-outlined" style="font-size: 16px;">schedule</span>
+<span class="font-label-sm text-label-sm">最常记录时段</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px; font-variation-settings: 'FILL' 1;">light_mode</span>
+<span class="font-headline-lg-mobile text-[22px] font-semibold text-on-surface">早上</span>
+</div>
+</section>
+</div>
+<!-- Module 5: Diet & Habits Clues Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-md shadow-[0_4px_24px_rgba(32,95,165,0.04)] border border-outline-variant/10">
+<h2 class="font-body-md text-body-md font-semibold text-on-surface mb-md">本月饮食与记录线索</h2>
+<div class="mb-sm">
+<span class="font-label-sm text-label-sm text-outline block mb-2">常见线索</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-full bg-surface text-on-surface-variant font-label-sm text-label-sm border border-outline-variant/20">外卖</span>
+<span class="px-3 py-1.5 rounded-full bg-surface text-on-surface-variant font-label-sm text-label-sm border border-outline-variant/20">高盐</span>
+<span class="px-3 py-1.5 rounded-full bg-surface text-on-surface-variant font-label-sm text-label-sm border border-outline-variant/20">聚餐</span>
+</div>
+</div>
+<div class="mb-md">
+<span class="font-label-sm text-label-sm text-outline block mb-2">积极线索</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm">运动后</span>
+<span class="px-3 py-1.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm">裸重</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-sm rounded-xl">
+<p class="font-label-sm text-label-sm text-outline leading-relaxed flex items-start gap-xs">
+<span class="material-symbols-outlined shrink-0" style="font-size: 16px;">info</span>
+                    这些线索只是帮助你回看这个月的状态，不代表好坏判断。
+                </p>
+</div>
+</section>
+<!-- Module 6: Health Metrics Change -->
+<section class="bg-surface-container-lowest rounded-2xl p-md shadow-[0_4px_24px_rgba(32,95,165,0.04)] border border-outline-variant/10">
+<h2 class="font-body-md text-body-md font-semibold text-on-surface mb-md">健康指标</h2>
+<div class="flex flex-col gap-sm">
+<!-- BMI -->
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/10">
+<span class="font-body-md text-body-md text-on-surface">BMI</span>
+<div class="flex items-center gap-sm">
+<span class="font-label-sm text-label-sm text-primary bg-primary-container/20 px-2 py-0.5 rounded">理想</span>
+<div class="flex items-center">
+<span class="font-body-md text-body-md font-medium text-on-surface">22.5</span>
+<span class="font-label-sm text-label-sm text-outline ml-1">(-0.4)</span>
+</div>
+</div>
+</div>
+<!-- Body Fat -->
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/10">
+<span class="font-body-md text-body-md text-on-surface">体脂率</span>
+<span class="font-label-sm text-label-sm text-outline">未填写</span>
+</div>
+<!-- Waist -->
+<div class="flex justify-between items-center py-2">
+<span class="font-body-md text-body-md text-on-surface">腰围</span>
+<span class="font-label-sm text-label-sm text-outline">未填写</span>
+</div>
+</div>
+<div class="mt-sm flex flex-col items-center gap-2">
+<p class="font-label-sm text-[12px] text-outline text-center">补充健康数据后，之后的月报会展示更多变化。</p>
+<button class="font-label-sm text-[12px] text-primary flex items-center gap-1 active:opacity-70 transition-opacity">
+        去健康数据补充 <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Module 7: Gentle AI Summary Card -->
+<section class="bg-surface-container rounded-2xl p-md shadow-[0_8px_32px_rgba(126,179,255,0.1)] border border-primary/10 relative overflow-hidden">
+<!-- Decorative background element -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
+<div class="flex items-center gap-2 mb-sm relative z-10">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h2 class="font-body-md text-body-md font-semibold text-on-surface">本月寄语</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-[1.8] relative z-10">
+                本月你坚持记录了 24 天，看见了体重 1.8 kg 的悄然变化。这份坚持本身，就是对身心最好的关照。每一次站上体重秤，都是在与自己的身体对话。<br><br>
+                不必纠结于某个数字的波动，倾听身体的声音，享受这个关注自我的过程就好。下个月，也请继续保持这份轻盈的心态，慢慢来。
+            </p>
+</section>
+</main>
+<!-- Floating Action Button for Share Bottom Sheet -->
+<div class="fixed bottom-0 left-0 w-full px-margin-mobile pb-[max(env(safe-area-inset-bottom),24px)] pt-4 bg-gradient-to-t from-background via-background/80 to-transparent z-30 pointer-events-none">
+<div class="max-w-[600px] mx-auto pointer-events-auto">
+<button class="w-full h-[56px] bg-primary text-on-primary font-body-md text-body-md font-semibold rounded-xl flex justify-center items-center gap-2 active:scale-[0.98] transition-transform duration-200 shadow-lg shadow-primary/30" id="openShareSheetBtn">
+<span class="material-symbols-outlined" style="font-size: 20px;">ios_share</span>
+            生成分享图
+        </button>
+</div>
+</div>
+<!-- Bottom Sheet Overlay -->
+<div class="bottom-sheet-overlay fixed inset-0 bg-inverse-surface/40 z-50 opacity-0 pointer-events-none transition-opacity duration-300" id="bottomSheetOverlay"></div>
+<!-- Bottom Sheet -->
+<div class="bottom-sheet fixed bottom-0 left-0 w-full bg-surface rounded-t-[24px] z-50 transform translate-y-full transition-transform duration-300 shadow-[0_-8px_32px_rgba(0,0,0,0.1)] pb-[max(env(safe-area-inset-bottom),24px)]" id="bottomSheet">
+<!-- Drag handle area -->
+<div class="w-full flex justify-center pt-3 pb-4" id="dragHandle">
+<div class="w-12 h-1.5 bg-outline-variant/40 rounded-full"></div>
+</div>
+<div class="px-margin-mobile max-w-[600px] mx-auto pb-4">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">生成分享图</h3>
+<button class="text-outline hover:text-on-surface active:bg-surface-variant p-1 rounded-full transition-colors" id="closeShareSheetBtn">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Share Preview Area (9:16 aspect ratio roughly) -->
+<div class="bg-surface-container-lowest border border-outline-variant/20 rounded-2xl mb-md flex flex-col p-md items-center justify-center relative overflow-hidden h-[360px] mx-auto w-[202px] shadow-sm">
+<div class="absolute inset-0 bg-gradient-to-b from-surface-container-low to-surface-container-lowest z-0"></div>
+<div class="relative z-10 flex flex-col items-center w-full h-full justify-between py-2">
+<!-- Top/Logo -->
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[24px]">scale</span>
+<span class="font-label-sm text-[10px] text-outline">微轻月报</span>
+</div>
+<!-- Center/Data -->
+<div class="flex flex-col items-center gap-4 w-full">
+<div class="text-center">
+<span class="font-label-sm text-[11px] text-on-surface-variant block mb-1">本月变化</span>
+<div class="flex items-baseline justify-center">
+<span class="font-display-num text-[32px] text-primary leading-none">-1.8</span>
+<span class="font-label-sm text-[10px] text-primary ml-1">kg</span>
+</div>
+</div>
+<div class="w-full bg-surface-variant/50 h-[1px]"></div>
+<div class="text-center">
+<span class="font-label-sm text-[11px] text-on-surface-variant block mb-1">记录天数</span>
+<span class="font-headline-lg text-[20px] text-on-surface leading-none">24<span class="text-[10px] text-on-surface-variant ml-1 font-normal">天</span></span>
+</div>
+<!-- Simple trendline -->
+<div class="w-full h-[30px] mt-2 relative">
+<svg class="w-full h-full absolute inset-0" preserveAspectRatio="none" viewBox="0 0 100 30">
+<polyline fill="none" opacity="0.6" points="0,15 25,25 50,10 75,20 100,5" stroke="#205fa5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></polyline>
+</svg>
+</div>
+</div>
+<!-- Bottom/Quote -->
+<div class="text-center px-2">
+<p class="font-label-sm text-[9px] text-on-surface-variant leading-relaxed">"坚持记录，感受微小的改变。"</p>
+</div>
+</div>
+</div>
+<!-- Privacy Toggles List -->
+<div class="flex flex-col gap-sm mb-lg px-2">
+<!-- Toggle Item 1 -->
+<label class="flex justify-between items-center cursor-pointer min-h-[44px]">
+<span class="font-body-md text-body-md text-on-surface">显示具体体重</span>
+<div class="relative">
+<input class="toggle-checkbox sr-only" type="checkbox">
+<div class="block w-11 h-6 bg-outline-variant/40 rounded-full transition-colors duration-300"></div>
+<div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-300 shadow-sm"></div>
+</div>
+</label>
+<!-- Toggle Item 2 -->
+<label class="flex justify-between items-center cursor-pointer min-h-[44px]">
+<span class="font-body-md text-body-md text-on-surface">隐藏昵称</span>
+<div class="relative">
+<input checked="" class="toggle-checkbox sr-only" type="checkbox">
+<div class="block w-11 h-6 bg-primary rounded-full transition-colors duration-300"></div>
+<div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-300 shadow-sm translate-x-[100%]"></div>
+</div>
+</label>
+<!-- Toggle Item 3 -->
+<label class="flex justify-between items-center cursor-pointer min-h-[44px]">
+<span class="font-body-md text-body-md text-on-surface">隐藏头像</span>
+<div class="relative">
+<input checked="" class="toggle-checkbox sr-only" type="checkbox">
+<div class="block w-11 h-6 bg-primary rounded-full transition-colors duration-300"></div>
+<div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-300 shadow-sm translate-x-[100%]"></div>
+</div>
+</label>
+</div>
+<!-- Main Action Button -->
+<button class="w-full h-[56px] bg-primary text-on-primary font-body-md text-body-md font-semibold rounded-xl flex justify-center items-center gap-2 active:scale-[0.98] transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-size: 20px;">check_circle</span>
+            生成分享图
+        </button>
+</div>
+</div>
+<!-- Inline script for custom iOS-style toggle and Bottom Sheet animation logic -->
+<script>
+        // Toggle Logic
+        document.querySelectorAll('label').forEach(label => {
+            const input = label.querySelector('input[type="checkbox"]');
+            const bg = label.querySelector('.block');
+            const dot = label.querySelector('.dot');
+            
+            if(input && bg && dot) {
+                input.addEventListener('change', (e) => {
+                    if(e.target.checked) {
+                        bg.classList.replace('bg-outline-variant/40', 'bg-primary');
+                        dot.classList.add('translate-x-[100%]');
+                    } else {
+                        bg.classList.replace('bg-primary', 'bg-outline-variant/40');
+                        dot.classList.remove('translate-x-[100%]');
+                    }
+                });
+            }
+        });
+
+        // Bottom Sheet Logic
+        const openBtn = document.getElementById('openShareSheetBtn');
+        const closeBtn = document.getElementById('closeShareSheetBtn');
+        const overlay = document.getElementById('bottomSheetOverlay');
+        const sheet = document.getElementById('bottomSheet');
+
+        function openSheet() {
+            overlay.classList.add('active');
+            sheet.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeSheet() {
+            overlay.classList.remove('active');
+            sheet.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        openBtn.addEventListener('click', openSheet);
+        closeBtn.addEventListener('click', closeSheet);
+        overlay.addEventListener('click', closeSheet);
+    </script>
+</body></html>

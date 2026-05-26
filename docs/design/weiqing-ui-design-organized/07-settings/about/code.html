@@ -1,0 +1,188 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>关于微轻</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "secondary": "#3d6751",
+                        "surface": "#f9f9ff",
+                        "secondary-container": "#bfedd1",
+                        "on-primary-fixed-variant": "#004786",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#436d57",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-container-highest": "#dce3f2",
+                        "on-secondary-fixed": "#002113",
+                        "on-background": "#151c27",
+                        "on-surface": "#151c27",
+                        "on-primary-container": "#004481",
+                        "outline": "#727782",
+                        "inverse-surface": "#2a313c",
+                        "tertiary-fixed-dim": "#e1c389",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "outline-variant": "#c2c6d2",
+                        "on-tertiary-fixed-variant": "#584416",
+                        "surface-tint": "#205fa5",
+                        "primary-fixed": "#d4e3ff",
+                        "on-tertiary-fixed": "#261900",
+                        "surface-bright": "#f9f9ff",
+                        "secondary-fixed": "#bfedd1",
+                        "surface-dim": "#d3dae9",
+                        "primary": "#205fa5",
+                        "tertiary-fixed": "#fedfa3",
+                        "on-surface-variant": "#424751",
+                        "tertiary-container": "#caad75",
+                        "secondary-fixed-dim": "#a4d1b6",
+                        "tertiary": "#725b2b",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#dce3f2",
+                        "primary-container": "#7eb3ff",
+                        "inverse-primary": "#a6c8ff",
+                        "surface-container": "#e7eefe",
+                        "error": "#ba1a1a",
+                        "background": "#f9f9ff",
+                        "on-primary-fixed": "#001c3a",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#554013",
+                        "on-secondary-fixed-variant": "#254f3a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "gutter": "16px",
+                        "base": "8px",
+                        "md": "24px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Manrope"],
+                        "display-num": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "display-num": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .ios-grouped-bg { background-color: #f2f2f7; }
+        .ios-cell { background-color: #ffffff; }
+        .ios-separator { border-bottom: 1px solid rgba(60, 60, 67, 0.1); margin-left: 16px; }
+        .ios-cell:last-child .ios-separator { border-bottom: none; }
+        .min-h-44 { min-height: 44px; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="ios-grouped-bg font-body-md text-on-surface antialiased pt-safe pb-safe">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm dark:shadow-none flex items-center justify-between px-margin-mobile h-14 w-full">
+<button aria-label="返回" class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity active:scale-95 transition-transform min-h-44 min-w-[44px] flex items-center justify-center -ml-2">
+<span class="material-symbols-outlined text-2xl" data-icon="arrow_back_ios">arrow_back_ios</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-semibold text-on-surface dark:text-inverse-on-surface absolute left-1/2 -translate-x-1/2 text-[17px]">关于微轻</h1>
+<div class="w-11"></div> <!-- Spacer for balance -->
+</header>
+<!-- Main Content -->
+<main class="pt-[88px] pb-12 px-margin-mobile max-w-2xl mx-auto space-y-md md:space-y-lg">
+<!-- Module 1: App Info -->
+<section class="flex flex-col items-center justify-center pt-sm pb-md"><div class="w-20 h-20 rounded-[18px] overflow-hidden mb-4 shadow-[0_4px_12px_rgba(0,0,0,0.08)] bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-5xl">water_drop</span>
+</div>
+<h2 class="font-headline-lg-mobile text-[24px] font-bold text-on-surface">微轻</h2>
+<h3 class="font-body-md text-secondary text-lg">WeiQing</h3>
+<p class="font-body-md text-secondary mt-1">轻轻记录，看见变化</p>
+<p class="font-label-sm text-outline-variant bg-surface-container-high px-3 py-1 rounded-full mt-3">V1.0.0</p></section>
+<!-- Module 2: Version & Update -->
+<section class="rounded-xl overflow-hidden ios-cell shadow-[0_2px_8px_rgba(32,95,165,0.03)]"><div class="flex items-center justify-between px-4 h-[44px] ios-separator">
+<span class="font-body-md text-on-surface">当前版本</span>
+<span class="font-body-md text-outline">V1.0.0</span>
+</div>
+<div class="px-4 py-2 min-h-[44px] flex flex-col justify-center active:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center justify-between w-full">
+<span class="font-body-md text-on-surface">检查更新</span>
+<div class="flex items-center text-outline">
+<span class="font-body-md mr-1">当前版本</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<p class="font-label-sm text-outline-variant">通过 App Store 获取最新版本</p>
+</div></section>
+<!-- Module 3: Legal & Data -->
+<section class="rounded-xl overflow-hidden ios-cell shadow-[0_2px_8px_rgba(32,95,165,0.03)]"><div class="px-4 h-[44px] flex items-center justify-between ios-separator active:bg-surface-container-low transition-colors cursor-pointer">
+<span class="font-body-md">隐私政策</span>
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="px-4 h-[44px] flex items-center justify-between ios-separator active:bg-surface-container-low transition-colors cursor-pointer">
+<span class="font-body-md">用户协议</span>
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="px-4 h-[44px] flex items-center justify-between ios-separator active:bg-surface-container-low transition-colors cursor-pointer">
+<span class="font-body-md">第三方数据说明</span>
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="px-4 h-[44px] flex items-center justify-between active:bg-surface-container-low transition-colors cursor-pointer">
+<span class="font-body-md">开源许可</span>
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="chevron_right">chevron_right</span>
+</div></section>
+<!-- Module 4: Contact & Support -->
+<section class="rounded-xl overflow-hidden ios-cell shadow-[0_2px_8px_rgba(32,95,165,0.03)]"><div class="px-4 h-[44px] flex items-center justify-between ios-separator active:bg-surface-container-low transition-colors cursor-pointer">
+<span class="font-body-md">帮助与反馈</span>
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="px-4 h-[44px] flex items-center justify-between ios-separator active:bg-surface-container-low transition-colors cursor-pointer" onclick="alert('选择操作: \n1. 打开邮件应用\n2. 复制邮箱地址')">
+<span class="font-body-md">邮件支持</span>
+<div class="flex items-center text-outline">
+<span class="font-body-md mr-1">support@weiqing.app</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="px-4 h-[44px] flex items-center justify-between opacity-50 cursor-default">
+<span class="font-body-md">官网</span>
+<span class="font-body-md text-outline">即将开放</span>
+</div></section>
+<!-- Module 5: Medical Disclaimer -->
+<section class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-[0_4px_24px_rgba(32,95,165,0.04)] mt-lg">
+<div class="flex items-center mb-2 text-on-surface">
+<span class="material-symbols-outlined text-primary mr-2" data-icon="info">info</span>
+<h3 class="font-body-md text-body-md font-semibold">微轻不是医疗服务</h3>
+</div>
+<p class="font-label-sm text-label-sm text-outline leading-relaxed">微轻用于帮助你记录和回看身体变化，不提供医疗诊断或治疗建议。如有健康问题，请咨询专业医生。</p>
+</section>
+<!-- Footer Copyright -->
+<footer class="pt-lg pb-md text-center flex flex-col items-center justify-center space-y-1"><p class="font-label-sm text-outline-variant">© 2026 微轻 WeiQing</p>
+<p class="font-label-sm text-outline-variant">All rights reserved.</p>
+<p class="font-label-sm text-outline-variant/70 mt-2">备案信息待补充</p></footer>
+</main>
+
+
+</body></html>

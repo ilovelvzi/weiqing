@@ -1,0 +1,322 @@
+<!DOCTYPE html><html class="light" lang="zh-CN" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>微轻 - 我的</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#254f3a",
+                      "on-primary": "#ffffff",
+                      "secondary": "#3d6751",
+                      "inverse-primary": "#a6c8ff",
+                      "outline-variant": "#c2c6d2",
+                      "on-tertiary-container": "#554013",
+                      "inverse-on-surface": "#ebf1ff",
+                      "surface-container-highest": "#dce3f2",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#e1c389",
+                      "on-primary-fixed-variant": "#004786",
+                      "on-surface": "#151c27",
+                      "on-tertiary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "background": "#f9f9ff",
+                      "surface-bright": "#f9f9ff",
+                      "primary-fixed-dim": "#a6c8ff",
+                      "on-primary-container": "#004481",
+                      "on-error": "#ffffff",
+                      "on-background": "#151c27",
+                      "on-surface-variant": "#424751",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed": "#261900",
+                      "on-secondary": "#ffffff",
+                      "tertiary": "#725b2b",
+                      "secondary-container": "#bfedd1",
+                      "surface-dim": "#d3dae9",
+                      "primary-fixed": "#d4e3ff",
+                      "surface-variant": "#dce3f2",
+                      "primary": "#205fa5",
+                      "on-secondary-fixed": "#002113",
+                      "secondary-fixed": "#bfedd1",
+                      "on-secondary-container": "#436d57",
+                      "inverse-surface": "#2a313c",
+                      "surface-container": "#e7eefe",
+                      "tertiary-fixed": "#fedfa3",
+                      "outline": "#727782",
+                      "on-primary-fixed": "#001c3a",
+                      "surface-container-high": "#e2e8f8",
+                      "secondary-fixed-dim": "#a4d1b6",
+                      "primary-container": "#7eb3ff",
+                      "tertiary-container": "#caad75",
+                      "surface-tint": "#205fa5",
+                      "surface-container-low": "#f0f3ff",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed-variant": "#584416",
+                      "surface": "#f9f9ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px",
+                      "2xl": "1.5rem"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "base": "8px",
+                      "lg": "40px",
+                      "gutter": "16px",
+                      "sm": "12px",
+                      "md": "24px",
+                      "margin-mobile": "20px",
+                      "xs": "4px",
+                      "safe": "env(safe-area-inset-bottom)"
+              },
+              "fontFamily": {
+                      "display-num": ["Manrope"],
+                      "headline-lg-mobile": ["Manrope"],
+                      "body-md": ["Manrope"],
+                      "label-sm": ["Manrope"],
+                      "headline-lg": ["Manrope"]
+              },
+              "fontSize": {
+                      "display-num": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                      "label-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                      "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .airy-shadow {
+            box-shadow: 0 8px 32px rgba(32, 95, 165, 0.04);
+        }
+        .list-group {
+            background-color: theme('colors.surface-container-lowest');
+            border-radius: theme('borderRadius.2xl');
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(32, 95, 165, 0.02);
+        }
+        .list-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            border-bottom: 1px solid theme('colors.outline-variant' / 20%);
+        }
+        .list-item:last-child {
+            border-bottom: none;
+        }
+        .list-item-hover:active {
+            background-color: theme('colors.surface-container-low');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background pb-32">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/90 dark:bg-on-surface/90 backdrop-blur-md pt-[env(safe-area-inset-top)] border-b border-outline-variant/5 shadow-sm shadow-primary/5">
+<div class="flex justify-between items-center h-16 px-margin-mobile w-full"><div class="flex-1"></div><span class="material-symbols-outlined text-outline dark:text-outline-variant hover:bg-surface-container-high/50 transition-colors p-2 rounded-full active:scale-95 duration-200 ease-out cursor-pointer" data-icon="notifications" style="font-variation-settings: 'FILL' 0;">notifications</span></div>
+</header>
+<main class="pt-[calc(64px+env(safe-area-inset-top)+20px)] px-margin-mobile max-w-md mx-auto space-y-md">
+<!-- Large Title -->
+<h2 class="font-headline-lg text-headline-lg text-on-background px-xs mb-sm">我的</h2>
+<!-- User Profile Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-md airy-shadow border border-outline-variant/10 flex items-center space-x-sm">
+<img alt="User Avatar" class="w-20 h-20 rounded-full object-cover border-2 border-surface-container-highest" data-alt="A gentle portrait of a young woman smiling softly. Soft, airy, high-key light mode aesthetic. Clean gray-white background with a hint of warm ambient light. Minimalist and approachable mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuCCmkrEF1kIP1tk0FkNSukpdk-eQhsTbVNzsZSs5zJWPgklGSOjr1tWjzTANNbfPopzK_3q459ly5CW4GLh_RVpWQUcvyqd7A3Yi6x2GjVj6PchDXiOey0FY81lfUwrvnynKUT2I4WCYmybMGmEnp-yX2L8xTDvrnnseabB3sagJQt_bWALh2lGh4_wRmNTcLrn-wcMu3QZNmeKi4XcJwMWfZZlNaIs3szh-vb9uYZxUXhcTXSQoHVyh5OT1r8K2L7c16PNu9l0w">
+<div class="flex-1">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background">林雨辉</h3>
+<p class="font-body-md text-body-md text-outline mt-1">当前 65.5 kg · 已连续记录 12 天<br>目标进度 42%</p>
+<div class="w-full bg-surface-container-highest h-2 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 42%;"></div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span></section>
+<!-- Common Functions 2x2 Grid -->
+<section class="grid grid-cols-2 gap-sm">
+<div class="bg-surface-container-lowest rounded-2xl p-sm airy-shadow border border-outline-variant/10 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center mb-2 text-primary">
+<span class="material-symbols-outlined" data-icon="monitor_heart">monitor_heart</span>
+</div>
+<h4 class="font-body-md text-body-md font-medium text-on-background">健康数据</h4>
+<p class="font-label-sm text-label-sm text-outline mt-1 line-clamp-1">BMI、体脂率、围度</p>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-sm airy-shadow border border-outline-variant/10 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center mb-2 text-primary">
+<span class="material-symbols-outlined" data-icon="flag">flag</span>
+</div>
+<h4 class="font-body-md text-body-md font-medium text-on-background">目标体重</h4>
+<p class="font-label-sm text-label-sm text-outline mt-1 line-clamp-1">距离目标 7.5 kg</p>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-sm airy-shadow border border-outline-variant/10 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center mb-2 text-primary">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</div>
+<h4 class="font-body-md text-body-md font-medium text-on-background">Apple Health</h4>
+<p class="font-label-sm text-label-sm text-outline mt-1 line-clamp-1">导入已开 · 写入已开</p>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-sm airy-shadow border border-outline-variant/10 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center mb-2 text-primary">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</div>
+<h4 class="font-body-md text-body-md font-medium text-on-background">提醒设置</h4>
+<p class="font-label-sm text-label-sm text-outline mt-1 line-clamp-1">每天 08:00</p>
+</div>
+</section>
+<!-- Data & Privacy List -->
+<section>
+<h3 class="font-label-sm text-label-sm text-outline px-xs mb-2 uppercase tracking-wider">数据与隐私</h3>
+<div class="list-group">
+<div class="list-item list-item-hover cursor-pointer">
+<div class="flex items-center space-x-sm">
+<span class="material-symbols-outlined text-outline" data-icon="ios_share">ios_share</span>
+<div>
+<div class="font-body-md text-body-md text-on-background">数据导出</div>
+<div class="font-label-sm text-label-sm text-outline">导出 CSV 与图片数据</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="list-item list-item-hover cursor-pointer">
+<div class="flex items-center space-x-sm">
+<span class="material-symbols-outlined text-outline" data-icon="security">security</span>
+<div>
+<div class="font-body-md text-body-md text-on-background">隐私设置</div>
+<div class="font-label-sm text-label-sm text-outline">管理分享、AI 与数据权限</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="list-item list-item-hover cursor-pointer">
+<div class="flex items-center space-x-sm">
+<span class="material-symbols-outlined text-outline" data-icon="sync">sync</span>
+<div>
+<div class="font-body-md text-body-md text-on-background">数据同步</div>
+<div class="font-label-sm text-label-sm text-outline">离线记录将在联网后同步</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Preferences List -->
+<section>
+<h3 class="font-label-sm text-label-sm text-outline px-xs mb-2 uppercase tracking-wider">偏好设置</h3>
+<div class="list-group">
+<div class="list-item list-item-hover cursor-pointer">
+<div class="flex items-center space-x-sm">
+<span class="material-symbols-outlined text-outline" data-icon="square_foot">square_foot</span>
+<div class="font-body-md text-body-md text-on-background">体重单位与精度</div>
+</div>
+<div class="flex items-center space-x-xs text-outline">
+<span class="font-body-md text-body-md">kg / 1 位小数</span>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="list-item list-item-hover cursor-pointer">
+<div class="flex items-center space-x-sm">
+<span class="material-symbols-outlined text-outline" data-icon="auto_awesome">auto_awesome</span>
+<div class="font-body-md text-body-md text-on-background">AI 鼓励</div>
+</div>
+<div class="flex items-center space-x-xs text-outline">
+<span class="font-body-md text-body-md">已开启</span>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="list-item list-item-hover cursor-pointer">
+<div class="flex items-center space-x-sm">
+<span class="material-symbols-outlined text-outline" data-icon="palette">palette</span>
+<div class="font-body-md text-body-md text-on-background">外观设置</div>
+</div>
+<div class="flex items-center space-x-xs text-outline">
+<span class="font-body-md text-body-md">跟随系统</span>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Account & Security List -->
+<section>
+<h3 class="font-label-sm text-label-sm text-outline px-xs mb-2 uppercase tracking-wider">账号与安全</h3>
+<div class="list-group"><div class="list-item list-item-hover cursor-pointer">
+<div class="flex items-center space-x-sm">
+<span class="material-symbols-outlined text-outline" data-icon="devices">devices</span>
+<div>
+<div class="font-body-md text-body-md text-on-background">已登录设备</div>
+<div class="font-label-sm text-label-sm text-outline">1/5 台设备</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="list-item list-item-hover cursor-pointer">
+<div class="flex items-center space-x-sm">
+<span class="material-symbols-outlined text-outline" data-icon="manage_accounts">manage_accounts</span>
+<div class="font-body-md text-body-md text-on-background">账号与绑定</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="list-item list-item-hover cursor-pointer">
+<div class="flex items-center space-x-sm">
+<span class="material-symbols-outlined text-outline" data-icon="password">password</span>
+<div class="font-body-md text-body-md text-on-background">修改密码</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="list-item list-item-hover cursor-pointer">
+<div class="flex items-center space-x-sm">
+<span class="material-symbols-outlined text-outline" data-icon="logout">logout</span>
+<div class="font-body-md text-body-md text-on-background">退出登录</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section><section class="">
+<h3 class="font-label-sm text-label-sm text-outline px-xs mb-2 uppercase tracking-wider">危险操作</h3>
+<div class="list-group">
+<div class="list-item list-item-hover cursor-pointer">
+<div class="flex items-center space-x-sm">
+<span class="material-symbols-outlined text-error" data-icon="no_accounts">no_accounts</span>
+<div class="font-body-md text-body-md text-error">注销账号</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Danger Zone -->
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/95 dark:bg-on-surface/95 backdrop-blur-xl border-t border-outline-variant/10 shadow-[0_-8px_24px_rgba(32,95,165,0.06)]">
+<div class="flex justify-around items-center h-20 pb-[env(safe-area-inset-bottom)] px-2 w-full">
+<div class="flex flex-col items-center justify-center text-outline dark:text-outline-variant px-4 py-1.5 hover:text-primary/80 transition-all active:scale-90 duration-150 cursor-pointer">
+<span class="material-symbols-outlined mb-1" data-icon="home" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="font-label-sm text-label-sm">首页</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline dark:text-outline-variant px-4 py-1.5 hover:text-primary/80 transition-all active:scale-90 duration-150 cursor-pointer">
+<span class="material-symbols-outlined mb-1" data-icon="edit_note" style="font-variation-settings: 'FILL' 0;">edit_note</span>
+<span class="font-label-sm text-label-sm">记录</span>
+</div>
+<div class="flex flex-col items-center justify-center text-outline dark:text-outline-variant px-4 py-1.5 hover:text-primary/80 transition-all active:scale-90 duration-150 cursor-pointer">
+<span class="material-symbols-outlined mb-1" data-icon="bar_chart" style="font-variation-settings: 'FILL' 0;">bar_chart</span>
+<span class="font-label-sm text-label-sm">分析</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container/20 text-primary dark:text-primary-container rounded-xl px-4 py-1.5 hover:text-primary/80 transition-all active:scale-90 duration-150 cursor-pointer">
+<span class="material-symbols-outlined mb-1" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">我的</span>
+</div>
+</div>
+</nav>
+
+
+</body></html>

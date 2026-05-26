@@ -1,0 +1,342 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>微轻 - 隐私设置</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed": "#fedfa3",
+                        "tertiary-container": "#caad75",
+                        "on-primary-container": "#004481",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-dim": "#d3dae9",
+                        "inverse-surface": "#2a313c",
+                        "background": "#f9f9ff",
+                        "primary-container": "#7eb3ff",
+                        "on-surface-variant": "#424751",
+                        "surface-variant": "#dce3f2",
+                        "on-secondary-container": "#436d57",
+                        "on-primary-fixed": "#001c3a",
+                        "tertiary": "#725b2b",
+                        "surface-bright": "#f9f9ff",
+                        "secondary-fixed": "#bfedd1",
+                        "outline-variant": "#c2c6d2",
+                        "inverse-primary": "#a6c8ff",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#261900",
+                        "on-primary": "#ffffff",
+                        "on-background": "#151c27",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "outline": "#727782",
+                        "surface-container-highest": "#dce3f2",
+                        "on-primary-fixed-variant": "#004786",
+                        "surface-container": "#e7eefe",
+                        "secondary-container": "#bfedd1",
+                        "on-secondary-fixed": "#002113",
+                        "secondary": "#3d6751",
+                        "on-tertiary-container": "#554013",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#151c27",
+                        "tertiary-fixed-dim": "#e1c389",
+                        "on-secondary-fixed-variant": "#254f3a",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-tint": "#205fa5",
+                        "primary-fixed": "#d4e3ff",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f0f3ff",
+                        "primary": "#205fa5",
+                        "on-tertiary-fixed-variant": "#584416",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#a4d1b6",
+                        "error-container": "#ffdad6",
+                        "surface": "#f9f9ff"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        "2xl": "1rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        gutter: "16px",
+                        "margin-desktop": "64px",
+                        xs: "4px",
+                        "margin-mobile": "20px",
+                        lg: "40px",
+                        md: "24px",
+                        sm: "12px",
+                        base: "8px",
+                        safe: "env(safe-area-inset-bottom)"
+                    },
+                    fontFamily: {
+                        "body-md": ["Manrope"],
+                        "display-num": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"]
+                    },
+                    fontSize: {
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "display-num": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "label-sm": ["13px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "500" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #f2f2f7; /* iOS grouped background color */
+        }
+        
+        /* Grouped List Styles */
+        .grouped-list-container {
+            background-color: white;
+            border-radius: 1rem; /* iOS large corner radius */
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        
+        .list-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 44px; /* Apple HIG */
+            padding: 12px 16px;
+            background-color: white;
+            position: relative;
+        }
+        
+        .list-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 16px;
+            right: 0;
+            height: 0.5px;
+            background-color: #c6c6c8;
+        }
+        
+        .list-item:active {
+            background-color: #e5e5ea;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const aiEncourage = document.getElementById('ai-encouragement-switch');
+  const aiContext = document.getElementById('ai-context-switch');
+  const aiContextLabel = aiContext?.closest('label');
+  
+  if (aiEncourage && aiContext) {
+    const updateState = () => {
+      if (!aiEncourage.checked) {
+        aiContext.disabled = true;
+        aiContext.checked = false;
+        aiContextLabel.style.opacity = '0.4';
+      } else {
+        aiContext.disabled = false;
+        aiContextLabel.style.opacity = '1';
+      }
+    };
+    aiEncourage.addEventListener('change', updateState);
+    updateState();
+  }
+});
+</script></head>
+<body class="antialiased text-on-surface pb-safe">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#f2f2f7]/80 backdrop-blur-xl border-b border-outline-variant/20 flex justify-between items-center h-11 px-4">
+<button aria-label="返回" class="w-10 h-10 flex items-center justify-start text-primary active:opacity-50 transition-opacity -ml-1">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'wght' 400;">chevron_left</span>
+</button>
+<div class="flex-1 flex justify-center">
+<h1 class="text-[17px] font-semibold text-on-surface dark:text-inverse-on-surface">隐私设置</h1>
+</div>
+<div class="w-10"></div> <!-- Placeholder for layout balance -->
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-16 pb-12 px-margin-mobile max-w-lg mx-auto">
+<!-- 模块一：隐私说明卡片 -->
+<section class="bg-white rounded-2xl p-md mb-md shadow-[0_8px_24px_rgba(32,95,165,0.04)] border border-surface-variant/50">
+<div class="flex items-center gap-2 mb-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">shield_person</span>
+<h2 class="font-body-md text-[18px] font-semibold text-on-surface">你的数据由你控制</h2>
+</div>
+<p class="font-body-md text-[15px] text-outline mb-md leading-relaxed">
+                微轻会尽量少收集数据。你可以随时关闭 AI 鼓励、调整分享默认隐私，或管理健康数据权限。
+            </p>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-sm text-label-sm px-3 py-1.5 bg-primary/10 text-primary rounded-full">可关闭 AI</span>
+<span class="font-label-sm text-label-sm px-3 py-1.5 bg-primary/10 text-primary rounded-full">分享默认保护隐私</span>
+<span class="font-label-sm text-label-sm px-3 py-1.5 bg-primary/10 text-primary rounded-full">健康数据需授权</span>
+</div>
+</section>
+<!-- 模块二：AI 与个性化 -->
+<h3 class="font-label-sm text-label-sm text-outline ml-4 mb-2 uppercase tracking-wider">AI 与个性化</h3>
+<section class="grouped-list-container">
+<!-- 1. AI 鼓励 -->
+<label class="list-item cursor-pointer">
+<div class="flex-1 pr-4">
+<div class="font-body-md text-[17px] text-on-surface">AI 鼓励</div>
+<div class="font-label-sm text-[13px] text-outline mt-1">打卡后生成温和鼓励文案</div>
+</div>
+<input checked="" class="sr-only peer" id="ai-encouragement-switch" type="checkbox">
+<div class="shrink-0 w-[51px] h-[31px] bg-[#e9e9ea] rounded-[15.5px] relative peer-checked:bg-[#205FA5] transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-[13.5px] after:h-[27px] after:w-[27px] after:shadow-[0_2px_4px_rgba(0,0,0,0.2),0_1px_1px_rgba(0,0,0,0.1)] after:transition-transform peer-checked:after:translate-x-[20px]"></div>
+</label>
+<!-- 2. 允许 AI 使用记录上下文 -->
+<label class="list-item cursor-pointer" style="opacity: 1;">
+<div class="flex-1 pr-4">
+<div class="font-body-md text-[17px] text-on-surface">允许 AI 使用记录上下文</div>
+<div class="font-label-sm text-[13px] text-outline mt-1">体重变化、目标进度、标签、围度</div>
+</div>
+<input checked="" class="sr-only peer" id="ai-context-switch" type="checkbox">
+<div class="shrink-0 w-[51px] h-[31px] bg-[#e9e9ea] rounded-[15.5px] relative peer-checked:bg-[#205FA5] transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-[13.5px] after:h-[27px] after:w-[27px] after:shadow-[0_2px_4px_rgba(0,0,0,0.2),0_1px_1px_rgba(0,0,0,0.1)] after:transition-transform peer-checked:after:translate-x-[20px]"></div>
+</label>
+<!-- 3. AI 请求日志 -->
+<a class="list-item group flex-nowrap" href="#">
+<div class="flex-1 pr-4">
+<div class="font-body-md text-[17px] text-on-surface">AI 请求日志</div>
+<div class="font-label-sm text-[13px] text-outline mt-1">用于安全审计和问题排查</div>
+</div>
+<div class="flex items-center text-outline">
+<span class="font-body-md text-[15px] mr-1">最多保留 14 天</span>
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</a>
+</section>
+<!-- 模块三：分享隐私 -->
+<h3 class="font-label-sm text-label-sm text-outline ml-4 mb-2 uppercase tracking-wider">分享隐私</h3>
+<section class="grouped-list-container">
+<!-- 1. 默认隐藏具体体重 -->
+<label class="list-item cursor-pointer">
+<div class="flex-1 pr-4">
+<div class="font-body-md text-[17px] text-on-surface">默认隐藏具体体重</div>
+<div class="font-label-sm text-[13px] text-outline mt-1">分享图默认只展示相对变化</div>
+</div>
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="shrink-0 w-[51px] h-[31px] bg-[#e9e9ea] rounded-[15.5px] relative peer-checked:bg-[#205FA5] transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-[13.5px] after:h-[27px] after:w-[27px] after:shadow-[0_2px_4px_rgba(0,0,0,0.2),0_1px_1px_rgba(0,0,0,0.1)] after:transition-transform peer-checked:after:translate-x-[20px]"></div>
+</label>
+<!-- 2. 默认隐藏昵称 -->
+<label class="list-item cursor-pointer">
+<div class="flex-1 pr-4">
+<div class="font-body-md text-[17px] text-on-surface">默认隐藏昵称</div>
+</div>
+<input class="sr-only peer" type="checkbox">
+<div class="shrink-0 w-[51px] h-[31px] bg-[#e9e9ea] rounded-[15.5px] relative peer-checked:bg-[#205FA5] transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-[13.5px] after:h-[27px] after:w-[27px] after:shadow-[0_2px_4px_rgba(0,0,0,0.2),0_1px_1px_rgba(0,0,0,0.1)] after:transition-transform peer-checked:after:translate-x-[20px]"></div>
+</label>
+<!-- 3. 默认隐藏头像 -->
+<label class="list-item cursor-pointer">
+<div class="flex-1 pr-4">
+<div class="font-body-md text-[17px] text-on-surface">默认隐藏头像</div>
+</div>
+<input class="sr-only peer" type="checkbox">
+<div class="shrink-0 w-[51px] h-[31px] bg-[#e9e9ea] rounded-[15.5px] relative peer-checked:bg-[#205FA5] transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-[13.5px] after:h-[27px] after:w-[27px] after:shadow-[0_2px_4px_rgba(0,0,0,0.2),0_1px_1px_rgba(0,0,0,0.1)] after:transition-transform peer-checked:after:translate-x-[20px]"></div>
+</label>
+<!-- 4. 分享图水印 -->
+<a class="list-item group flex-nowrap" href="#">
+<div class="flex-1 pr-4">
+<div class="font-body-md text-[17px] text-on-surface">分享图水印</div>
+<div class="font-label-sm text-[13px] text-outline mt-1">分享图片会带 App Logo / 水印</div>
+</div>
+<div class="flex items-center text-outline">
+<span class="font-body-md text-[15px] mr-1">微轻 Logo</span>
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</a>
+</section>
+<!-- 模块四：健康数据权限 -->
+<h3 class="font-label-sm text-label-sm text-outline ml-4 mb-2 uppercase tracking-wider">健康数据权限</h3>
+<section class="grouped-list-container">
+<!-- 1. Apple Health -->
+<a class="list-item group flex-nowrap" href="#">
+<div class="flex-1 pr-4">
+<div class="font-body-md text-[17px] text-on-surface">Apple Health</div>
+</div>
+<div class="flex items-center text-outline">
+<span class="font-body-md text-[15px] mr-1">导入已开 · 写入已开</span>
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</a>
+<!-- 2. 系统通知 -->
+<a class="list-item group flex-nowrap" href="#">
+<div class="flex-1 pr-4">
+<div class="font-body-md text-[17px] text-on-surface">系统通知</div>
+</div>
+<div class="flex items-center text-outline">
+<span class="font-body-md text-[15px] mr-1">已开启</span>
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</a>
+<!-- 3. 生物识别验证 -->
+<a class="list-item group flex-nowrap" href="#">
+<div class="flex-1 pr-4">
+<div class="font-body-md text-[17px] text-on-surface">生物识别验证</div>
+</div>
+<div class="flex items-center text-outline">
+<span class="font-body-md text-[15px] mr-1">跟随系统</span>
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</a>
+</section>
+<!-- 模块五：数据保留说明卡片 -->
+<section class="bg-white rounded-2xl p-md mb-md shadow-[0_8px_24px_rgba(32,95,165,0.04)] border border-surface-variant/50">
+<h2 class="font-body-md text-[18px] font-semibold text-on-surface mb-sm">数据保留与删除</h2>
+<ul class="font-body-md text-[15px] text-outline space-y-2 list-disc pl-5">
+<li class="">AI 日志最多保留 14 天</li>
+<li class="">审计日志受相关法规期限约束</li>
+<li class="">数据导出链接有效期 24 小时</li>
+<li class="">注销账号将彻底物理删除数据</li>
+<li class="">微轻内删除数据不影响 Apple Health 原有记录</li>
+</ul>
+</section>
+<!-- 模块六：法律 -->
+<section class="grouped-list-container">
+<a class="list-item group flex-nowrap" href="#">
+<div class="flex-1 pr-4">
+<div class="font-body-md text-[17px] text-on-surface">隐私政策</div>
+</div>
+<div class="flex items-center text-outline">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</a>
+<a class="list-item group flex-nowrap" href="#">
+<div class="flex-1 pr-4">
+<div class="font-body-md text-[17px] text-on-surface">用户协议</div>
+</div>
+<div class="flex items-center text-outline">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</a>
+<a class="list-item group flex-nowrap" href="#">
+<div class="flex-1 pr-4">
+<div class="font-body-md text-[17px] text-on-surface">第三方数据说明</div>
+</div>
+<div class="flex items-center text-outline">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</a>
+</section>
+<!-- 底部文字 -->
+<p class="text-center font-label-sm text-label-sm text-outline mt-8 mb-12">
+            你可以随时回来调整这些设置。
+        </p>
+</main>
+
+
+</body></html>

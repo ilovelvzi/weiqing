@@ -1,0 +1,247 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>基础信息</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#584416",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary": "#3d6751",
+                        "on-tertiary-fixed": "#261900",
+                        "on-secondary-container": "#436d57",
+                        "secondary-container": "#bfedd1",
+                        "inverse-primary": "#a6c8ff",
+                        "surface-tint": "#205fa5",
+                        "surface-container-highest": "#dce3f2",
+                        "on-background": "#151c27",
+                        "outline": "#727782",
+                        "tertiary": "#725b2b",
+                        "secondary-fixed-dim": "#a4d1b6",
+                        "primary": "#205fa5",
+                        "on-secondary-fixed-variant": "#254f3a",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#004786",
+                        "on-primary-fixed": "#001c3a",
+                        "tertiary-fixed-dim": "#e1c389",
+                        "surface": "#f9f9ff",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-variant": "#dce3f2",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-surface-variant": "#424751",
+                        "inverse-surface": "#2a313c",
+                        "tertiary-fixed": "#fedfa3",
+                        "secondary-fixed": "#bfedd1",
+                        "primary-fixed": "#d4e3ff",
+                        "on-tertiary-container": "#554013",
+                        "on-primary-container": "#004481",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#151c27",
+                        "surface-dim": "#d3dae9",
+                        "background": "#f9f9ff",
+                        "tertiary-container": "#caad75",
+                        "outline-variant": "#c2c6d2",
+                        "primary-container": "#7eb3ff",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#e7eefe",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "margin-desktop": "64px",
+                        "sm": "12px",
+                        "margin-mobile": "20px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "display-num": ["Manrope"],
+                        "body-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-num": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Wheel picker snap behavior */
+        .snap-y-mandatory {
+            scroll-snap-type: y mandatory;
+        }
+        .snap-center {
+            scroll-snap-align: center;
+        }
+        
+        /* Fading mask for picker */
+        .picker-mask {
+            background: linear-gradient(to bottom, 
+                rgba(249, 249, 255, 1) 0%, 
+                rgba(249, 249, 255, 0) 40%, 
+                rgba(249, 249, 255, 0) 60%, 
+                rgba(249, 249, 255, 1) 100%);
+            pointer-events: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top App Bar - Minimal for Onboarding -->
+<header class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md docked full-width top-0 z-40 sticky">
+<div class="flex justify-between items-center w-full px-margin-mobile py-sm">
+<button class="text-on-surface p-2 -ml-2 rounded-full hover:bg-surface-container transition-colors active:scale-95 duration-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">arrow_back_ios</span>
+</button>
+<div class="text-label-sm font-label-sm text-outline">2 / 6</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full px-margin-mobile pb-sm">
+<div class="h-1 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500 ease-out" style="width: 33.33%;"></div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col px-margin-mobile pt-md pb-[120px] max-w-[600px] mx-auto w-full">
+<!-- Header Text -->
+<div class="mb-lg text-center md:text-left">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile md:text-headline-lg md:font-headline-lg text-on-surface mb-xs">先了解一点你的基础信息</h1>
+<p class="text-body-md font-body-md text-outline">这些信息会用于计算健康指标。</p>
+</div>
+<!-- Form Area - Grouped Style -->
+<div class="flex flex-col gap-md flex-grow">
+<!-- Age Picker Section -->
+<section class="bg-surface-container-lowest rounded-xl p-md shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-surface-variant/50 relative overflow-hidden flex flex-col items-center justify-center min-h-[300px]">
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-md absolute top-md">出生年份</h2>
+<div class="relative h-[200px] w-full max-w-[200px] mt-lg flex items-center justify-center overflow-hidden">
+<!-- Picker Selection Highlight -->
+<div class="absolute top-1/2 -translate-y-1/2 w-full h-[56px] border-y border-surface-variant/50 pointer-events-none"></div>
+<!-- Scrollable Numbers -->
+<div class="h-full w-full overflow-y-scroll snap-y-mandatory no-scrollbar flex flex-col items-center pt-[72px] pb-[72px]" id="yearPicker">
+<!-- Items generated via JS for demonstration of state -->
+<div class="snap-center h-[56px] flex items-center justify-center w-full opacity-30 text-display-num font-display-num transition-opacity duration-200">1997</div>
+<div class="snap-center h-[56px] flex items-center justify-center w-full opacity-60 text-display-num font-display-num transition-opacity duration-200">1998</div>
+<div class="snap-center h-[56px] flex items-center justify-center w-full opacity-100 text-display-num font-display-num text-on-surface relative transition-opacity duration-200 active-picker-item">
+                            1999 <span class="absolute -right-8 top-1/2 -translate-y-1/2 text-body-md font-body-md text-on-surface">年</span>
+</div>
+<div class="snap-center h-[56px] flex items-center justify-center w-full opacity-60 text-display-num font-display-num transition-opacity duration-200">2000</div>
+<div class="snap-center h-[56px] flex items-center justify-center w-full opacity-30 text-display-num font-display-num transition-opacity duration-200">2001</div>
+</div>
+<!-- Fading Mask -->
+<div class="absolute inset-0 picker-mask"></div>
+</div>
+</section>
+<!-- Height Picker Section -->
+<section class="bg-surface-container-lowest rounded-xl p-md shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-surface-variant/50 relative overflow-hidden flex flex-col items-center justify-center min-h-[300px]">
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-md absolute top-md">身高</h2>
+<div class="relative h-[200px] w-full max-w-[200px] mt-lg flex items-center justify-center overflow-hidden">
+<!-- Picker Selection Highlight -->
+<div class="absolute top-1/2 -translate-y-1/2 w-full h-[56px] border-y border-surface-variant/50 pointer-events-none"></div>
+<!-- Scrollable Numbers -->
+<div class="h-full w-full overflow-y-scroll snap-y-mandatory no-scrollbar flex flex-col items-center pt-[72px] pb-[72px]" id="heightPicker">
+<!-- Items generated via JS for demonstration of state -->
+<div class="snap-center h-[56px] flex items-center justify-center w-full opacity-30 text-display-num font-display-num transition-opacity duration-200">173</div>
+<div class="snap-center h-[56px] flex items-center justify-center w-full opacity-60 text-display-num font-display-num transition-opacity duration-200">174</div>
+<div class="snap-center h-[56px] flex items-center justify-center w-full opacity-100 text-display-num font-display-num text-on-surface relative transition-opacity duration-200 active-picker-item">
+                            175 <span class="absolute -right-12 top-1/2 -translate-y-1/2 text-body-md font-body-md text-on-surface whitespace-nowrap">厘米</span>
+</div>
+<div class="snap-center h-[56px] flex items-center justify-center w-full opacity-60 text-display-num font-display-num transition-opacity duration-200">176</div>
+<div class="snap-center h-[56px] flex items-center justify-center w-full opacity-30 text-display-num font-display-num transition-opacity duration-200">177</div>
+</div>
+<!-- Fading Mask -->
+<div class="absolute inset-0 picker-mask"></div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full bg-background/90 backdrop-blur-md pb-[env(safe-area-inset-bottom,20px)] pt-md px-margin-mobile z-40 border-t border-surface-variant/30">
+<div class="max-w-[600px] mx-auto w-full">
+<button class="w-full bg-primary text-on-primary rounded-full py-[16px] text-body-md font-body-md font-semibold hover:opacity-90 active:scale-[0.98] transition-all duration-200 shadow-sm shadow-primary/20 flex items-center justify-center">
+                继续
+            </button>
+</div>
+</div>
+<script>
+        // Simple script to handle the visual update of pickers (opacity changes based on scroll position)
+        // In a real implementation, this would involve IntersectionObserver or strict scroll offset calculations.
+        // This is a lightweight visual approximation for the design.
+        
+        function setupPicker(pickerId) {
+            const picker = document.getElementById(pickerId);
+            if(!picker) return;
+            
+            picker.addEventListener('scroll', () => {
+                // Throttle or debounce in production
+                const items = picker.children;
+                const pickerCenter = picker.getBoundingClientRect().top + (picker.clientHeight / 2);
+                
+                Array.from(items).forEach(item => {
+                    const itemRect = item.getBoundingClientRect();
+                    const itemCenter = itemRect.top + (itemRect.height / 2);
+                    const distance = Math.abs(pickerCenter - itemCenter);
+                    
+                    // Reset classes
+                    item.classList.remove('opacity-100', 'opacity-60', 'opacity-30', 'text-on-surface');
+                    
+                    if (distance < 28) { // Approximately centered
+                        item.classList.add('opacity-100', 'text-on-surface');
+                    } else if (distance < 84) { // 1 item away
+                        item.classList.add('opacity-60');
+                    } else { // 2+ items away
+                        item.classList.add('opacity-30');
+                    }
+                });
+            }, { passive: true });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            setupPicker('yearPicker');
+            setupPicker('heightPicker');
+        });
+    </script>
+</body></html>

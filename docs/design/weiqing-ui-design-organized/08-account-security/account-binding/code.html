@@ -1,0 +1,359 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>账号与绑定 - 微轻 App</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-fixed": "#261900",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#d3dae9",
+                        "secondary-container": "#bfedd1",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f9f9ff",
+                        "outline": "#727782",
+                        "on-primary-container": "#004481",
+                        "surface-container": "#e7eefe",
+                        "on-background": "#151c27",
+                        "surface-tint": "#205fa5",
+                        "surface-container-highest": "#dce3f2",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#554013",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c2c6d2",
+                        "secondary": "#3d6751",
+                        "surface-variant": "#dce3f2",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-primary-fixed-variant": "#004786",
+                        "on-secondary-container": "#436d57",
+                        "surface-bright": "#f9f9ff",
+                        "background": "#f9f9ff",
+                        "tertiary-fixed": "#fedfa3",
+                        "tertiary": "#725b2b",
+                        "on-surface-variant": "#424751",
+                        "on-secondary-fixed-variant": "#254f3a",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#caad75",
+                        "inverse-primary": "#a6c8ff",
+                        "on-tertiary-fixed-variant": "#584416",
+                        "secondary-fixed-dim": "#a4d1b6",
+                        "primary-fixed": "#d4e3ff",
+                        "primary": "#205fa5",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#e1c389",
+                        "inverse-surface": "#2a313c",
+                        "on-surface": "#151c27",
+                        "on-secondary-fixed": "#002113",
+                        "primary-container": "#7eb3ff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001c3a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-container-high": "#e2e8f8",
+                        "secondary-fixed": "#bfedd1"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px",
+                        '2xl': "1rem",
+                        '3xl': "1.5rem"
+                    },
+                    spacing: {
+                        base: "8px",
+                        lg: "40px",
+                        gutter: "16px",
+                        sm: "12px",
+                        md: "24px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        xs: "4px"
+                    },
+                    fontFamily: {
+                        "body-md": ["Manrope", "-apple-system", "BlinkMacSystemFont", "SF Pro Text", "Segoe UI", "sans-serif"],
+                        "label-sm": ["Manrope", "-apple-system", "BlinkMacSystemFont", "SF Pro Text", "Segoe UI", "sans-serif"],
+                        "headline-lg": ["Manrope", "-apple-system", "BlinkMacSystemFont", "SF Pro Display", "Segoe UI", "sans-serif"],
+                        "headline-lg-mobile": ["Manrope", "-apple-system", "BlinkMacSystemFont", "SF Pro Display", "Segoe UI", "sans-serif"],
+                        "display-num": ["Manrope", "-apple-system", "BlinkMacSystemFont", "SF Pro Display", "Segoe UI", "sans-serif"]
+                    },
+                    fontSize: {
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "label-sm": ["13px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "500" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "600" }],
+                        "display-num": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }]
+                    },
+                    boxShadow: {
+                        'airy': '0 4px 24px -2px rgba(32, 95, 165, 0.06), 0 0 1px 0 rgba(32, 95, 165, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            background-color: #f2f2f7; /* iOS grouped background color approximate */
+        }
+        
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar { display: none; }
+        
+        /* Grouped List Styles mimicking iOS */
+        .ios-list-group {
+            background-color: var(--color-surface-container-lowest, #ffffff);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        
+        .ios-list-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            min-height: 44px; /* Minimum touch target */
+            position: relative;
+        }
+        
+        /* Separator line */
+        .ios-list-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 16px; /* Offset to align with text, not icon */
+            right: 0;
+            height: 1px; /* Real 1px line */
+            background-color: rgba(60, 60, 67, 0.1);
+            transform: scaleY(0.5); /* Crisp line on retina displays */
+        }
+        
+        .ios-list-item:active {
+            background-color: var(--color-surface-container-highest, #dce3f2);
+        }
+        
+        /* Typography adjustments for iOS feel */
+        .ios-title {
+            font-size: 17px;
+            font-weight: 400;
+            color: var(--color-on-surface, #151c27);
+        }
+        
+        .ios-value {
+            font-size: 17px;
+            font-weight: 400;
+            color: var(--color-outline, #727782);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .ios-subtitle {
+            font-size: 13px;
+            color: var(--color-on-surface-variant, #424751);
+            margin-top: 2px;
+        }
+        
+        .chevron {
+            color: var(--color-outline-variant, #c2c6d2);
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md text-on-background min-h-screen pb-lg antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md flex items-center justify-between px-margin-mobile h-[44px] shadow-sm border-b border-outline-variant/20 pt-safe-top">
+<button aria-label="返回" class="w-[44px] h-[44px] flex items-center justify-start text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 400;">chevron_left</span>
+</button>
+<h1 class="font-semibold text-[17px] text-on-surface tracking-tight">账号与绑定</h1>
+<div class="w-[44px]"></div> <!-- Spacer for centering -->
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[calc(44px+env(safe-area-inset-top)+24px)] px-margin-mobile max-w-2xl mx-auto space-y-md">
+<!-- 模块一：账号状态卡 -->
+<section class="bg-surface-container-lowest rounded-3xl shadow-airy border border-outline-variant/10 p-md flex flex-col gap-sm">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<div>
+<h2 class="font-semibold text-[18px] text-on-surface">当前账号：林雨辉</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">账号状态：正常</p>
+</div>
+</div>
+<div class="mt-xs pt-sm border-t border-outline-variant/20 grid grid-cols-2 gap-sm">
+<div>
+<p class="font-label-sm text-label-sm text-outline mb-1">手机号</p>
+<p class="font-medium text-[15px] text-on-surface">185****1759</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline mb-1">安全状态</p>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">shield_locked</span>
+<p class="font-medium text-[15px]">已开启基础保护</p>
+</div>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-sm bg-surface-container-low p-3 rounded-lg leading-relaxed">
+                请确保手机号可用，它将用于登录、找回账号和安全验证。
+            </p>
+</section>
+<!-- 模块二：登录方式 -->
+<section>
+<h3 class="font-label-sm text-label-sm text-outline uppercase tracking-wider ml-4 mb-2">登录方式</h3>
+<div class="ios-list-group">
+<button class="w-full text-left ios-list-item">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">smartphone</span>
+</div>
+<div>
+<div class="ios-title">手机号</div>
+<div class="ios-subtitle">用于登录和找回账号</div>
+</div>
+</div>
+<div class="ios-value">
+                        185****1759
+                        <span class="material-symbols-outlined chevron">chevron_right</span>
+</div>
+</button>
+<button class="w-full text-left ios-list-item">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">ios</span>
+</div>
+<div>
+<div class="ios-title">Apple 登录</div>
+<div class="ios-subtitle">可用于快速登录</div>
+</div>
+</div>
+<div class="ios-value">
+                        已绑定
+                        <span class="material-symbols-outlined chevron">chevron_right</span>
+</div>
+</button>
+<button class="w-full text-left ios-list-item">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-[#07C160]">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</div>
+<div>
+<div class="ios-title">微信登录</div>
+<div class="ios-subtitle">绑定后可用于快速登录</div>
+</div>
+</div>
+<div class="ios-value">
+                        未绑定
+                        <span class="material-symbols-outlined chevron">chevron_right</span>
+</div>
+</button>
+</div>
+</section>
+<!-- 模块三：密码与验证 -->
+<section>
+<h3 class="font-label-sm text-label-sm text-outline uppercase tracking-wider ml-4 mb-2">密码与验证</h3>
+<div class="ios-list-group">
+<button class="w-full text-left ios-list-item">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">key</span>
+</div>
+<div>
+<div class="ios-title">修改密码</div>
+<div class="ios-subtitle">修改后，其他设备需要重新登录</div>
+</div>
+</div>
+<div class="ios-value">
+<span class="material-symbols-outlined chevron">chevron_right</span>
+</div>
+</button>
+<button class="w-full text-left ios-list-item">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">lock_reset</span>
+</div>
+<div>
+<div class="ios-title">找回密码</div>
+<div class="ios-subtitle">通过手机号验证后重置</div>
+</div>
+</div>
+<div class="ios-value">
+<span class="material-symbols-outlined chevron">chevron_right</span>
+</div>
+</button>
+<button class="w-full text-left ios-list-item">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">fingerprint</span>
+</div>
+<div>
+<div class="ios-title">生物识别验证</div>
+<div class="ios-subtitle">用于数据导出等敏感操作</div>
+</div>
+</div>
+<div class="ios-value">
+                        跟随系统
+                        <span class="material-symbols-outlined chevron">chevron_right</span>
+</div>
+</button>
+<button class="w-full text-left ios-list-item">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<div>
+<div class="ios-title">登录保护</div>
+<div class="ios-subtitle">异常登录时需要额外验证</div>
+</div>
+</div>
+<div class="ios-value text-secondary">
+                        已开启
+                    </div>
+</button>
+</div>
+</section>
+<!-- 模块四：安全提示卡 -->
+<section class="bg-primary-container/20 rounded-2xl p-4 flex gap-3 items-start border border-primary-container/30">
+<span class="material-symbols-outlined text-primary mt-1" style="font-variation-settings: 'FILL' 1;">info</span>
+<div>
+<h4 class="font-medium text-[15px] text-on-primary-fixed mb-1">修改账号信息后会发生什么？</h4>
+<p class="font-label-sm text-label-sm text-on-primary-fixed-variant leading-relaxed">
+                    修改密码或换绑手机号后，其他设备会退出登录，需要重新验证后才能继续使用。当前设备会保持登录状态。<br>
+<span class="block mt-2 font-medium opacity-80">这不会影响你在本机已保存的数据。</span>
+</p>
+</div>
+</section>
+<!-- 模块五 & 六：账号操作与危险操作 -->
+<section class="mt-lg">
+<div class="ios-list-group mb-4">
+<button class="w-full text-center ios-list-item justify-center py-4">
+<div class="flex flex-col items-center">
+<div class="font-medium text-[17px] text-primary">退出登录</div>
+<div class="ios-subtitle text-center mt-1">退出后，离线状态下不能查看本地数据</div>
+</div>
+</button>
+</div>
+<div class="ios-list-group !bg-transparent border border-error-container/50 !mb-8">
+<button class="w-full text-center ios-list-item justify-center py-4 bg-surface-container-lowest">
+<div class="flex flex-col items-center">
+<div class="font-medium text-[17px] text-error">注销账号</div>
+<div class="ios-subtitle text-center mt-1 !text-error/70">进入账号注销流程</div>
+</div>
+</button>
+</div>
+</section>
+</main>
+</body></html>

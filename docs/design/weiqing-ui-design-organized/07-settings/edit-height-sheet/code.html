@@ -1,0 +1,351 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>修改身高 - Bottom Sheet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* iOS Picker Simulator Styles */
+        .picker-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+        }
+        
+        .picker-wheel {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform-style: preserve-3d;
+            transition: transform 0.1s;
+        }
+        
+        .picker-item {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 34px; /* Standard iOS picker item height */
+            line-height: 34px;
+            text-align: center;
+            transform-origin: 50% 50% -100px; /* Radius of the wheel */
+            backface-visibility: hidden;
+            color: #151c27; /* on-surface */
+            opacity: 0.3;
+            transition: opacity 0.2s, font-weight 0.2s;
+        }
+        
+        .picker-item.active {
+            opacity: 1;
+            font-weight: 600;
+        }
+
+        /* Selection highlight band */
+        .picker-highlight {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 34px;
+            background-color: rgba(118, 118, 128, 0.12); /* Standard iOS gray background for picker highlight */
+            border-radius: 8px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Bottom Sheet Animation */
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+        
+        .bottom-sheet {
+            animation: slideUp 0.3s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#bfedd1",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#c2c6d2",
+                    "on-secondary-container": "#436d57",
+                    "surface-variant": "#dce3f2",
+                    "on-tertiary-fixed-variant": "#584416",
+                    "background": "#f9f9ff",
+                    "surface-container": "#e7eefe",
+                    "surface": "#f9f9ff",
+                    "surface-bright": "#f9f9ff",
+                    "secondary": "#3d6751",
+                    "tertiary-fixed": "#fedfa3",
+                    "surface-dim": "#d3dae9",
+                    "primary-fixed-dim": "#a6c8ff",
+                    "on-surface-variant": "#424751",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#254f3a",
+                    "primary": "#205fa5",
+                    "tertiary-container": "#caad75",
+                    "surface-tint": "#205fa5",
+                    "inverse-on-surface": "#ebf1ff",
+                    "secondary-fixed": "#bfedd1",
+                    "on-surface": "#151c27",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f0f3ff",
+                    "primary-fixed": "#d4e3ff",
+                    "on-primary-container": "#004481",
+                    "inverse-surface": "#2a313c",
+                    "inverse-primary": "#a6c8ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#001c3a",
+                    "on-background": "#151c27",
+                    "secondary-fixed-dim": "#a4d1b6",
+                    "on-primary-fixed-variant": "#004786",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#e2e8f8",
+                    "tertiary-fixed-dim": "#e1c389",
+                    "primary-container": "#7eb3ff",
+                    "on-tertiary-fixed": "#261900",
+                    "on-tertiary-container": "#554013",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#725b2b",
+                    "on-secondary-fixed": "#002113",
+                    "surface-container-highest": "#dce3f2",
+                    "outline": "#727782"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "lg": "40px",
+                    "xs": "4px",
+                    "margin-desktop": "64px",
+                    "base": "8px",
+                    "md": "24px",
+                    "sm": "12px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "display-num": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "display-num": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-surface-variant min-h-screen flex items-end justify-center font-body-md text-on-surface antialiased overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Overlay backdrop -->
+<div class="fixed inset-0 bg-on-surface/40 backdrop-blur-sm z-40 transition-opacity" id="backdrop"></div>
+<!-- Bottom Sheet Container -->
+<div class="bottom-sheet bg-surface w-full max-w-md rounded-t-[32px] z-50 pb-safe shadow-[0_-8px_32px_rgba(32,95,165,0.08)] flex flex-col items-center">
+<!-- Drag Handle (iOS style) -->
+<div class="w-full flex justify-center pt-4 pb-2">
+<div class="w-12 h-1.5 bg-outline-variant/50 rounded-full"></div>
+</div>
+<!-- Header -->
+<div class="w-full px-margin-mobile flex justify-between items-center mb-6">
+<!-- Invisible spacer for centering title -->
+<div class="w-8"></div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight text-center flex-1">编辑身高</h2>
+<!-- Close icon placeholder for balance, or act as actual close if needed -->
+<button aria-label="关闭" class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-outline active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+</div>
+<!-- Picker Area -->
+<div class="w-full px-margin-mobile mb-8">
+<div class="relative bg-surface-container-lowest rounded-2xl p-4 shadow-sm shadow-primary/5 border border-outline-variant/10">
+<div class="picker-container w-full" id="picker-container">
+<div class="picker-highlight"></div>
+<div class="picker-wheel" id="picker-wheel">
+<!-- Items injected by JS -->
+</div>
+<!-- Unit Label positioned to the right of the highlight -->
+<div class="absolute top-1/2 left-1/2 ml-[35px] -translate-y-1/2 font-body-md text-body-md text-outline font-medium pointer-events-none">
+                        cm
+                    </div>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="w-full px-margin-mobile pb-8 pt-2">
+<button class="w-full h-[56px] bg-primary text-on-primary rounded-full font-headline-lg-mobile text-[18px] font-semibold tracking-wide flex items-center justify-center active:scale-[0.98] active:bg-primary/90 transition-all shadow-md shadow-primary/20">
+                完成
+            </button>
+</div>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const wheel = document.getElementById('picker-wheel');
+            const container = document.getElementById('picker-container');
+            
+            const minHeight = 30;
+            const maxHeight = 250;
+            const defaultHeight = 170;
+            const itemHeight = 34; // standard iOS picker item height
+            const radius = 100; // approximate radius of the wheel cylinder
+
+            let items = [];
+            let currentSelectedIndex = defaultHeight - minHeight;
+            let isDragging = false;
+            let startY = 0;
+            let currentRotation = 0;
+            let targetRotation = 0;
+            let velocity = 0;
+            let lastY = 0;
+            let lastTime = 0;
+            let animationFrame;
+
+            // Initialize wheel items
+            for (let i = minHeight; i <= maxHeight; i++) {
+                const el = document.createElement('div');
+                el.className = 'picker-item font-display-num text-[24px]'; // Using display-num font for numbers
+                el.innerText = i;
+                wheel.appendChild(el);
+                items.push(el);
+            }
+
+            function updateWheel() {
+                // Calculate which item should be selected based on rotation
+                const anglePerItem = itemHeight / radius;
+                const index = Math.round(-currentRotation / anglePerItem);
+                
+                // Clamp index
+                const clampedIndex = Math.max(0, Math.min(items.length - 1, index));
+                
+                // If stopped or snapping, adjust rotation exactly to clamped index
+                if (!isDragging && Math.abs(velocity) < 0.01) {
+                     targetRotation = -clampedIndex * anglePerItem;
+                     currentRotation += (targetRotation - currentRotation) * 0.2; // ease into snap
+                }
+
+                // Apply transforms
+                items.forEach((item, i) => {
+                    const angle = currentRotation + (i * anglePerItem);
+                    // Hide items completely behind the wheel
+                    if (Math.abs(angle) > Math.PI / 2) {
+                        item.style.visibility = 'hidden';
+                    } else {
+                        item.style.visibility = 'visible';
+                        item.style.transform = `rotateX(${angle}rad) translateZ(${radius}px)`;
+                        
+                        // Update active state
+                        if (i === clampedIndex) {
+                            item.classList.add('active');
+                            item.style.color = '#205fa5'; // Highlight active number with primary color
+                        } else {
+                            item.classList.remove('active');
+                            item.style.color = '#151c27'; // Reset
+                        }
+                    }
+                });
+
+                if (!isDragging && Math.abs(velocity) > 0.001) {
+                    currentRotation += velocity;
+                    velocity *= 0.95; // friction
+                    
+                    // Boundary bouncing
+                    const maxRotation = 0;
+                    const minRotation = -(items.length - 1) * anglePerItem;
+                    
+                    if (currentRotation > maxRotation) {
+                        velocity -= (currentRotation - maxRotation) * 0.1;
+                        velocity *= 0.8; // extra dampening at boundaries
+                    } else if (currentRotation < minRotation) {
+                        velocity -= (currentRotation - minRotation) * 0.1;
+                        velocity *= 0.8;
+                    }
+                }
+
+                animationFrame = requestAnimationFrame(updateWheel);
+            }
+
+            // Set initial rotation
+            const initialAnglePerItem = itemHeight / radius;
+            currentRotation = -currentSelectedIndex * initialAnglePerItem;
+            updateWheel();
+
+            // Touch / Mouse events for dragging
+            container.addEventListener('touchstart', handleStart, { passive: false });
+            container.addEventListener('touchmove', handleMove, { passive: false });
+            container.addEventListener('touchend', handleEnd);
+            container.addEventListener('mousedown', handleStart);
+            window.addEventListener('mousemove', handleMove);
+            window.addEventListener('mouseup', handleEnd);
+
+            function handleStart(e) {
+                if(e.type === 'mousedown' && e.button !== 0) return;
+                isDragging = true;
+                startY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+                lastY = startY;
+                lastTime = performance.now();
+                velocity = 0;
+                e.preventDefault(); // Prevent scrolling the page
+            }
+
+            function handleMove(e) {
+                if (!isDragging) return;
+                const currentY = e.type.includes('touch') ? e.touches[0].clientY : e.clientY;
+                const deltaY = currentY - lastY;
+                const currentTime = performance.now();
+                const deltaTime = currentTime - lastTime;
+                
+                // Convert pixel movement to rotation (approximate)
+                const deltaRotation = deltaY / radius;
+                currentRotation += deltaRotation;
+
+                if (deltaTime > 0) {
+                    velocity = deltaRotation / (deltaTime / 16); // normalize to roughly 60fps
+                }
+
+                lastY = currentY;
+                lastTime = currentTime;
+                e.preventDefault();
+            }
+
+            function handleEnd() {
+                if (!isDragging) return;
+                isDragging = false;
+                
+                // Give it a little flick velocity
+                if (Math.abs(velocity) > 0.5) {
+                    velocity = Math.sign(velocity) * 0.5; // cap velocity
+                }
+            }
+
+            // Optional: close on backdrop click
+            document.getElementById('backdrop').addEventListener('click', () => {
+                // In a real app, this would trigger closing animation and remove from DOM
+                console.log('Close bottom sheet requested');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Preference Settings - Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#584416",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary": "#3d6751",
+                        "on-tertiary-fixed": "#261900",
+                        "on-secondary-container": "#436d57",
+                        "secondary-container": "#bfedd1",
+                        "inverse-primary": "#a6c8ff",
+                        "surface-tint": "#205fa5",
+                        "surface-container-highest": "#dce3f2",
+                        "on-background": "#151c27",
+                        "outline": "#727782",
+                        "tertiary": "#725b2b",
+                        "secondary-fixed-dim": "#a4d1b6",
+                        "primary": "#205fa5",
+                        "on-secondary-fixed-variant": "#254f3a",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#004786",
+                        "on-primary-fixed": "#001c3a",
+                        "tertiary-fixed-dim": "#e1c389",
+                        "surface": "#f9f9ff",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-variant": "#dce3f2",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-surface-variant": "#424751",
+                        "inverse-surface": "#2a313c",
+                        "tertiary-fixed": "#fedfa3",
+                        "secondary-fixed": "#bfedd1",
+                        "primary-fixed": "#d4e3ff",
+                        "on-tertiary-container": "#554013",
+                        "on-primary-container": "#004481",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#151c27",
+                        "surface-dim": "#d3dae9",
+                        "background": "#f9f9ff",
+                        "tertiary-container": "#caad75",
+                        "outline-variant": "#c2c6d2",
+                        "primary-container": "#7eb3ff",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#e7eefe",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "margin-desktop": "64px",
+                        "sm": "12px",
+                        "margin-mobile": "20px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "display-num": ["Manrope"],
+                        "body-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-num": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom styles for switches and other elements if needed */
+        .switch-input:checked + .switch-bg {
+            background-color: #205fa5; /* primary */
+        }
+        .switch-input:checked + .switch-bg .switch-knob {
+            transform: translateX(100%);
+        }
+        
+        /* Glassmorphism utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Ambient shadow */
+        .ambient-shadow {
+            box-shadow: 0 10px 40px -10px rgba(32, 95, 165, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col items-center justify-start overflow-x-hidden">
+<!-- Main Container -->
+<main class="w-full max-w-[430px] flex flex-col min-h-screen relative pb-[120px]">
+<!-- TopAppBar (Linear flow, so we adapt it slightly for onboarding) -->
+<header class="w-full flex justify-between items-center px-margin-mobile py-sm bg-background/80 backdrop-blur-md sticky top-0 z-50">
+<button aria-label="Back" class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back_ios_new</span>
+</button>
+<div class="text-label-sm font-label-sm text-outline font-medium tracking-widest">5/6</div>
+<div class="w-10 h-10"></div> <!-- Placeholder for balance -->
+</header>
+<!-- Progress Bar -->
+<div class="w-full px-margin-mobile mb-8">
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 83.33%;"></div>
+</div>
+</div>
+<!-- Content Canvas -->
+<div class="flex-1 px-margin-mobile flex flex-col gap-md">
+<!-- Hero Title & Subtitle -->
+<div class="text-center mb-4">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-2">让记录更轻松一点</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">
+                    开启以下权限，我们将在后台默默为您工作，减少手动操作的繁琐。
+                </p>
+</div>
+<!-- Settings Group 1: Health Data (Glassmorphism Card) -->
+<section class="glass-panel rounded-3xl p-6 ambient-shadow flex flex-col gap-4 relative overflow-hidden">
+<!-- Decorative element -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-primary-container/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-4 z-10">
+<div class="w-12 h-12 rounded-2xl bg-[#ffebf0] flex items-center justify-center shrink-0 shadow-sm border border-white/60">
+<span class="material-symbols-outlined text-[28px] text-[#ff3b30]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="flex-1">
+<h2 class="text-[17px] font-semibold text-on-surface mb-1">连接 Apple Health</h2>
+<p class="text-label-sm font-label-sm text-on-surface-variant leading-relaxed">允许微轻读取和写入 Apple Health 中的体重数据。你以后可以随时在系统设置中关闭权限。</p>
+</div>
+</div>
+<div class="mt-2 z-10">
+<button class="w-full py-3 px-4 bg-primary-container/30 hover:bg-primary-container/50 text-primary font-semibold rounded-xl transition-colors border border-primary/10 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+                        去授权
+                    </button>
+</div>
+</section>
+<!-- Settings Group 2: General Preferences -->
+<section class="bg-surface-container-lowest rounded-3xl p-2 ambient-shadow border border-surface-container-high/50">
+<!-- Daily Reminder -->
+<div class="flex items-center justify-between p-4 border-b border-surface-container-highest/50">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<div>
+<div class="text-[16px] font-medium text-on-surface">每日记录提醒</div>
+<div class="text-label-sm font-label-sm text-primary cursor-pointer hover:underline">08:00 AM &gt;</div>
+</div>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only switch-input" type="checkbox">
+<div class="switch-bg w-14 h-8 bg-surface-container-highest rounded-full transition-colors duration-300 relative border border-transparent shadow-inner">
+<div class="switch-knob w-7 h-7 bg-white rounded-full absolute top-[1px] left-[1px] shadow-sm transition-transform duration-300 flex items-center justify-center"></div>
+</div>
+</label>
+</div>
+<!-- AI Encouragement -->
+<div class="flex items-center justify-between p-4 border-b border-surface-container-highest/50">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<div>
+<div class="text-[16px] font-medium text-on-surface">AI 鼓励</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">打卡后生成温和鼓励文案。</div>
+</div>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only switch-input" type="checkbox">
+<div class="switch-bg w-14 h-8 bg-surface-container-highest rounded-full transition-colors duration-300 relative border border-transparent shadow-inner">
+<div class="switch-knob w-7 h-7 bg-white rounded-full absolute top-[1px] left-[1px] shadow-sm transition-transform duration-300"></div>
+</div>
+</label>
+</div>
+<!-- Unit & Precision -->
+<div class="flex items-center justify-between p-4 cursor-pointer hover:bg-surface-container-low/50 transition-colors rounded-b-2xl">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-outline">
+<span class="material-symbols-outlined">straighten</span>
+</div>
+<div>
+<div class="text-[16px] font-medium text-on-surface">单位与精度</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">公斤 (kg) / 0.1</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</section>
+</div>
+<!-- Bottom Action Area (Fixed) -->
+<div class="fixed bottom-0 left-0 w-full px-margin-mobile pb-lg pt-6 bg-gradient-to-t from-background via-background to-transparent z-40 max-w-[430px] left-1/2 -translate-x-1/2 flex flex-col gap-3">
+<button class="w-full bg-primary text-on-primary py-4 rounded-2xl font-semibold text-[16px] shadow-lg shadow-primary/20 hover:opacity-90 active:scale-[0.98] transition-all flex justify-center items-center gap-2">
+                完成设置
+                <span class="material-symbols-outlined text-[20px]">check_circle</span>
+</button>
+<button class="w-full py-3 text-outline font-medium text-[15px] hover:text-on-surface transition-colors active:scale-[0.98]">
+                稍后再说
+            </button>
+</div>
+</main>
+<script>
+        // Simple logic to add interactivity to switches
+        document.querySelectorAll('.switch-input').forEach(input => {
+            input.addEventListener('change', function() {
+                const knob = this.nextElementSibling.querySelector('.switch-knob');
+                // The CSS handles the visual change based on :checked pseudo-class
+            });
+        });
+    </script>
+</body></html>

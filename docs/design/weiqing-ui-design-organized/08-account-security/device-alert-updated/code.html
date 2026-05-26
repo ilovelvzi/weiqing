@@ -1,0 +1,177 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>已登录设备管理</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#caad75",
+                        "primary-container": "#7eb3ff",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-container": "#e7eefe",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#fedfa3",
+                        "on-tertiary-container": "#554013",
+                        "surface-tint": "#205fa5",
+                        "primary": "#205fa5",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-bright": "#f9f9ff",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#a6c8ff",
+                        "on-secondary-fixed-variant": "#254f3a",
+                        "on-secondary-fixed": "#002113",
+                        "secondary-fixed-dim": "#a4d1b6",
+                        "on-tertiary-fixed-variant": "#584416",
+                        "surface-variant": "#dce3f2",
+                        "secondary-fixed": "#bfedd1",
+                        "on-tertiary-fixed": "#261900",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c2c6d2",
+                        "surface-container-low": "#f0f3ff",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "surface": "#f9f9ff",
+                        "primary-fixed": "#d4e3ff",
+                        "tertiary": "#725b2b",
+                        "on-background": "#151c27",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#727782",
+                        "on-primary-container": "#004481",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#151c27",
+                        "on-primary-fixed-variant": "#004786",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#436d57",
+                        "surface-container-highest": "#dce3f2",
+                        "surface-dim": "#d3dae9",
+                        "tertiary-fixed-dim": "#e1c389",
+                        "error-container": "#ffdad6",
+                        "secondary": "#3d6751",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#bfedd1",
+                        "on-surface-variant": "#424751",
+                        "background": "#f9f9ff",
+                        "on-primary-fixed": "#001c3a",
+                        "inverse-surface": "#2a313c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "margin-mobile": "20px",
+                        "lg": "40px",
+                        "margin-desktop": "64px",
+                        "xs": "4px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "display-num": ["Manrope"],
+                        "label-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-num": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .ios-dialog-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen relative overflow-hidden">
+<!-- Mock Background (representing SCREEN_64) -->
+<div class="w-full h-screen absolute top-0 left-0 z-0">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-background/80 backdrop-blur-md flex items-center h-16 px-margin-mobile">
+<button class="hover:opacity-70 transition-opacity active:scale-95 transition-transform duration-200 text-on-surface-variant flex items-center justify-center p-2 -ml-2">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-semibold text-on-surface ml-4">已登录设备管理</h1>
+</header>
+<!-- Dummy Content -->
+<main class="px-margin-mobile py-6 flex flex-col gap-4">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_rgba(32,95,165,0.06)] border border-outline-variant/20 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="smartphone">smartphone</span>
+</div>
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">iPhone 14 Pro</h3>
+<p class="font-label-sm text-label-sm text-outline">当前设备 • iOS 17.1</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_rgba(32,95,165,0.06)] border border-outline-variant/20 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" data-icon="laptop_mac">laptop_mac</span>
+</div>
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">MacBook Air</h3>
+<p class="font-label-sm text-label-sm text-outline">上海市 • macOS 14.0</p>
+</div>
+</div>
+</div>
+<button class="w-full py-3 rounded-lg text-error bg-error-container/20 font-body-md text-body-md font-medium text-center hover:bg-error-container/40 transition-colors">
+                    退出登录
+                </button>
+</div>
+</main>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-[100] bg-on-background/20 backdrop-blur-sm flex items-center justify-center p-6 animate-[fadeIn_0.2s_ease-out]">
+<!-- iOS Style Dialog -->
+<div class="ios-dialog-blur w-full max-w-[270px] rounded-[14px] shadow-2xl flex flex-col overflow-hidden animate-[scaleIn_0.2s_ease-out]">
+<!-- Content Area -->
+<div class="pt-5 px-4 pb-4 flex flex-col items-center text-center">
+<h2 class="font-body-md text-[17px] leading-[22px] font-semibold text-on-surface mb-1">
+                    账号信息已更新
+                </h2>
+<p class="font-label-sm text-[13px] leading-[18px] text-on-surface-variant">
+                    其他设备需要重新登录。当前设备会保持登录状态。
+                </p>
+</div>
+<!-- Divider -->
+<div class="w-full h-[0.5px] bg-[#3C3C43]/36"></div>
+<!-- Button Area -->
+<button class="w-full py-[11px] font-body-md text-[17px] leading-[22px] font-semibold text-[#007AFF] bg-transparent hover:bg-black/5 active:bg-black/10 transition-colors">
+                知道了
+            </button>
+</div>
+</div>
+<style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes scaleIn {
+            from { transform: scale(1.1); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</body></html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>账号注销</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#ffffff",
+                      "tertiary": "#725b2b",
+                      "outline-variant": "#c2c6d2",
+                      "primary-container": "#7eb3ff",
+                      "inverse-primary": "#a6c8ff",
+                      "on-primary-fixed": "#001c3a",
+                      "on-secondary-container": "#436d57",
+                      "secondary": "#3d6751",
+                      "primary": "#205fa5",
+                      "on-error-container": "#93000a",
+                      "inverse-surface": "#2a313c",
+                      "on-surface-variant": "#424751",
+                      "tertiary-container": "#caad75",
+                      "on-primary-fixed-variant": "#004786",
+                      "tertiary-fixed": "#fedfa3",
+                      "error": "#ba1a1a",
+                      "surface-variant": "#dce3f2",
+                      "surface-dim": "#d3dae9",
+                      "on-primary-container": "#004481",
+                      "tertiary-fixed-dim": "#e1c389",
+                      "on-secondary-fixed-variant": "#254f3a",
+                      "surface-container-high": "#e2e8f8",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed": "#261900",
+                      "background": "#f9f9ff",
+                      "outline": "#727782",
+                      "inverse-on-surface": "#ebf1ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#584416",
+                      "on-secondary-fixed": "#002113",
+                      "secondary-fixed-dim": "#a4d1b6",
+                      "primary-fixed": "#d4e3ff",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#bfedd1",
+                      "surface-tint": "#205fa5",
+                      "on-surface": "#151c27",
+                      "surface-container-low": "#f0f3ff",
+                      "error-container": "#ffdad6",
+                      "surface-container": "#e7eefe",
+                      "on-tertiary-container": "#554013",
+                      "surface-container-highest": "#dce3f2",
+                      "surface": "#f9f9ff",
+                      "on-background": "#151c27",
+                      "on-error": "#ffffff",
+                      "surface-bright": "#f9f9ff",
+                      "secondary-fixed": "#bfedd1",
+                      "primary-fixed-dim": "#a6c8ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "sm": "12px",
+                      "md": "24px",
+                      "margin-mobile": "20px",
+                      "lg": "40px",
+                      "base": "8px",
+                      "margin-desktop": "64px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-sm": [
+                              "Manrope"
+                      ],
+                      "body-md": [
+                              "Manrope"
+                      ],
+                      "headline-lg-mobile": [
+                              "Manrope"
+                      ],
+                      "display-num": [
+                              "Manrope"
+                      ],
+                      "headline-lg": [
+                              "Manrope"
+                      ]
+              },
+              "fontSize": {
+                      "label-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-num": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pt-[44px] pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant/30 flex items-center justify-between px-margin-mobile h-[44px]">
+<button aria-label="返回" class="hover:opacity-70 transition-opacity active:scale-95 transition-transform flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">arrow_back_ios</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-semibold text-center flex-1">账号注销</h1>
+<div class="w-[24px]"></div> <!-- Spacer for centering -->
+</header>
+<main class="max-w-[1200px] mx-auto px-margin-mobile pt-md flex flex-col gap-md">
+<!-- Module 1: Important Notice -->
+<section class="bg-surface-container-lowest rounded-xl p-md shadow-[0_20px_40px_-15px_rgba(32,95,165,0.06)] border border-outline-variant/20">
+<h2 class="font-headline-lg-mobile text-[20px] font-semibold text-on-surface mb-sm">注销账号前，请先了解这些</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">注销账号会进入 30 天冷静期。冷静期内你可以恢复账号，也可以导出自己的历史数据。<br><br><span class="text-error font-medium">冷静期结束后，账号数据将进入删除流程，届时无法再恢复或导出。</span></p>
+</section>
+<!-- Module 2: Data to be deleted -->
+<section>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant ml-4 mb-2 uppercase tracking-wider">将被删除的数据</h3>
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_20px_40px_-15px_rgba(32,95,165,0.04)] border border-outline-variant/10 overflow-hidden divide-y divide-surface-container">
+<div class="flex items-center px-4 py-3">
+<span class="material-symbols-outlined text-primary mr-3" style="font-variation-settings: 'FILL' 1;">monitor_weight</span>
+<span class="font-body-md text-body-md text-on-surface">体重记录</span>
+</div>
+<div class="flex items-center px-4 py-3">
+<span class="material-symbols-outlined text-primary mr-3" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-body-md text-body-md text-on-surface">健康数据</span>
+</div>
+<div class="flex items-center px-4 py-3">
+<span class="material-symbols-outlined text-primary mr-3" style="font-variation-settings: 'FILL' 1;">flag</span>
+<span class="font-body-md text-body-md text-on-surface">目标数据</span>
+</div>
+<div class="flex items-center px-4 py-3">
+<span class="material-symbols-outlined text-primary mr-3" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-body-md text-body-md text-on-surface">饮食线索</span>
+</div>
+<div class="flex items-center px-4 py-3">
+<span class="material-symbols-outlined text-primary mr-3" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-body-md text-body-md text-on-surface">周报/月报</span>
+</div>
+<div class="flex items-center px-4 py-3">
+<span class="material-symbols-outlined text-primary mr-3" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-body-md text-body-md text-on-surface">AI 鼓励缓存</span>
+</div>
+<div class="flex items-center px-4 py-3"><span class="material-symbols-outlined text-primary mr-3" style="font-variation-settings: 'FILL' 1;">image</span><span class="font-body-md text-body-md text-on-surface">上传图片</span></div><div class="flex items-center px-4 py-3"><span class="material-symbols-outlined text-primary mr-3" style="font-variation-settings: 'FILL' 1;">rss_feed</span><span class="font-body-md text-body-md text-on-surface">动态</span></div><div class="flex items-center px-4 py-3"><span class="material-symbols-outlined text-primary mr-3" style="font-variation-settings: 'FILL' 1;">chat_bubble</span><span class="font-body-md text-body-md text-on-surface">评论</span></div><div class="flex items-center px-4 py-3"><span class="material-symbols-outlined text-primary mr-3" style="font-variation-settings: 'FILL' 1;">thumb_up</span><span class="font-body-md text-body-md text-on-surface">点赞</span></div></div>
+<p class="font-label-sm text-[12px] text-on-surface-variant mt-2 ml-4">如果你发布过动态，相关文本、图片、评论和点赞也会被删除。已删除记录不会进入导出文件，也不会被恢复。</p>
+</section>
+<!-- Module 3: Data not deleted -->
+<section>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant ml-4 mb-2 uppercase tracking-wider">不会被微轻删除的数据</h3>
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_20px_40px_-15px_rgba(32,95,165,0.04)] border border-outline-variant/10 overflow-hidden">
+<div class="flex items-center px-4 py-3">
+<span class="material-symbols-outlined text-secondary mr-3" style="font-variation-settings: 'FILL' 1;">health_and_safety</span>
+<span class="font-body-md text-body-md text-on-surface">Apple Health 原本已有的数据</span>
+</div>
+<div class="flex items-center px-4 py-3 border-t border-surface-container"><span class="material-symbols-outlined text-secondary mr-3" style="font-variation-settings: 'FILL' 1;">policy</span><span class="font-body-md text-body-md text-on-surface">法律或安全审计要求保留的去标识化日志</span></div></div>
+</section>
+<!-- Module 4: Suggestions before deletion -->
+<section>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant ml-4 mb-2 uppercase tracking-wider">注销前建议</h3>
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_20px_40px_-15px_rgba(32,95,165,0.04)] border border-outline-variant/10 overflow-hidden divide-y divide-surface-container">
+<button class="w-full flex items-center justify-between px-4 py-3 hover:bg-surface-container-low transition-colors text-left active:bg-surface-container">
+<div>
+<span class="font-body-md text-body-md text-on-surface block">导出数据</span>
+<span class="font-label-sm text-[12px] text-on-surface-variant">导出 CSV 与图片数据</span>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between px-4 py-3 hover:bg-surface-container-low transition-colors text-left active:bg-surface-container">
+<span class="font-body-md text-body-md text-on-surface">查看已登录设备</span>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full p-margin-mobile bg-background/90 backdrop-blur-md border-t border-outline-variant/20 z-40 pb-safe">
+<div class="max-w-[1200px] mx-auto">
+<button class="w-full py-[16px] rounded-full bg-surface-container-lowest text-error border border-error/20 font-headline-lg-mobile text-[16px] font-medium shadow-sm active:scale-[0.98] transition-transform">
+                继续注销
+            </button>
+</div>
+</div>
+<style>
+        /* Safe area padding for iOS */
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom, 24px);
+        }
+    </style>
+</body></html>
