@@ -5,6 +5,7 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { aiConfig, appConfig, corsConfig, databaseConfig, jwtConfig } from "./config";
 import { AccountModule } from "./modules/account";
+import { AiModule } from "./modules/ai";
 import { AuthModule } from "./modules/auth";
 import { HealthModule } from "./modules/health";
 import { HomeModule } from "./modules/home";
@@ -38,7 +39,8 @@ import { WeightRecordsModule } from "./modules/weight-records";
     WeightRecordsModule,
     StatsModule,
     HomeModule,
-    AccountModule
+    AccountModule,
+    AiModule
   ],
   controllers: [AppController],
   providers: [AppService]
