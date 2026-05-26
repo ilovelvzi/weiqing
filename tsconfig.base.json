@@ -12,9 +12,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "baseUrl": ".",
-    "paths": {
-      "@weiqing/shared": ["packages/shared/src/index.ts"]
-    }
+    "baseUrl": "."
   }
 }

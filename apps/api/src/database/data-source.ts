@@ -10,8 +10,8 @@ export const dataSourceOptions: DataSourceOptions = {
   ssl: sslEnabled ? { rejectUnauthorized: false } : false,
   synchronize: false,
   logging: (process.env.TYPEORM_LOGGING ?? "false") === "true",
-  entities: [],
-  migrations: []
+  entities: [__dirname + "/../modules/**/*.entity{.ts,.js}"],
+  migrations: [__dirname + "/migrations/*{.ts,.js}"]
 };
 
 export default new DataSource(dataSourceOptions);
