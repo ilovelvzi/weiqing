@@ -1,0 +1,13 @@
+node_modules/
+dist/
+build/
+coverage/
+.turbo/
+.taro/
+.DS_Store
+
+.env
+.env.*
+!.env.example
+
+.codex-tools/

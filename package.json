@@ -1,0 +1,24 @@
+{
+  "name": "weiqing",
+  "version": "0.1.0",
+  "private": true,
+  "description": "WeiQing app monorepo.",
+  "type": "module",
+  "scripts": {
+    "lint": "pnpm -r --if-present lint",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "test": "pnpm -r --if-present test",
+    "build:api": "pnpm -r --if-present build:api",
+    "build:mobile": "pnpm -r --if-present build:mobile"
+  },
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.0.0"
+  }
+}
