@@ -14,7 +14,8 @@ export class StatsController {
   constructor(private readonly statsService: StatsService) {}
 
   @Get("summary")
-  getSummary(@CurrentUser() user: JwtUser, @Query() _query: SummaryQueryDto) {
+  getSummary(@CurrentUser() user: JwtUser, @Query() query: SummaryQueryDto) {
+    void query;
     return this.statsService.getSummary(user.id);
   }
 

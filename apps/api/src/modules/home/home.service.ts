@@ -86,7 +86,7 @@ export class HomeService {
 
     const uniqueDates = [...new Set(localDates)].sort().reverse();
     let streak = 1;
-    let cursor = new Date(`${uniqueDates[0]}T00:00:00.000Z`);
+    const cursor = new Date(`${uniqueDates[0]}T00:00:00.000Z`);
 
     for (const localDate of uniqueDates.slice(1)) {
       cursor.setUTCDate(cursor.getUTCDate() - 1);

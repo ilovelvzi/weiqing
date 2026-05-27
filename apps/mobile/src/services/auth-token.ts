@@ -1,14 +1,15 @@
 import * as SecureStore from "expo-secure-store";
 
-const ACCESS_TOKEN_KEY = "weiqing.accessToken";
 const REFRESH_TOKEN_KEY = "weiqing.refreshToken";
 
-export function getAccessToken(): Promise<string | null> {
-  return SecureStore.getItemAsync(ACCESS_TOKEN_KEY);
+let accessToken: string | null = null;
+
+export async function getAccessToken(): Promise<string | null> {
+  return accessToken;
 }
 
-export function setAccessToken(token: string): Promise<void> {
-  return SecureStore.setItemAsync(ACCESS_TOKEN_KEY, token);
+export async function setAccessToken(token: string): Promise<void> {
+  accessToken = token;
 }
 
 export function getRefreshToken(): Promise<string | null> {
@@ -19,9 +20,11 @@ export function setRefreshToken(token: string): Promise<void> {
   return SecureStore.setItemAsync(REFRESH_TOKEN_KEY, token);
 }
 
+export async function hasRefreshToken(): Promise<boolean> {
+  return Boolean(await getRefreshToken());
+}
+
 export async function clearTokens(): Promise<void> {
-  await Promise.all([
-    SecureStore.deleteItemAsync(ACCESS_TOKEN_KEY),
-    SecureStore.deleteItemAsync(REFRESH_TOKEN_KEY)
-  ]);
+  accessToken = null;
+  await SecureStore.deleteItemAsync(REFRESH_TOKEN_KEY);
 }

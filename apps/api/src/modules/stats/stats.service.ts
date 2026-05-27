@@ -159,7 +159,7 @@ export class StatsService {
 
     const uniqueDates = [...new Set(localDates)].sort().reverse();
     let streak = 1;
-    let cursor = this.parseLocalDate(uniqueDates[0]);
+    const cursor = this.parseLocalDate(uniqueDates[0]);
 
     for (const localDate of uniqueDates.slice(1)) {
       cursor.setUTCDate(cursor.getUTCDate() - 1);

@@ -33,5 +33,6 @@ export const authApi = {
   refresh: (payload: RefreshTokenPayload) =>
     apiClient.post<AuthResponse, RefreshTokenPayload>("/auth/refresh", payload),
   logout: (payload: LogoutPayload) =>
-    apiClient.post<{ loggedOut: true }, LogoutPayload>("/auth/logout", payload)
+    apiClient.post<{ loggedOut: true }, LogoutPayload>("/auth/logout", payload),
+  getCurrentUser: () => apiClient.get<CurrentUserDto>("/me")
 };
