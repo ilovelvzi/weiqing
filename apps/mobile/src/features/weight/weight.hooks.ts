@@ -41,13 +41,33 @@ export function useCreateWeightRecordMutation() {
   });
 }
 
+export function useCalendarWeightRecordsQuery(year: number, month: number) {
+  return useWeightCalendarQuery({ year, month });
+}
+
 export function useUpdateWeightRecordMutation() {
   return useMutation({
     mutationFn: ({ id, payload }: { id: string; payload: UpdateWeightRecordPayload }) =>
-      weightApi.update(id, payload)
+      weightApi.update(id, payload),
+    onSuccess: () => {
+      invalidateWeightRecordRelatedQueries();
+    }
   });
 }
 
 export function useDeleteWeightRecordMutation() {
-  return useMutation({ mutationFn: weightApi.delete });
+  return useMutation({
+    mutationFn: weightApi.delete,
+    onSuccess: () => {
+      invalidateWeightRecordRelatedQueries();
+    }
+  });
+}
+
+function invalidateWeightRecordRelatedQueries() {
+  void queryClient.invalidateQueries({ queryKey: queryKeys.homeOverview() });
+  void queryClient.invalidateQueries({ queryKey: queryKeys.weightRecordsRoot() });
+  void queryClient.invalidateQueries({ queryKey: queryKeys.statsSummary() });
+  void queryClient.invalidateQueries({ queryKey: queryKeys.statsTrendRoot() });
+  void queryClient.invalidateQueries({ queryKey: queryKeys.latestEncouragement() });
 }

@@ -6,3 +6,6 @@ export const statsApi = {
   getTrend: (range: TrendRange) =>
     apiClient.get<WeightTrendResponseDto>(`/stats/trend?range=${range}`)
 };
+
+export const getStatsSummary = statsApi.getSummary;
+export const getWeightTrend = statsApi.getTrend;

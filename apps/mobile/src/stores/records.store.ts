@@ -13,7 +13,13 @@ interface RecordsState {
   setSelectedRecordId: (selectedRecordId: string | null) => void;
   setEditModalOpen: (isEditModalOpen: boolean) => void;
   setDeleteModalOpen: (isDeleteModalOpen: boolean) => void;
+  selectRecord: (selectedRecordId: string | null) => void;
+  openEditModal: (selectedRecordId: string) => void;
+  closeEditModal: () => void;
+  openDeleteModal: (selectedRecordId: string) => void;
+  closeDeleteModal: () => void;
   setCalendarMonth: (selectedYear: number, selectedMonth: number) => void;
+  setSelectedMonth: (selectedYear: number, selectedMonth: number) => void;
 }
 
 const now = new Date();
@@ -29,5 +35,11 @@ export const useRecordsStore = create<RecordsState>((set) => ({
   setSelectedRecordId: (selectedRecordId) => set({ selectedRecordId }),
   setEditModalOpen: (isEditModalOpen) => set({ isEditModalOpen }),
   setDeleteModalOpen: (isDeleteModalOpen) => set({ isDeleteModalOpen }),
-  setCalendarMonth: (selectedYear, selectedMonth) => set({ selectedYear, selectedMonth })
+  selectRecord: (selectedRecordId) => set({ selectedRecordId }),
+  openEditModal: (selectedRecordId) => set({ selectedRecordId, isEditModalOpen: true }),
+  closeEditModal: () => set({ isEditModalOpen: false }),
+  openDeleteModal: (selectedRecordId) => set({ selectedRecordId, isDeleteModalOpen: true }),
+  closeDeleteModal: () => set({ isDeleteModalOpen: false }),
+  setCalendarMonth: (selectedYear, selectedMonth) => set({ selectedYear, selectedMonth }),
+  setSelectedMonth: (selectedYear, selectedMonth) => set({ selectedYear, selectedMonth })
 }));

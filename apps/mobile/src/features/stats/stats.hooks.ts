@@ -16,3 +16,5 @@ export function useStatsTrendQuery(range: TrendRange) {
     queryFn: () => statsApi.getTrend(range)
   });
 }
+
+export const useWeightTrendQuery = useStatsTrendQuery;

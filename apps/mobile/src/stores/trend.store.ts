@@ -1,14 +1,9 @@
 import { TrendRange } from "@weiqing/shared";
 import { create } from "zustand";
 
-type SupportedTrendRange =
-  | TrendRange.SEVEN_DAYS
-  | TrendRange.THIRTY_DAYS
-  | TrendRange.NINETY_DAYS;
-
 interface TrendState {
-  selectedRange: SupportedTrendRange;
-  setSelectedRange: (selectedRange: SupportedTrendRange) => void;
+  selectedRange: TrendRange;
+  setSelectedRange: (selectedRange: TrendRange) => void;
 }
 
 export const useTrendStore = create<TrendState>((set) => ({

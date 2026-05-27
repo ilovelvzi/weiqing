@@ -78,3 +78,9 @@ export const weightApi = {
     ),
   delete: (id: string) => apiClient.delete<{ deleted: true }>(`/weight-records/${id}`)
 };
+
+export const listWeightRecords = weightApi.list;
+export const getCalendarWeightRecords = (year: number, month: number) =>
+  weightApi.calendar({ year, month });
+export const updateWeightRecord = weightApi.update;
+export const deleteWeightRecord = weightApi.delete;
