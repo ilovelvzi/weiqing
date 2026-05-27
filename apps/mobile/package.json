@@ -2,5 +2,40 @@
   "name": "@weiqing/mobile",
   "version": "0.1.0",
   "private": true,
-  "type": "module"
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "build:mobile": "expo export",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint \"app/**/*.{ts,tsx}\" \"src/**/*.{ts,tsx}\""
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "~2.2.0",
+    "@tanstack/react-query": "^5.62.8",
+    "@weiqing/shared": "workspace:*",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
+    "expo": "~55.0.0",
+    "expo-haptics": "~55.0.14",
+    "expo-network": "~8.0.7",
+    "expo-notifications": "~0.32.12",
+    "expo-router": "~55.0.16",
+    "expo-secure-store": "~15.0.7",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-native": "0.83.0",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.25.2",
+    "react-native-svg": "~15.12.1",
+    "react-native-web": "0.21.0",
+    "zod": "^3.25.76",
+    "zustand": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "typescript": "^5.7.2"
+  }
 }
