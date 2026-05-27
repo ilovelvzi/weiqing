@@ -18,7 +18,10 @@ async function bootstrap(): Promise<void> {
   app.use(helmet());
   app.use(cookieParser());
   app.enableCors({
-    origin: configService.get<string | string[]>("cors.origin", "http://localhost:10086"),
+    origin: configService.get<string | string[]>("cors.origin", [
+      "http://localhost:10086",
+      "http://localhost:8081"
+    ]),
     credentials: configService.get<boolean>("cors.credentials", true)
   });
 

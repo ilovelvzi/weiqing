@@ -5,17 +5,17 @@
   "type": "commonjs",
   "scripts": {
     "start": "node dist/main.js",
-    "start:dev": "nest start --watch",
+    "start:dev": "pnpm --filter @weiqing/shared build && nest start --watch",
     "build": "pnpm --filter @weiqing/shared build && nest build",
     "typecheck": "pnpm --filter @weiqing/shared build && tsc -p tsconfig.json --noEmit",
     "lint": "eslint \"src/**/*.ts\" \"test/**/*.ts\"",
     "test": "jest --config jest.config.js",
     "test:e2e": "jest --config jest.config.js --runInBand",
-    "typeorm": "typeorm-ts-node-commonjs -d src/database/data-source.ts",
-    "migration:generate": "pnpm typeorm migration:generate",
-    "migration:run": "pnpm typeorm migration:run",
-    "migration:revert": "pnpm typeorm migration:revert",
-    "migration:show": "pnpm typeorm migration:show"
+    "typeorm": "node -r tsconfig-paths/register ./node_modules/typeorm/cli-ts-node-commonjs.js",
+    "migration:run": "node -r tsconfig-paths/register ./node_modules/typeorm/cli-ts-node-commonjs.js migration:run -d ./src/database/data-source.ts",
+    "migration:revert": "node -r tsconfig-paths/register ./node_modules/typeorm/cli-ts-node-commonjs.js migration:revert -d ./src/database/data-source.ts",
+    "migration:show": "node -r tsconfig-paths/register ./node_modules/typeorm/cli-ts-node-commonjs.js migration:show -d ./src/database/data-source.ts",
+    "migration:generate": "node -r tsconfig-paths/register ./node_modules/typeorm/cli-ts-node-commonjs.js migration:generate -d ./src/database/data-source.ts"
   },
   "dependencies": {
     "@weiqing/shared": "workspace:*",
@@ -50,12 +50,12 @@
     "@types/node": "^22.10.2",
     "@types/passport-jwt": "^4.0.1",
     "@types/supertest": "^6.0.2",
+    "dotenv": "^16.4.5",
     "jest": "^29.7.0",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
-    "typeorm-ts-node-commonjs": "^0.3.20",
     "typescript": "^5.7.2"
   }
 }

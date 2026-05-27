@@ -17,6 +17,7 @@ import { WeightRecordsModule } from "./modules/weight-records";
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath: ["apps/api/.env", ".env"],
       load: [appConfig, databaseConfig, jwtConfig, aiConfig, corsConfig]
     }),
     TypeOrmModule.forRootAsync({
