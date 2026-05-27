@@ -1,6 +1,7 @@
 export const queryKeys = {
   me: () => ["me"] as const,
   homeOverview: () => ["home", "overview"] as const,
+  weightRecordsRoot: () => ["weight-records"] as const,
   weightRecords: (params?: unknown) => ["weight-records", params] as const,
   weightRecordDetail: (id: string) => ["weight-records", id] as const,
   weightCalendar: (year: number, month: number) => ["weight-records", "calendar", year, month] as const,

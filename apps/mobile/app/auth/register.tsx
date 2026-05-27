@@ -7,6 +7,7 @@ import { Button, Card, Input } from "../../src/components/base";
 import { ErrorView } from "../../src/components/feedback";
 import { PageShell } from "../../src/components/layout";
 import { saveAuthSession, useRegisterMutation } from "../../src/features/auth/auth.hooks";
+import { routes } from "../../src/services";
 import { colors, spacing, typography } from "../../src/styles";
 
 const registerFormSchema = registerSchema
@@ -48,7 +49,7 @@ export default function RegisterRoute() {
         password: parsed.data.password
       });
       await saveAuthSession(session);
-      router.replace("/");
+      router.replace(routes.home);
     } catch (error) {
       setFormError(getErrorMessage(error, "Registration failed. Try again later."));
     }
@@ -108,7 +109,7 @@ export default function RegisterRoute() {
 
       <Pressable
         accessibilityRole="button"
-        onPress={() => router.push("/auth/login")}
+        onPress={() => router.push(routes.login)}
         style={styles.linkButton}
       >
         <Text style={styles.linkText}>Already have an account? Sign in</Text>

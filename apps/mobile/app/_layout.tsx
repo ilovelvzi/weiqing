@@ -1,7 +1,7 @@
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Stack, useRouter, useSegments } from "expo-router";
 import { useEffect } from "react";
-import { hasRefreshToken, queryClient } from "../src/services";
+import { hasRefreshToken, queryClient, routes } from "../src/services";
 import { useAuthStore } from "../src/stores";
 
 export default function RootLayout() {
@@ -37,7 +37,7 @@ function RouteGuard() {
         setBootstrapping(false);
 
         if (isAuthRoute || isLaunchRoute) {
-          router.replace("/");
+          router.replace(routes.home);
         }
 
         return;
@@ -51,7 +51,7 @@ function RouteGuard() {
 
       if (hasStoredRefreshToken) {
         if (!isLaunchRoute) {
-          router.replace("/launch");
+          router.replace(routes.launch);
         }
 
         return;
@@ -60,7 +60,7 @@ function RouteGuard() {
       setBootstrapping(false);
 
       if (!isAuthRoute) {
-        router.replace("/auth/login");
+        router.replace(routes.login);
       }
     }
 

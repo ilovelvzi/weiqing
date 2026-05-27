@@ -1,4 +1,10 @@
-import type { Mood, PaginatedResponse, RecordSource, WeightRecordDto } from "@weiqing/shared";
+import type {
+  AiEncouragementDto,
+  Mood,
+  PaginatedResponse,
+  RecordSource,
+  WeightRecordDto
+} from "@weiqing/shared";
 import { apiClient } from "../../services";
 
 export interface CreateWeightRecordPayload {
@@ -16,6 +22,12 @@ export interface UpdateWeightRecordPayload {
   timezone?: string;
   mood?: Mood | null;
   note?: string | null;
+}
+
+export interface CreateWeightRecordResponse {
+  record: WeightRecordDto;
+  encouragement: AiEncouragementDto | null;
+  encouragementStatus: "ready" | "generating" | "failed" | "skipped";
 }
 
 export interface QueryWeightRecordsParams {
@@ -43,7 +55,7 @@ export interface WeightRecordCalendarResponse {
 
 export const weightApi = {
   create: (payload: CreateWeightRecordPayload) =>
-    apiClient.post<{ record: WeightRecordDto }, CreateWeightRecordPayload>("/weight-records", payload),
+    apiClient.post<CreateWeightRecordResponse, CreateWeightRecordPayload>("/weight-records", payload),
   list: (params: QueryWeightRecordsParams = {}) => {
     const search = new URLSearchParams();
     Object.entries(params).forEach(([key, value]) => {

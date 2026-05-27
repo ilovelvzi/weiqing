@@ -4,7 +4,7 @@ import { Loading } from "../src/components/feedback";
 import { PageShell } from "../src/components/layout";
 import { authApi } from "../src/features/auth/auth.api";
 import { clearAuthSession, saveAuthSession } from "../src/features/auth/auth.hooks";
-import { getRefreshToken } from "../src/services";
+import { getRefreshToken, routes } from "../src/services";
 import { useAuthStore } from "../src/stores";
 
 export default function LaunchRoute() {
@@ -21,7 +21,7 @@ export default function LaunchRoute() {
 
       if (!refreshToken) {
         await clearAuthSession();
-        router.replace("/auth/login");
+        router.replace(routes.login);
         return;
       }
 
@@ -31,13 +31,13 @@ export default function LaunchRoute() {
         await saveAuthSession(session);
 
         if (isMounted) {
-          router.replace("/");
+          router.replace(routes.home);
         }
       } catch {
         await clearAuthSession();
 
         if (isMounted) {
-          router.replace("/auth/login");
+          router.replace(routes.login);
         }
       } finally {
         if (isMounted) {

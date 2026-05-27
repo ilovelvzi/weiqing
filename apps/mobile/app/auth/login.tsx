@@ -6,6 +6,7 @@ import { Button, Card, Input } from "../../src/components/base";
 import { ErrorView } from "../../src/components/feedback";
 import { PageShell } from "../../src/components/layout";
 import { saveAuthSession, useLoginMutation } from "../../src/features/auth/auth.hooks";
+import { routes } from "../../src/services";
 import { colors, spacing, typography } from "../../src/styles";
 
 export default function LoginRoute() {
@@ -33,7 +34,7 @@ export default function LoginRoute() {
         deviceName: "Expo Mobile"
       });
       await saveAuthSession(session);
-      router.replace("/");
+      router.replace(routes.home);
     } catch (error) {
       setFormError(getErrorMessage(error, "Login failed. Check your email and password."));
     }
@@ -77,7 +78,7 @@ export default function LoginRoute() {
 
       <Pressable
         accessibilityRole="button"
-        onPress={() => router.push("/auth/register")}
+        onPress={() => router.push(routes.register)}
         style={styles.linkButton}
       >
         <Text style={styles.linkText}>Create an account</Text>

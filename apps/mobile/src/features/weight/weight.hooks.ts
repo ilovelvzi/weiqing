@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { queryKeys } from "../../services";
+import { queryClient, queryKeys } from "../../services";
 import type {
   CalendarWeightRecordsParams,
   QueryWeightRecordsParams,
@@ -30,7 +30,15 @@ export function useWeightCalendarQuery(params: CalendarWeightRecordsParams) {
 }
 
 export function useCreateWeightRecordMutation() {
-  return useMutation({ mutationFn: weightApi.create });
+  return useMutation({
+    mutationFn: weightApi.create,
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: queryKeys.homeOverview() });
+      void queryClient.invalidateQueries({ queryKey: queryKeys.weightRecordsRoot() });
+      void queryClient.invalidateQueries({ queryKey: queryKeys.statsSummary() });
+      void queryClient.invalidateQueries({ queryKey: queryKeys.latestEncouragement() });
+    }
+  });
 }
 
 export function useUpdateWeightRecordMutation() {
